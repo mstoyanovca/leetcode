@@ -1,2 +1,1 @@
-# leet-code-75
-LeetCode 75 questions
+LeetCode 75 questions and solutions
