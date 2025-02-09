@@ -17,4 +17,9 @@ public class CanPlaceFlowersTest {
     void example2() {
         assertFalse(canPlaceFlowers.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 2));
     }
+
+    @Test
+    void example3() {
+        assertFalse(canPlaceFlowers.canPlaceFlowers(new int[]{1, 0, 0, 0, 0, 1}, 2));
+    }
 }
