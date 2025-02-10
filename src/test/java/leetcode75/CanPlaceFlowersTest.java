@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CanPlaceFlowersTest {
-    CanPlaceFlowers canPlaceFlowers = new CanPlaceFlowers();
+    private final CanPlaceFlowers canPlaceFlowers = new CanPlaceFlowers();
 
     @Test
     void example1() {
