@@ -1,4 +1,4 @@
-package leetcode75;
+package leetcode75.array_string;
 
 public class CanPlaceFlowers {
     public boolean canPlaceFlowers(int[] flowerBed, int n) {

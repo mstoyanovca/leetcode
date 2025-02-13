@@ -1,4 +1,4 @@
-package leetcode75;
+package leetcode75.array_string;
 
 public class IncreasingTripletSubsequence {
     public boolean increasingTriplet(int[] numbers) {

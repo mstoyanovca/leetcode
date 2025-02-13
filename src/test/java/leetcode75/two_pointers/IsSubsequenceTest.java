@@ -1,4 +1,4 @@
-package leetcode75;
+package leetcode75.two_pointers;
 
 import org.junit.jupiter.api.Test;
 

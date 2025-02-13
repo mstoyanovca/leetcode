@@ -1,4 +1,4 @@
-package leetcode75;
+package leetcode75.array_string;
 
 public class GreatestCommonDivisorOfStrings {
     public String gcdOfStrings(String string1, String string2) {
