@@ -31,8 +31,8 @@ public class MaxConsecutiveOnes {
                 windowLength++;
                 maxWindowLength = Math.max(windowLength, maxWindowLength);
             } else {
-                // expand to the right by flipping 0s:
                 if (zeroes < k) {
+                    // expand to the right by flipping 0s:
                     zeroes++;
                     windowLength++;
                     maxWindowLength = Math.max(windowLength, maxWindowLength);

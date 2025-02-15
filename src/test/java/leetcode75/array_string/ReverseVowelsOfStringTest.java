@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReverseVowelsOfStringTest {
-    private final ReverseVowelsOfString reverseVowelsOfString = new ReverseVowelsOfString();
+    private final ReverseVowelsOfString reverseVowels = new ReverseVowelsOfString();
 
     @Test
     void example1() {
-        assertEquals("AceCreIm", reverseVowelsOfString.reverseVowels("IceCreAm"));
+        assertEquals("AceCreIm", reverseVowels.reverseVowels("IceCreAm"));
     }
 
     @Test
     void example2() {
-        assertEquals("leotcede", reverseVowelsOfString.reverseVowels("leetcode"));
+        assertEquals("leotcede", reverseVowels.reverseVowels("leetcode"));
     }
 }

@@ -1,6 +1,6 @@
 package leetcode75.sliding_window;
 
-public class MaxNumberOfVowelsInSubstringOfGivenLength {
+public class MaxNumberOfVowelsInSubstring {
 
     public int maxVowels(String s, int k) {
         int max = 0;
