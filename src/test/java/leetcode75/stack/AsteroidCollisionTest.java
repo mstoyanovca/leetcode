@@ -31,4 +31,9 @@ public class AsteroidCollisionTest {
     void example5() {
         assertArrayEquals((new int[]{-2, -2, -2}), collision.asteroidCollision(new int[]{-2, -2, 1, -2}));
     }
+
+    @Test
+    void example6() {
+        assertArrayEquals((new int[]{-2}), collision.asteroidCollision(new int[]{-2, 2, 1, -2}));
+    }
 }
