@@ -12,13 +12,23 @@ public class AsteroidCollision {
                 deque.add(a);
             } else if (!collide(deque.peekLast(), a)) {
                 deque.add(a);
-            } else if (collide(deque.peekLast(), a) && Math.abs(deque.peekLast()) == Math.abs(a)) {
-                deque.removeLast();
-            } else if (collide(deque.peekLast(), a) && Math.abs(deque.peekLast()) < Math.abs(a)) {
-                while (!deque.isEmpty() && collide(deque.peekLast(), a) && Math.abs(deque.peekLast()) < Math.abs(a)) {
+            } else {
+                while (!deque.isEmpty() &&
+                        collide(deque.peekLast(), a) &&
+                        Math.abs(deque.peekLast()) < Math.abs(a)) {
                     deque.removeLast();
                 }
-                if (!deque.isEmpty() && !collide(deque.peekLast(), a)) deque.add(a);
+                if (!deque.isEmpty() &&
+                        collide(deque.peekLast(), a) &&
+                        Math.abs(deque.peekLast()) == Math.abs(a)) {
+                    deque.removeLast();
+                } else if (!deque.isEmpty() &&
+                        collide(deque.peekLast(), a) &&
+                        Math.abs(deque.peekLast()) > Math.abs(a)) {
+                    // do not add to deque
+                } else {
+                    deque.add(a);
+                }
             }
         }
 
