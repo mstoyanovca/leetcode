@@ -1,6 +1,5 @@
-package leetcode75;
+package leetcode75.hashmap_set;
 
-import leetcode75.hashmap_set.EqualRowAndColumnPairs;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
