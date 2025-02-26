@@ -9,14 +9,14 @@ public class MaximumDepthOfBinaryTreeTest {
 
     @Test
     void example1() {
-        TreeNode tree = new TreeNode(3, new TreeNode(9, null, null), new TreeNode(20, new TreeNode(15, null, null), new TreeNode(7, null, null)));
+        TreeNode tree = new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)));
 
         assertEquals(3, maximumDepthOfBinaryTree.maxDepth(tree));
     }
 
     @Test
     void example2() {
-        TreeNode tree = new TreeNode(1, null, new TreeNode(2, null, null));
+        TreeNode tree = new TreeNode(1, null, new TreeNode(2));
 
         assertEquals(2, maximumDepthOfBinaryTree.maxDepth(tree));
     }
