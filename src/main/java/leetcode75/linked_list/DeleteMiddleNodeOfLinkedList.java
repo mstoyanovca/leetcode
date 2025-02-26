@@ -1,6 +1,6 @@
 package leetcode75.linked_list;
 
-// problem 29
+// problem 29:
 public class DeleteMiddleNodeOfLinkedList {
     public ListNode deleteMiddle(ListNode head) {
         if (head.next == null) return null;
