@@ -45,4 +45,62 @@ public class LongestZigZagPathTest {
 
         assertEquals(0, longestPath.longestZigZag(root));
     }
+
+    @Test
+    void example4() {
+        TreeNode root = new TreeNode(6,
+                null,
+                new TreeNode(7,
+                        null,
+                        new TreeNode(8,
+                                new TreeNode(3,
+                                        null,
+                                        new TreeNode(10,
+                                                new TreeNode(5,
+                                                        null,
+                                                        new TreeNode(9)),
+                                                null)),
+                                null)));
+
+        assertEquals(5, longestPath.longestZigZag(root));
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
