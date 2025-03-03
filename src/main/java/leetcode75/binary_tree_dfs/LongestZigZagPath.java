@@ -2,18 +2,25 @@ package leetcode75.binary_tree_dfs;
 
 // problem 37:
 public class LongestZigZagPath {
-    private enum Direction {LEFT, RIGHT}
+    private int maxSteps = 0;
 
     public int longestZigZag(TreeNode root) {
-        return Math.max(dfs(root, "LEFT"), dfs(root, "RIGHT"));
+        dfs(root, "LEFT", 0);
+        dfs(root, "RIGHT", 0);
+        return maxSteps;
     }
 
-    private int dfs(TreeNode node, String direction) {
-        if (node == null) return 0;
+    private void dfs(TreeNode node, String direction, int currentSteps) {
+        if (node == null) return;
+        maxSteps = Math.max(maxSteps, currentSteps);
         if (direction.equals("LEFT")) {
-            return Math.max(node.left != null ? 1 + dfs(node.left, "RIGHT") : 0, dfs(node.left, "LEFT"));
+            dfs(node.left, "RIGHT", currentSteps + 1);
+            // it might be a root of a new path:
+            dfs(node.left, "LEFT", 0);
         } else {
-            return Math.max(node.right != null ? 1 + dfs(node.right, "LEFT") : 0, dfs(node.right, "RIGHT"));
+            dfs(node.right, "LEFT", currentSteps + 1);
+            // it might be a root of a new path:
+            dfs(node.right, "RIGHT", 0);
         }
     }
 }
