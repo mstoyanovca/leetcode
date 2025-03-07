@@ -28,8 +28,8 @@ public class BinaryTreeRightSideView {
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            int depth = queue.size();
-            for (int i = 0; i < depth; i++) {
+            int level = queue.size();
+            for (int i = 0; i < level; i++) {
                 TreeNode node = queue.remove();
                 if (i == 0) result.add(node.val);
                 if (node.right != null) queue.add(node.right);
@@ -47,10 +47,10 @@ public class BinaryTreeRightSideView {
         return result;
     }
 
-    private void bfs(TreeNode node, List<Integer> result, int depth) {
+    private void bfs(TreeNode node, List<Integer> result, int level) {
         if (node == null) return;
-        if (result.size() == depth) result.add(node.val);
-        bfs(node.right, result, depth + 1);
-        bfs(node.left, result, depth + 1);
+        if (result.size() == level) result.add(node.val);
+        bfs(node.right, result, level + 1);
+        bfs(node.left, result, level + 1);
     }
 }
