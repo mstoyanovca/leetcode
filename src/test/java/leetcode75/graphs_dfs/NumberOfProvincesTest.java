@@ -9,7 +9,10 @@ public class NumberOfProvincesTest {
 
     @Test
     void example1() {
-        int[][] isConnected = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+        int[][] isConnected = {
+                {1, 1, 0},
+                {1, 1, 0},
+                {0, 0, 1}};
 
         assertEquals(2, numberOfProvinces.findCircleNum(isConnected));
     }
