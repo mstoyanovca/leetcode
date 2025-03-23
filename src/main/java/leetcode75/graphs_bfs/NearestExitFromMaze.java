@@ -12,7 +12,7 @@ public class NearestExitFromMaze {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(entrance);
         // left, right, up, down:
-        int[][] directions = new int[][]{{-1, 0}, {0, 1}, {-1, 0}, {1, 0}};
+        int[][] directions = new int[][]{{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
 
         while (!queue.isEmpty()) {
             steps++;

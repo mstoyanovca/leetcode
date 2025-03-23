@@ -30,4 +30,12 @@ public class NearestExitFromMazeTest {
 
         assertEquals(-1, nearestExit.nearestExit(maze, entrance));
     }
+
+    @Test
+    void example4() {
+        char[][] maze = new char[][]{{'.', '.'}};
+        int[] entrance = new int[]{0, 1};
+
+        assertEquals(1, nearestExit.nearestExit(maze, entrance));
+    }
 }
