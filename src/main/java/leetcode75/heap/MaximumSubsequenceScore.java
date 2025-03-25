@@ -9,17 +9,18 @@ public class MaximumSubsequenceScore {
         long result = 0;
         long sum = 0;
         // numbers1.length = numbers2.length
-        int[][] numbers_i = new int[numbers1.length][2];
-        for (int i = 0; i < numbers1.length; ++i) numbers_i[i] = new int[]{numbers2[i], numbers1[i]};
-        Arrays.sort(numbers_i, (a, b) -> b[0] - a[0]);
+        int[][] tuples = new int[numbers1.length][2];
+        for (int i = 0; i < numbers1.length; ++i) tuples[i] = new int[]{numbers1[i], numbers2[i]};
+        // sort by the second element descending:
+        Arrays.sort(tuples, (a, b) -> Integer.compare(b[1], a[1]));
 
-        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
 
-        for (int[] tuple : numbers_i) {
-            queue.add(tuple[1]);
-            sum += tuple[1];
-            if (queue.size() > k) sum -= queue.remove();
-            if (queue.size() == k) result = Math.max(result, (sum * tuple[0]));
+        for (int[] tuple : tuples) {
+            maxHeap.add(tuple[0]);
+            sum += tuple[0];
+            if (maxHeap.size() > k) sum -= maxHeap.remove();
+            if (maxHeap.size() == k) result = Math.max(result, (sum * tuple[1]));
         }
 
         return result;
