@@ -15,7 +15,7 @@ public class TotalCostToHireKWorkers {
 
         while (k-- > 0) {
             while (minHeapLeft.size() < candidates && i <= j) minHeapLeft.add(costs[i++]);
-            while (minHeapRight.size() < candidates && i <= j) minHeapLeft.add(costs[j--]);
+            while (minHeapRight.size() < candidates && i <= j) minHeapRight.add(costs[j--]);
 
             if (minHeapLeft.isEmpty()) {
                 totalCost += minHeapRight.remove();
