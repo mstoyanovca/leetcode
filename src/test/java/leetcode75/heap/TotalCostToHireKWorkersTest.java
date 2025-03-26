@@ -20,4 +20,11 @@ public class TotalCostToHireKWorkersTest {
 
         assertEquals(4, totalCost.totalCost(costs, 3, 3));
     }
+
+    @Test
+    void example3() {
+        int[] costs = {31, 25, 72, 79, 74, 65, 84, 91, 18, 59, 27, 9, 81, 33, 17, 58};
+
+        assertEquals(423, totalCost.totalCost(costs, 11, 2));
+    }
 }
