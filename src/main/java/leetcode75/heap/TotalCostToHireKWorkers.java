@@ -9,7 +9,7 @@ public class TotalCostToHireKWorkers {
         // use two pointers, moving towards each other:
         int i = 0;                 // left index
         int j = costs.length - 1;  // right index
-        int totalCost = 0;
+        long totalCost = 0;        // the result must be kept in a long, int is not enough
         PriorityQueue<Integer> minHeapLeft = new PriorityQueue<>();
         PriorityQueue<Integer> minHeapRight = new PriorityQueue<>();
 
