@@ -8,8 +8,8 @@ public class KokoEatingBananas {
         int right = findMax(piles);
 
         while (left <= right) {
-            int current = left + (right - left) / 2;
-            if (eatsWithinTimeLimit(piles, current, h)) {
+            int current = left + (right - left + 1) / 2;
+            if (eatsAllWithinTime(piles, current, h)) {
                 right = current - 1;
             } else {
                 left = current + 1;
@@ -25,7 +25,7 @@ public class KokoEatingBananas {
         return max;
     }
 
-    private boolean eatsWithinTimeLimit(int[] piles, int k, int h) {
+    private boolean eatsAllWithinTime(int[] piles, int k, int h) {
         int hoursToEatAll = 0;
         for (int pile : piles) {
             if (k >= pile) {

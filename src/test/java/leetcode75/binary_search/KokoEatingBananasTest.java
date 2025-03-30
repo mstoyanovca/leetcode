@@ -31,4 +31,9 @@ public class KokoEatingBananasTest {
     void example5() {
         assertEquals(3, kokoEatingBananas.minEatingSpeed(new int[]{805_306_368, 805_306_368, 805_306_368}, 1_000_000_000));
     }
+
+    @Test
+    void example6() {
+        assertEquals(4, kokoEatingBananas.minEatingSpeed(new int[]{1, 4, 8}, 4));
+    }
 }
