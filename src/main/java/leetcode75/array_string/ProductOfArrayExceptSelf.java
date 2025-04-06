@@ -2,7 +2,7 @@ package leetcode75.array_string;
 
 public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] numbers) {
-        int n = numbers.length;
+        final int n = numbers.length;
         int[] prefixes = new int[n];
         int[] suffixes = new int[n];
 

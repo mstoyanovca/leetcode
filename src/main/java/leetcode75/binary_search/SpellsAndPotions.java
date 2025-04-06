@@ -5,8 +5,8 @@ import java.util.Arrays;
 // problem 54:
 public class SpellsAndPotions {
     public int[] successfulPairs(int[] spells, int[] potions, long success) {
-        int n = spells.length;
-        int m = potions.length;
+        final int n = spells.length;
+        final int m = potions.length;
         int[] pairs = new int[n];
 
         Arrays.sort(potions);

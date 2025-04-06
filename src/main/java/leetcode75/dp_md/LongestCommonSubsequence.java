@@ -4,8 +4,8 @@ package leetcode75.dp_md;
 public class LongestCommonSubsequence {
     public int longestCommonSubsequence(String text1, String text2) {
         // m = rows, n = columns;
-        int m = text1.length();
-        int n = text2.length();
+        final int m = text1.length();
+        final int n = text2.length();
         int[][] dp = new int[m][n];
 
         for (int i = 0; i < m; i++) {
