@@ -21,4 +21,9 @@ class NonOverlappingIntervalsTest {
     void example3() {
         assertEquals(0, nonOverlappingIntervals.eraseOverlapIntervals(new int[][]{{1, 2}, {2, 3}}));
     }
+
+    @Test
+    void example4() {
+        assertEquals(2, nonOverlappingIntervals.eraseOverlapIntervals(new int[][]{{1, 100}, {11, 22}, {1, 11}, {2, 12}}));
+    }
 }

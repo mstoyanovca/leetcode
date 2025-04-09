@@ -7,7 +7,7 @@ import java.util.Comparator;
 // each interval has length 2;
 public class NonOverlappingIntervals {
     public int eraseOverlapIntervals(int[][] intervals) {
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[1]));
 
         int result = 0;
         int current = intervals[0][1];
