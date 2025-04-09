@@ -1,9 +1,7 @@
 package leetcode75.monotonic_stack;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
-import java.util.List;
 
 public class StockSpanner {
     private final Deque<Integer> stack;
@@ -13,23 +11,21 @@ public class StockSpanner {
     }
 
     public int next(int price) {
-        stack.push(price);
         int span = 0;
-        List<Integer> prices = new ArrayList<>();
+        boolean foundHigherPrice = false;
+
+        stack.push(price);
         int size = stack.size();
-        boolean keepGoing = true;
 
         for (int i = 0; i < size; i++) {
             int p = stack.pop();
-            prices.add(p);
-            if (keepGoing && price >= p) {
+            if (!foundHigherPrice && price >= p) {
                 span++;
             } else {
-                keepGoing = false;
+                foundHigherPrice = true;
             }
+            stack.add(p);
         }
-
-        stack.addAll(prices);
 
         return span;
     }
