@@ -4,27 +4,22 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class StockSpanner {
-    private final Deque<Integer> stack;
+    private final Deque<Integer> prices;
 
     public StockSpanner() {
-        stack = new ArrayDeque<>();
+        prices = new ArrayDeque<>();
     }
 
     public int next(int price) {
         int span = 0;
-        boolean foundHigherPrice = false;
+        prices.push(price);
 
-        stack.push(price);
-        int size = stack.size();
-
-        for (int i = 0; i < size; i++) {
-            int p = stack.pop();
-            if (!foundHigherPrice && price >= p) {
+        for (int p : prices) {
+            if (price >= p) {
                 span++;
             } else {
-                foundHigherPrice = true;
+                break;
             }
-            stack.add(p);
         }
 
         return span;
