@@ -1,2 +1,2 @@
-LeetCode 75 problems playbook
+LeetCode 75 problems workbook
 https://leetcode.com/u/mstoyanovca/
