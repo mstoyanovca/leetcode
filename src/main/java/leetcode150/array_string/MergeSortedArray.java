@@ -1,7 +1,5 @@
 package leetcode150.array_string;
 
-import java.util.Arrays;
-
 public class MergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int inserts = 0;
