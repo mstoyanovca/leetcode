@@ -5,7 +5,8 @@ public class MergeSortedArray {
         int inserts = 0;
         int startIndex = 0;
 
-        // O(m+n)
+        // time complexity O(m+n)
+        // space complexity O(1)
         for (int j = 0; j < n; j++) {
             for (int i = startIndex; i < (m + n); i++) {
                 startIndex = i;

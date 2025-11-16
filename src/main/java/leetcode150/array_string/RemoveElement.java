@@ -6,7 +6,8 @@ public class RemoveElement {
         int left = 0;
         int right = nums.length > 0 ? nums.length - 1 : 0;
 
-        // O(n)
+        // time complexity O(n)
+        // space complexity O(1)
         while (left != right) {
             if (nums[right] == val) {
                 // move the right pointer to the left, till it hits a non-val:

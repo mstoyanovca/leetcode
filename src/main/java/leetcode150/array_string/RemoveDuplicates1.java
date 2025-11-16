@@ -7,8 +7,9 @@ public class RemoveDuplicates1 {
         // number of unique elements:
         int k = 1;
         int left = 0;
-        int right = 0;
-        // O(n)
+        int right = 1;
+        // time complexity O(n)
+        // space complexity O(1)
         while (right < nums.length) {
             if (nums[right] == nums[left]) {
                 right++;
