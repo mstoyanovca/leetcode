@@ -6,6 +6,7 @@ public class RemoveElement {
         int left = 0;
         int right = nums.length > 0 ? nums.length - 1 : 0;
 
+        // O(n)
         while (left != right) {
             if (nums[right] == val) {
                 // move the right pointer to the left, till it hits a non-val:
@@ -23,6 +24,7 @@ public class RemoveElement {
             }
         }
 
+        // edge case when, all nums[i] elements were == val:
         if (nums.length > 0 && nums[left] == val) {
             nums = new int[0];
             result = 0;

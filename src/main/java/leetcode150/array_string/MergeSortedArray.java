@@ -5,6 +5,7 @@ public class MergeSortedArray {
         int inserts = 0;
         int startIndex = 0;
 
+        // O(m+n)
         for (int j = 0; j < n; j++) {
             for (int i = startIndex; i < (m + n); i++) {
                 startIndex = i;
