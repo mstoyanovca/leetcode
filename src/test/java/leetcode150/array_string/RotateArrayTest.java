@@ -12,4 +12,12 @@ public class RotateArrayTest {
 
         assertArrayEquals(new int[]{5, 6, 7, 1, 2, 3, 4}, nums);
     }
+
+    @Test
+    public void example2Test() {
+        int[] nums = new int[]{1, 2};
+        new RotateArray().rotate(nums, 7);
+
+        assertArrayEquals(new int[]{2, 1}, nums);
+    }
 }
