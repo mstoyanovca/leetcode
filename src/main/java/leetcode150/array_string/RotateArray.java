@@ -5,6 +5,8 @@ public class RotateArray {
         int l = nums.length;
         if (l == 1 || l == k) return;
 
+        // time complexity O(k*k)
+        // space complexity O(1)
         for (int i = 0; i < k; i++) {
             int acc = nums[l - 1];
             shiftRight(nums);
