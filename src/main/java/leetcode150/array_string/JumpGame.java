@@ -5,10 +5,28 @@ public class JumpGame {
         if (nums.length == 1) return true;
 
         int n = nums.length;
+        int right = 0;
+
+        // time complexity O(n)
+        // space complexity O(1)
+        for (int i = 0; i < n; i++) {
+            if (i > right) return false;
+            right = Math.max(right, nums[i] + i);
+        }
+
+        return true;
+    }
+
+    public boolean canJumpBruteForce(int[] nums) {
+        if (nums.length == 1) return true;
+
+        int n = nums.length;
         int left = n - 1;
         int right = n - 1;
 
         // time complexity O(n)
+        // space complexity O(1)
+        // by some reason this solution times out
         while (right > 0) {
             // move the right pointer left, till it reaches a zero, or the first element:
             while (right > 0 && nums[right] != 0) {
