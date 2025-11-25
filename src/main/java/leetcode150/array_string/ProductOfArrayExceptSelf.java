@@ -3,23 +3,16 @@ package leetcode150.array_string;
 public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
-        // optimized version for O(1) space complexity:
+        // optimized version for O(1) space complexity;
         // use nums as prefix;
-        // use answer as suffix, which means calculate suffix first, before you overwrite nums :);
-        int[] prefix = new int[n];
-        // int[] suffix = new int[n];
-        int[] answer = new int[n];
+        // use answer as suffix
+        // calculate suffix first, before you overwrite nums :);
+        int acc = 1;
+        int[] answer = new int[n];  // this is suffix now, prefixes are stored in nums
 
-        for (int i = 0; i < n; i++) {
-            if (i == 0) {
-                prefix[i] = 1;
-            } else if (i == 1) {
-                prefix[i] = nums[0];
-            } else {
-                prefix[i] = prefix[i - 1] * nums[i - 1];
-            }
-        }
-
+        // time complexity O(n)
+        // space complexity O(1)
+        // using answer as suffix:
         for (int i = n - 1; i >= 0; i--) {
             if (i == n - 1) {
                 answer[i] = 1;
@@ -30,8 +23,20 @@ public class ProductOfArrayExceptSelf {
             }
         }
 
+        // using nums as prefix:
         for (int i = 0; i < n; i++) {
-            answer[i] = prefix[i] * answer[i];
+            if (i == 0) {
+                acc = nums[0];
+                nums[0] = 1;
+            } else {
+                int newValue = acc;
+                acc = acc * nums[i];
+                nums[i] = newValue;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            answer[i] = nums[i] * answer[i];
         }
 
         return answer;
@@ -44,7 +49,7 @@ public class ProductOfArrayExceptSelf {
         int[] answer = new int[n];
 
         // time complexity O(n)
-        // space complexity I think it's going to be O(n)
+        // space complexity O(n)
         for (int i = 0; i < n; i++) {
             if (i == 0) {
                 prefix[i] = 1;
