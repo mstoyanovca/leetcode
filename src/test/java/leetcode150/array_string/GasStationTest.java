@@ -19,4 +19,9 @@ public class GasStationTest {
     public void example3Test() {
         assertEquals(0, new GasStation().canCompleteCircuit(new int[]{2}, new int[]{2}));
     }
+
+    @Test
+    public void example4Test() {
+        assertEquals(0, new GasStation().canCompleteCircuit(new int[]{1, 1, 1, 1, 1}, new int[]{1, 1, 1, 1, 1}));
+    }
 }

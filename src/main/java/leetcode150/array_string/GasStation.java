@@ -6,6 +6,8 @@ public class GasStation {
         int currentGas = 0;
         int right = findNextPossibleStartIndex(0, gas, cost);
 
+        // time complexity O(n^2)
+        // space complexity O(1)
         while (right != -1) {
             boolean loop = true;
 
