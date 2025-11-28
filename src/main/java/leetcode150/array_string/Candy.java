@@ -1,20 +1,32 @@
 package leetcode150.array_string;
 
+import java.util.Arrays;
+
 public class Candy {
     public int candy(int[] ratings) {
         int n = ratings.length;
-        int currentCandies = 1;
-        int totalCandies = n;
+        int[] candies = new int[n];
 
+        // time complexity O(n)
+        // space complexity O(n)
         for (int i = 0; i < n; i++) {
-            if (i < n - 1 && ratings[i] > ratings[i + 1] || i > 0 && ratings[i] > ratings[i - 1]) {
-                currentCandies++;
-                totalCandies += currentCandies - 1;
+            if (i == 0) {
+                candies[0] = 1;
             } else {
-                currentCandies = 1;
+                if (ratings[i] > ratings[i - 1]) {
+                    candies[i] = candies[i - 1] + 1;
+                } else {
+                    candies[i] = 1;
+                }
             }
         }
 
-        return totalCandies;
+        for (int i = n - 1; i > 0; i--) {
+            if (ratings[i - 1] > ratings[i] && candies[i - 1] <= candies[i]) {
+                candies[i - 1] = candies[i] + 1;
+            }
+        }
+
+        return Arrays.stream(candies).sum();
     }
 }

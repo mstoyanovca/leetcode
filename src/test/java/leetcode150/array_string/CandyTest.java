@@ -29,4 +29,9 @@ public class CandyTest {
     public void example5Test() {
         assertEquals(12, new Candy().candy(new int[]{29, 51, 87, 87, 72, 12}));
     }
+
+    @Test
+    public void example6Test() {
+        assertEquals(11, new Candy().candy(new int[]{1,3,4,5,2}));
+    }
 }
