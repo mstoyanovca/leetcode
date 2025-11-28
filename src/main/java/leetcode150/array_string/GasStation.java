@@ -1,7 +1,31 @@
 package leetcode150.array_string;
 
 public class GasStation {
+    // "If there exists a solution, it is guaranteed to be unique."
+    // the solution below times out, a shortcut is needed;
     public int canCompleteCircuit(int[] gas, int[] cost) {
+        int totalGas = 0;
+        int totalCost = 0;
+        int currentGas = 0;
+        int right = 0;
+
+        // time complexity O(n)
+        // space complexity O(1)
+        for (int i = 0; i < gas.length; i++) {
+            totalGas += gas[i];
+            totalCost += cost[i];
+
+            currentGas += gas[i] - cost[i];
+            if (currentGas < 0) {
+                currentGas = 0;
+                right = i + 1;
+            }
+        }
+
+        return totalGas < totalCost ? -1 : right;
+    }
+
+    public int canCompleteCircuitBruteForce(int[] gas, int[] cost) {
         int n = gas.length;
         int currentGas = 0;
         int right = findNextPossibleStartIndex(0, gas, cost);
