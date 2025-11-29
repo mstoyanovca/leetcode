@@ -3,6 +3,32 @@ package leetcode150.array_string;
 public class TrappingRainWater {
     public int trap(int[] height) {
         int n = height.length;
+        int[] leftWalls = new int[n];
+        int[] rightWalls = new int[n];
+        int max = 0;
+        int volume = 0;
+
+        // time complexity O(n)
+        // space complexity O(n)
+        for (int i = 0; i < n; i++) {
+            max = Math.max(max, height[i]);
+            leftWalls[i] = max;
+        }
+        max = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            max = Math.max(max, height[i]);
+            rightWalls[i] = max;
+        }
+        for (int i = 0; i < n; i++) {
+            int level = Math.min(leftWalls[i], rightWalls[i]);
+            volume += level - height[i];
+        }
+
+        return volume;
+    }
+
+    public int trapBruteForce1(int[] height) {
+        int n = height.length;
         int left = -1;
         int right = 0;
         int volume = 0;
@@ -28,6 +54,48 @@ public class TrappingRainWater {
             if (left != -1 && right - left > 1) {
                 int level = Math.min(height[left], height[right]);
                 for (int j = left + 1; j < right; j++) volume += Math.max(level - height[j], 0);
+                left = right;
+            }
+        }
+
+        return volume;
+    }
+
+    public int trapBruteForce2(int[] height) {
+        int n = height.length;
+        int left = 0;
+        int right = 0;
+        int volume = 0;
+
+        while (right < n) {
+            // find a left wall:
+            for (int i = left; i < n; i++) {
+                if (i < n - 1 && height[i] > height[i + 1]) {
+                    left = i;
+                    break;
+                }
+            }
+            // search for a right wall, taller than, or equal to the left wall first, possibly skipping lower ones:
+            for (int i = left + 1; i < n; i++) {
+                if (height[i] >= height[left]) {
+                    right = i;
+                    break;
+                }
+            }
+            // only if such a right wall doesn't exist, search for a right wall, lower than the left one:
+            if (right <= left) {
+                for (int i = left + 1; i < n; i++) {
+                    if (i < n - 1 && height[i] > height[i + 1]) {
+                        right = i;
+                        break;
+                    }
+                }
+            }
+            // add to volume:
+            if (right - left > 1) {
+                int level = Math.min(height[left], height[right]);
+                for (int j = left + 1; j < right; j++) volume += Math.max(level - height[j], 0);
+                if (right == n - 1) break;
                 left = right;
             }
         }
