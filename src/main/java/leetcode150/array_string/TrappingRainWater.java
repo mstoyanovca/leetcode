@@ -3,6 +3,33 @@ package leetcode150.array_string;
 public class TrappingRainWater {
     public int trap(int[] height) {
         int n = height.length;
+        int left = 0;
+        int leftWall = 0;
+        int right = n - 1;
+        int rightWall = 0;
+        int volume = 0;
+
+        // time complexity O(n)
+        // space complexity O(1)
+        while (left < right) {
+            if (height[left] < height[right]) {
+                // the bar on the right serves as a temporary right wall:
+                leftWall = Math.max(leftWall, height[left]);
+                if (height[left] < leftWall) volume += leftWall - height[left];
+                left++;
+            } else {
+                // the bar on the left serves as a temporary left wall:
+                rightWall = Math.max(rightWall, height[right]);
+                if (height[right] < rightWall) volume += rightWall - height[right];
+                right--;
+            }
+        }
+
+        return volume;
+    }
+
+    public int trapSolution1(int[] height) {
+        int n = height.length;
         int[] leftWalls = new int[n];
         int[] rightWalls = new int[n];
         int max = 0;
@@ -33,6 +60,8 @@ public class TrappingRainWater {
         int right = 0;
         int volume = 0;
 
+        // time complexity O(n)
+        // space complexity O(1)
         for (int i = 0; i < n; i++) {
             // taller than its neighbours, it's a wall:
             boolean firstElementPredicate = n > 1 && i == 0 && height[0] > height[1];
@@ -67,6 +96,8 @@ public class TrappingRainWater {
         int right = 0;
         int volume = 0;
 
+        // time complexity O(n*n)
+        // space complexity O(1)
         while (right < n) {
             // find a left wall:
             for (int i = left; i < n; i++) {
