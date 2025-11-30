@@ -2,7 +2,7 @@ package leetcode150.array_string;
 
 public class IntegerToRoman {
     public String intToRoman(int num) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         int thousands = num / 1000;
         int hundreds = (num - thousands * 1000) / 100;
@@ -12,23 +12,23 @@ public class IntegerToRoman {
         // time complexity O(1)
         // space complexity O(1)
         // we have a constraint 1 <= num <= 3999, this should work:
-        for (int i = 0; i < thousands; i++) result += "M";
+        result.append("M".repeat(Math.max(0, thousands)));
 
         if (hundreds > 0) {
             if (hundreds < 4) {
                 for (int i = 0; i < hundreds; i++) {
-                    result += "C";
+                    result.append("C");
                 }
             } else if (hundreds == 4) {
-                result += "CD";
+                result.append("CD");
             } else if (hundreds == 5) {
-                result += "D";
+                result.append("D");
             } else if (hundreds == 9) {
-                result += "CM";
+                result.append("CM");
             } else {
-                result += "D";
+                result.append("D");
                 for (int i = 0; i < hundreds - 5; i++) {
-                    result += "C";
+                    result.append("C");
                 }
             }
         }
@@ -36,41 +36,35 @@ public class IntegerToRoman {
         if (tens > 0) {
             if (tens < 4) {
                 for (int i = 0; i < tens; i++) {
-                    result += "X";
+                    result.append("X");
                 }
             } else if (tens == 4) {
-                result += "XL";
+                result.append("XL");
             } else if (tens == 5) {
-                result += "L";
+                result.append("L");
             } else if (tens == 9) {
-                result += "XC";
+                result.append("XC");
             } else {
-                result += "L";
-                for (int i = 0; i < tens - 5; i++) {
-                    result += "X";
-                }
+                result.append("L");
+                result.append("X".repeat(tens - 5));
             }
         }
 
         if (ones > 0) {
             if (ones < 4) {
-                for (int i = 0; i < ones; i++) {
-                    result += "I";
-                }
+                result.append("I".repeat(ones));
             } else if (ones == 4) {
-                result += "IV";
+                result.append("IV");
             } else if (ones == 5) {
-                result += "V";
+                result.append("V");
             } else if (ones == 9) {
-                result += "IX";
+                result.append("IX");
             } else {
-                result += "V";
-                for (int i = 0; i < ones - 5; i++) {
-                    result += "I";
-                }
+                result.append("V");
+                result.append("I".repeat(ones - 5));
             }
         }
 
-        return result;
+        return result.toString();
     }
 }
