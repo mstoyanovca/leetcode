@@ -16,9 +16,7 @@ public class IntegerToRoman {
 
         if (hundreds > 0) {
             if (hundreds < 4) {
-                for (int i = 0; i < hundreds; i++) {
-                    result.append("C");
-                }
+                result.append("C".repeat(hundreds));
             } else if (hundreds == 4) {
                 result.append("CD");
             } else if (hundreds == 5) {
@@ -27,17 +25,13 @@ public class IntegerToRoman {
                 result.append("CM");
             } else {
                 result.append("D");
-                for (int i = 0; i < hundreds - 5; i++) {
-                    result.append("C");
-                }
+                result.append("C".repeat(hundreds - 5));
             }
         }
 
         if (tens > 0) {
             if (tens < 4) {
-                for (int i = 0; i < tens; i++) {
-                    result.append("X");
-                }
+                result.append("X".repeat(tens));
             } else if (tens == 4) {
                 result.append("XL");
             } else if (tens == 5) {
