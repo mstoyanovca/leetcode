@@ -2,6 +2,7 @@ package leetcode150.two_pointers;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ValidPalindromeTest {
@@ -12,11 +13,16 @@ public class ValidPalindromeTest {
 
     @Test
     public void example2Test() {
-        assertTrue(new ValidPalindrome().isPalindrome("race a car"));
+        assertFalse(new ValidPalindrome().isPalindrome("race a car"));
     }
 
     @Test
     public void example3Test() {
         assertTrue(new ValidPalindrome().isPalindrome(" "));
+    }
+
+    @Test
+    public void example4Test() {
+        assertTrue(new ValidPalindrome().isPalindrome(".,"));
     }
 }
