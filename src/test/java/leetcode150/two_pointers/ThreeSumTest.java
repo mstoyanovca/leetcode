@@ -24,6 +24,6 @@ public class ThreeSumTest {
 
     @Test
     public void example4Test() {
-        assertEquals(List.of(List.of(-100, -60, 160), List.of(-70, -60, 130)), new ThreeSum().threeSum(new int[]{-100, -70, -60, 110, 120, 130, 160}));
+        assertEquals(List.of(List.of(-70, -60, 130), List.of(-100, -60, 160)), new ThreeSum().threeSum(new int[]{-100, -70, -60, 110, 120, 130, 160}));
     }
 }
