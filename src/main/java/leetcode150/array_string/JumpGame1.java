@@ -1,6 +1,6 @@
 package leetcode150.array_string;
 
-public class JumpGame {
+public class JumpGame1 {
     public boolean canJump(int[] nums) {
         if (nums.length == 1) return true;
 
