@@ -2,7 +2,7 @@ package leetcode150.two_pointers;
 
 import java.util.*;
 
-public class ThreeSum {
+public class TripletSum {
     public List<List<Integer>> threeSum(int[] nums) {
         int n = nums.length;
         int left;
