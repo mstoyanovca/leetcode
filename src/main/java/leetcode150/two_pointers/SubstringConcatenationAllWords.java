@@ -10,12 +10,15 @@ public class SubstringConcatenationAllWords {
         int right = words[0].length() * words.length;
         List<Integer> result = new ArrayList<>();
 
+        // I assume:
+        // time complexity O(n)
+        // space complexity O(1) (give or take)
         while (right < s.length()) {
             String subString = s.substring(left, right);
             if (Arrays.stream(words).allMatch(subString::contains)) {
                 result.add(left);
-                left = right;
-                right += words[0].length() * words.length;
+                left += words[0].length();
+                right += words[0].length();
             } else {
                 left++;
                 right++;
