@@ -10,6 +10,9 @@ public class LongestSubstringWithoutRepeatingCharacters {
         Map<Character, Integer> map = new HashMap<>();
         int result = 0;
 
+        // I assume:
+        // time complexity O(n)
+        // space complexity O(n)
         while (right < s.length()) {
             if (!map.containsKey(s.charAt(right))) {
                 map.put(s.charAt(right), 1);
