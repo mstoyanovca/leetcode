@@ -21,4 +21,9 @@ public class SubstringConcatenationAllWordsTest {
     public void example3Test() {
         assertEquals(List.of(6, 9, 12), new SubstringConcatenationAllWords().findSubstring("barfoofoobarthefoobarman", new String[]{"bar", "foo", "the"}));
     }
+
+    @Test
+    public void example4Test() {
+        assertEquals(List.of(8), new SubstringConcatenationAllWords().findSubstring("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "good"}));
+    }
 }
