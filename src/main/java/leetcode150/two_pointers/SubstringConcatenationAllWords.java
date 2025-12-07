@@ -10,6 +10,7 @@ public class SubstringConcatenationAllWords {
         int left = 0;
         int right = words[0].length() * words.length - 1;
         List<Integer> result = new ArrayList<>();
+        if (words.length > s.length()) return result;
 
         Map<String, Integer> wordsMap = new HashMap<>();
         for (String word : words) {
@@ -21,6 +22,10 @@ public class SubstringConcatenationAllWords {
         }
 
         Map<String, Integer> windowMap = new HashMap<>();
+        while (!wordsMap.containsKey(s.substring(left, left + words[0].length()))) {
+            left++;
+            right++;
+        }
         for (int i = left; i < right + 1; i += words[0].length()) {
             String word = s.substring(i, i + words[0].length());
             if (!windowMap.containsKey(word)) {
