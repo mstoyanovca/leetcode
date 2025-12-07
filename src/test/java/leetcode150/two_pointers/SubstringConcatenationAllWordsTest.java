@@ -39,7 +39,7 @@ public class SubstringConcatenationAllWordsTest {
 
     @Test
     public void example7Test() {
-        assertEquals(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), new SubstringConcatenationAllWords().findSubstring("aaaaaaaaaaaaaa", new String[]{"aa", "aa"}));
+        assertEquals(List.of(0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9), new SubstringConcatenationAllWords().findSubstring("aaaaaaaaaaaaaa", new String[]{"aa", "aa"}));
     }
 
     @Test
@@ -55,5 +55,10 @@ public class SubstringConcatenationAllWordsTest {
     @Test
     public void example10Test() {
         assertEquals(List.of(1), new SubstringConcatenationAllWords().findSubstring("ababaab", new String[]{"ab", "ba", "ba"}));
+    }
+
+    @Test
+    public void example11Test() {
+        assertEquals(List.of(6), new SubstringConcatenationAllWords().findSubstring("sheateateseatea", new String[]{"sea", "tea", "ate"}));
     }
 }
