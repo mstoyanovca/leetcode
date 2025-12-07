@@ -5,8 +5,6 @@ import java.util.Map;
 
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
-        int n = s.length();
-        int m = t.length();
         int left = 0;
         int right = 0;
         int[] minIndexes = new int[2];
@@ -17,7 +15,7 @@ public class MinimumWindowSubstring {
 
         // time complexity O(?)
         // space complexity O(?)
-        while (right < n) {
+        while (right < s.length()) {
             char c = s.charAt(right);
             if (tMap.containsKey(c)) {
                 if (tMap.containsKey(c) & tMap.get(c) > 1) {
