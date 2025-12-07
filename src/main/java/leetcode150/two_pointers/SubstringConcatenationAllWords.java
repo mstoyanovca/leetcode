@@ -18,9 +18,9 @@ public class SubstringConcatenationAllWords {
         // time complexity O(words[0].length() * s.length())
         // space complexity O(words.length + s.length())
         for (int offset = 0; offset < words[0].length(); offset++) {
-            int left = 0;
-            left += offset;
+            int left = offset;
             int right = left + words[0].length() * words.length - 1;
+            if (right > s.length() - 1) break;
 
             Map<String, Integer> windowMap = new HashMap<>();
             for (int i = left; i < right + 1; i += words[0].length()) {
@@ -28,12 +28,12 @@ public class SubstringConcatenationAllWords {
                 windowMap.put(word, windowMap.getOrDefault(word, 0) + 1);
             }
 
-            while (right < s.length()) {
+            while (true) {
                 if (wordsMap.equals(windowMap)) result.add(left);
 
                 // remove the first word in the window:
                 String word = s.substring(left, left + words[0].length());
-                if (windowMap.get(word) != null && windowMap.get(word) > 1) {
+                if (windowMap.get(word) > 1) {
                     windowMap.put(word, windowMap.get(word) - 1);
                 } else {
                     windowMap.remove(word);
