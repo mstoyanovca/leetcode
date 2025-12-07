@@ -36,4 +36,24 @@ public class SubstringConcatenationAllWordsTest {
     public void example6Test() {
         assertEquals(List.of(), new SubstringConcatenationAllWords().findSubstring("a", new String[]{"a", "a"}));
     }
+
+    @Test
+    public void example7Test() {
+        assertEquals(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), new SubstringConcatenationAllWords().findSubstring("aaaaaaaaaaaaaa", new String[]{"aa", "aa"}));
+    }
+
+    @Test
+    public void example8Test() {
+        assertEquals(List.of(0), new SubstringConcatenationAllWords().findSubstring("a", new String[]{"a"}));
+    }
+
+    @Test
+    public void example9Test() {
+        assertEquals(List.of(), new SubstringConcatenationAllWords().findSubstring("aaa", new String[]{"aa", "aa"}));
+    }
+
+    @Test
+    public void example10Test() {
+        assertEquals(List.of(1), new SubstringConcatenationAllWords().findSubstring("ababaab", new String[]{"ab", "ba", "ba"}));
+    }
 }

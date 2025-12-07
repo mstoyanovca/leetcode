@@ -7,12 +7,14 @@ import java.util.Map;
 
 public class SubstringConcatenationAllWords {
     public List<Integer> findSubstring(String s, String[] words) {
+        if (words.length * words[0].length() > s.length()) return List.of();
+
         int left = 0;
         int right = words[0].length() * words.length - 1;
-        List<Integer> result = new ArrayList<>();
-        if (words.length > s.length()) return result;
-
         Map<String, Integer> wordsMap = new HashMap<>();
+        Map<String, Integer> windowMap = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+
         for (String word : words) {
             if (!wordsMap.containsKey(word)) {
                 wordsMap.put(word, 1);
@@ -21,7 +23,6 @@ public class SubstringConcatenationAllWords {
             }
         }
 
-        Map<String, Integer> windowMap = new HashMap<>();
         while (!wordsMap.containsKey(s.substring(left, left + words[0].length()))) {
             left++;
             right++;
@@ -37,18 +38,29 @@ public class SubstringConcatenationAllWords {
 
         // I assume:
         // time complexity O(m + n)
-        // space complexity O(m + n)
+        // space complexity O(m)
         while (right < s.length()) {
             if (wordsMap.equals(windowMap)) result.add(left);
+
+            // remove the first word in the window:
             String word = s.substring(left, left + words[0].length());
             if (windowMap.get(word) != null && windowMap.get(word) > 1) {
                 windowMap.put(word, windowMap.get(word) - 1);
             } else {
                 windowMap.remove(word);
             }
-            left += words[0].length();
-            right += words[0].length();
+
+            // shift right:
+            if (left + 1 < s.length() && wordsMap.containsKey(s.substring(left + 1, left + words[0].length() + 1))) {
+                left++;
+                right++;
+            } else {
+                left += words[0].length();
+                right += words[0].length();
+            }
             if (right > s.length() - 1) break;
+
+            // add the new word in the window:
             word = s.substring(right - words[0].length() + 1, right + 1);
             if (!windowMap.containsKey(word)) {
                 windowMap.put(word, 1);
