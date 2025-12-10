@@ -9,23 +9,32 @@ public class SpiralMatrix {
 
         int rows = matrix.length;
         int columns = matrix[0].length;
-        int row = 0;
-        int column = columns - 1;
+        int startRow = 0;
+        int endRow = rows - 1;
+        int startColumn = 0;
+        int endColumn = columns - 1;
 
-        for (int i = 0; i < columns; i++) {
-            result.add(matrix[row][i]);
-        }
-        row++;
-        for (int i = row; i < rows; i++) {
-            result.add(matrix[i][column]);
-        }
-        columns--;
-        for (int i = columns - 1; i >= 0; i--) {
-            result.add(matrix[rows - 1][i]);
-        }
-        rows--;
-        for (int i = rows - 1; i < row; i--) {
-            result.add(matrix[i][0]);
+        while (result.size() < rows * columns) {
+            for (int i = startColumn; i <= endColumn; i++) {
+                result.add(matrix[startRow][i]);
+            }
+            if (result.size() == rows * columns) break;
+            startRow++;
+            for (int i = startRow; i <= endRow; i++) {
+                result.add(matrix[i][endColumn]);
+            }
+            if (result.size() == rows * columns) break;
+            endColumn--;
+            for (int i = endColumn; i >= startColumn; i--) {
+                result.add(matrix[endRow][i]);
+            }
+            if (result.size() == rows * columns) break;
+            endRow--;
+            for (int i = endRow; i >= startRow; i--) {
+                result.add(matrix[i][startColumn]);
+            }
+            if (result.size() == rows * columns) break;
+            startColumn++;
         }
 
         return result;
