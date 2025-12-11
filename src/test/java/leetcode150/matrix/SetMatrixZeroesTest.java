@@ -23,6 +23,6 @@ public class SetMatrixZeroesTest {
     public void example3Test() {
         int[][] matrix = new int[][]{{1, 2, 3, 4}, {5, 0, 7, 8}, {0, 10, 11, 12}, {13, 14, 15, 0}};
         new SetMatrixZeroes().setZeroes(matrix);
-        assertArrayEquals(new int[][]{{0, 0, 0, 0}, {0, 0, 3, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}, matrix);
+        assertArrayEquals(new int[][]{{0, 0, 3, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}, matrix);
     }
 }
