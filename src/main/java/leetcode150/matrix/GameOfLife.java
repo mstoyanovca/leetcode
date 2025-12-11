@@ -9,6 +9,8 @@ public class GameOfLife {
            3 - live cells to die
         */
 
+        // time complexity O(m*n)
+        // space complexity O(1)
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
                 int liveNeighbours = countLiveNeighbours(r, c, board);
@@ -18,9 +20,6 @@ public class GameOfLife {
                     if (liveNeighbours < 2) {
                         // dies from under-population:
                         board[r][c] = 3;
-                    } else if (liveNeighbours == 2 || liveNeighbours == 3) {
-                        // do nothing, lives on to the next generation:
-                        board[r][c] = 1;
                     } else if (liveNeighbours > 3) {
                         // dies from over-population:
                         board[r][c] = 3;
@@ -41,11 +40,9 @@ public class GameOfLife {
                 if (board[r][c] == 3) board[r][c] = 0;
             }
         }
-
-        int x = 0;
     }
 
-    int countLiveNeighbours(int i, int j, int[][] board) {
+    private int countLiveNeighbours(int i, int j, int[][] board) {
         int count = 0;
 
         for (int r = i - 1; r <= i + 1; r++) {
