@@ -1,16 +1,21 @@
 package leetcode150.hashmap;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
-        return Arrays.stream(strs).map(s -> {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String s : strs) {
             char[] chars = s.toCharArray();
             Arrays.sort(chars);
-            return new String(chars);
-        }).collect(Collectors.groupingBy(Function.identity())).values().stream().toList();
+            String key = new String(chars);
+
+            List<String> list = map.containsKey(key) ? map.get(key) : new ArrayList<>();
+            list.add(s);
+            map.put(key, list);
+        }
+
+        return map.values().stream().toList();
     }
 }

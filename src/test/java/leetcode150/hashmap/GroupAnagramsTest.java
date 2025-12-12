@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GroupAnagramsTest {
     @Test
     public void example1Test() {
-        assertEquals(List.of(List.of("bat"), List.of("nat", "tan"), List.of("ate", "eat", "tea")), new GroupAnagrams().groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
+        assertEquals(List.of(List.of("eat", "tea", "ate"), List.of("bat"), List.of("tan", "nat")), new GroupAnagrams().groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
     }
 
     @Test
