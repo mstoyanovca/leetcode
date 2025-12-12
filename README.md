@@ -1,5 +1,6 @@
-- LeetCode 75 problems workbook: https://leetcode.com/u/mstoyanovca/
+- LeetCode 75 problems workbook;
 - LeetCode 150 problems workbook;
+  https://leetcode.com/u/mstoyanovca/
 
 Functions to remember:
 Collections.reverse(Arrays.asList(array));
