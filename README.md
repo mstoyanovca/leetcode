@@ -3,7 +3,8 @@
   https://leetcode.com/u/mstoyanovca/
 
 Functions to remember:
-Collections.reverse(Arrays.asList(array));
-List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e -> !e.isBlank()).toList().reversed();
+List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
 stripTrailing()
 stripLeading()
+Collections.reverse(Arrays.asList(array));
+Collections.max(map.values())
