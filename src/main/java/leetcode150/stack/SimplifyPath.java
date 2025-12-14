@@ -1,4 +1,4 @@
-package leetcode150.intervals;
+package leetcode150.stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
