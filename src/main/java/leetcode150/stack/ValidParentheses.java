@@ -1,12 +1,12 @@
 package leetcode150.stack;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Map;
 
 public class ValidParentheses {
     public boolean isValid(String s) {
-        Deque<Character> deque = new LinkedList<>();
+        Deque<Character> deque = new ArrayDeque<>();
         Map<Character, Character> map = Map.of(')', '(', '}', '{', ']', '[');
 
         // I assume:
