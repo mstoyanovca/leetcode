@@ -22,7 +22,7 @@ public class MergeIntervals {
             // if (previous[1] >= intervals[i][0] && previous[0] <= intervals[i][1]) {
             if (previous[1] >= intervals[i][0]) {
                 // previous[1] = intervals[i][1];
-                // interval[i][1] might be within previous, test case 4:
+                // interval[i][1] might be within previous, test case 4;
                 previous[1] = Math.max(previous[1], intervals[i][1]);
             } else {
                 merged.add(previous);
