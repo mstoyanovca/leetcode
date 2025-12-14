@@ -6,7 +6,7 @@ import java.util.List;
 public class SummaryRanges {
     public List<String> summaryRanges(int[] nums) {
         if (nums.length == 0) return List.of();
-        if (nums.length == 1) return List.of("\"" + nums[0] + "\"");
+        if (nums.length == 1) return List.of(String.valueOf(nums[0]));
 
         List<String> result = new ArrayList<>();
         int length = 1;
@@ -25,7 +25,7 @@ public class SummaryRanges {
 
             if (i == nums.length - 1) {
                 if (length > 1) {
-                    result.add(nums[i - length] + "->" + nums[i]);
+                    result.add(nums[i - length + 1] + "->" + nums[i]);
                 } else {
                     result.add(String.valueOf(nums[i]));
                 }
