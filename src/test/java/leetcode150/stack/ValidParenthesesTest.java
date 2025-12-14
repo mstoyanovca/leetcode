@@ -30,4 +30,9 @@ public class ValidParenthesesTest {
     public void example5Test() {
         assertFalse(new ValidParentheses().isValid("([)]"));
     }
+
+    @Test
+    public void example6Test() {
+        assertFalse(new ValidParentheses().isValid("]]"));
+    }
 }

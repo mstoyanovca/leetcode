@@ -1,26 +1,28 @@
 package leetcode150.stack;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class ValidParentheses {
     public boolean isValid(String s) {
         Deque<Character> deque = new LinkedList<>();
-        List<Character> opening = List.of('(', '{', '[');
         Map<Character, Character> map = Map.of(')', '(', '}', '{', ']', '[');
 
         // I assume:
         // time complexity O(n)
-        // space complexity O(1)
+        // space complexity O(1) (give or take)
         for (char c : s.toCharArray()) {
-            if (opening.contains(c)) {
+            if (!map.containsKey(c)) {
+                // it's an opening symbol:
                 deque.add(c);
             } else {
                 // it's a closing symbol:
-                char u = deque.removeLast();
-                if (map.get(c) != u) return false;
+                if (deque.isEmpty()) return false;
+                if (map.get(c) != deque.removeLast()) return false;
             }
         }
 
-        return true;
+        return deque.isEmpty();
     }
 }
