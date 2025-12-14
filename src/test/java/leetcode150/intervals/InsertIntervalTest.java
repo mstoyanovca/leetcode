@@ -14,4 +14,9 @@ public class InsertIntervalTest {
     public void example2Test() {
         assertArrayEquals(new int[][]{{1, 2}, {3, 10}, {12, 16}}, new InsertInterval().insert(new int[][]{{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}}, new int[]{4, 8}));
     }
+
+    @Test
+    public void example3Test() {
+        assertArrayEquals(new int[][]{{1, 5}, {6, 8}}, new InsertInterval().insert(new int[][]{{1, 5}}, new int[]{6, 8}));
+    }
 }

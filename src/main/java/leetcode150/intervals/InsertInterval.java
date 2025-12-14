@@ -18,13 +18,14 @@ public class InsertInterval {
             result.add(intervals[i]);
             i++;
         }
-        while (i < intervals.length && newInterval[0] >= intervals[i][0] && newInterval[1] <= intervals[i][1]) {
-            int begin = Math.min(intervals[i][0], newInterval[0]);
-            int end = Math.min(intervals[i][1], newInterval[1]);
-            result.add(new int[]{begin, end});
+        int begin = i < intervals.length ? Math.min(intervals[i][0], newInterval[0]) : newInterval[0];
+        int end = newInterval[1];
+        while (i < intervals.length && newInterval[1] >= intervals[i][0]) {
+            end = Math.max(intervals[i][1], newInterval[1]);
             i++;
         }
-        while (i < intervals.length && newInterval[1] > intervals[i][1]) {
+        result.add(new int[]{begin, end});
+        while (i < intervals.length) {
             result.add(intervals[i]);
             i++;
         }
