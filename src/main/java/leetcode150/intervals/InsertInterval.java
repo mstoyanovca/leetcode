@@ -1,20 +1,34 @@
 package leetcode150.intervals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InsertInterval {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         /*
-        *  key points:
-        *  intervals is non-overlapping
-        *  intervals is sorted
-        */
+         *  key points:
+         *  intervals is non-overlapping
+         *  intervals is sorted
+         */
         if (intervals.length == 0) return new int[][]{newInterval};
+        List<int[]> result = new ArrayList<>();
 
-        for (int i = 0; i < intervals.length; i++) {
-            if (newInterval[0] >= intervals[i][0] && newInterval[0] <= intervals[i][1]) {
-                intervals[i] = new int[]{intervals[i][0], Math.max(intervals[i][1], newInterval[1])};
-            }
+        int i = 0;
+        while (i < intervals.length && newInterval[0] > intervals[i][1]) {
+            result.add(intervals[i]);
+            i++;
+        }
+        while (i < intervals.length && newInterval[0] >= intervals[i][0] && newInterval[1] <= intervals[i][1]) {
+            int begin = Math.min(intervals[i][0], newInterval[0]);
+            int end = Math.min(intervals[i][1], newInterval[1]);
+            result.add(new int[]{begin, end});
+            i++;
+        }
+        while (i < intervals.length && newInterval[1] > intervals[i][1]) {
+            result.add(intervals[i]);
+            i++;
         }
 
-        return intervals;
+        return result.toArray(new int[result.size()][]);
     }
 }
