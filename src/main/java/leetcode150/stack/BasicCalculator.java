@@ -2,9 +2,34 @@ package leetcode150.stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Queue;
 
 public class BasicCalculator {
     public int calculate(String s) {
+        String[] input = s.replace(" ", "").split("(?<=\\+)|(?=\\+)|(?<=-)|(?=-)|(?<=\\()|(?=\\()|(?<=\\))|(?=\\))");
+        Queue<String> queue = new ArrayDeque<>();
+        int result = 0;
+        String operator = "+";
+
+        for (String string : input) {
+            if (string.equals("+")) {
+
+            } else if (string.equals("-")) {
+
+            } else if (string.equals("(")) {
+
+            } else if (string.equals(")")) {
+
+            } else {
+                int x = Integer.parseInt(string);
+            }
+            int y = 0;
+        }
+
+        return result;
+    }
+
+    public int calculate1(String s) {
         char[] input = s.replace(" ", "").toCharArray();
         Deque<Character> deque = new ArrayDeque<>();
         int result = 0;
