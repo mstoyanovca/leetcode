@@ -10,20 +10,20 @@ public class BasicCalculator {
         Queue<Integer> queue = new ArrayDeque<>();
         int result = 0;
         String operator = "+";
-        int sign = 1;
 
+        // I assume:
+        // time complexity O(n)
+        // space complexity O(n)
         for (String string : input) {
             switch (string) {
                 case "+" -> {
                     operator = "+";
-                    sign = 1;
                 }
                 case "-" -> {
                     operator = "-";
-                    sign = -1;
                 }
                 case "(" -> {
-                    queue.add(result);
+                    if (result != 0) queue.add(result);
                     result = 0;
                 }
                 case ")" -> {
@@ -32,15 +32,11 @@ public class BasicCalculator {
                     }
                 }
                 default -> {
-                    result += sign * Integer.parseInt(string);
-                    /*switch (operator) {
-                        case "+":
-                            result += Integer.parseInt(string);
-                        case "-":
-                            result -= Integer.parseInt(string);
-                        default:
-                            // do nothing
-                    }*/
+                    switch (operator) {
+                        case "+" -> result += Integer.parseInt(string);
+                        case "-" -> result -= Integer.parseInt(string);
+                        default -> result += 0;
+                    }
                 }
             }
         }

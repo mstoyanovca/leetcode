@@ -24,4 +24,9 @@ public class BasicCalculatorTest {
     public void example4Test() {
         assertEquals(2147483647, new BasicCalculator().calculate("2147483647"));
     }
+
+    @Test
+    public void example5Test() {
+        assertEquals(3, new BasicCalculator().calculate("1-(     -2)"));
+    }
 }
