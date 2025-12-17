@@ -10,6 +10,7 @@ public class BasicCalculator {
         Queue<Integer> queue = new ArrayDeque<>();
         int result = 0;
         String operator = "+";
+        int negation = 1;
 
         // I assume:
         // time complexity O(n)
@@ -25,18 +26,24 @@ public class BasicCalculator {
                 case "(" -> {
                     if (result != 0) queue.add(result);
                     result = 0;
+                    if (operator.equals("-")) {
+                        negation *= -1;
+                        operator = "+";
+                    }
                 }
                 case ")" -> {
+                    if (negation == -1) negation = 1;
                     while (!queue.isEmpty()) {
                         result += queue.remove();
                     }
                 }
                 default -> {
                     switch (operator) {
-                        case "+" -> result += Integer.parseInt(string);
-                        case "-" -> result -= Integer.parseInt(string);
-                        default -> result += 0;
+                        case "+" -> result += negation * Integer.parseInt(string);
+                        case "-" -> result -= negation * Integer.parseInt(string);
+                        default -> throw new IllegalStateException("invalid operator");
                     }
+                    int x = 0;
                 }
             }
         }
