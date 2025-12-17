@@ -7,23 +7,42 @@ import java.util.Queue;
 public class BasicCalculator {
     public int calculate(String s) {
         String[] input = s.replace(" ", "").split("(?<=\\+)|(?=\\+)|(?<=-)|(?=-)|(?<=\\()|(?=\\()|(?<=\\))|(?=\\))");
-        Queue<String> queue = new ArrayDeque<>();
+        Queue<Integer> queue = new ArrayDeque<>();
         int result = 0;
         String operator = "+";
+        int sign = 1;
 
         for (String string : input) {
-            if (string.equals("+")) {
-
-            } else if (string.equals("-")) {
-
-            } else if (string.equals("(")) {
-
-            } else if (string.equals(")")) {
-
-            } else {
-                int x = Integer.parseInt(string);
+            switch (string) {
+                case "+" -> {
+                    operator = "+";
+                    sign = 1;
+                }
+                case "-" -> {
+                    operator = "-";
+                    sign = -1;
+                }
+                case "(" -> {
+                    queue.add(result);
+                    result = 0;
+                }
+                case ")" -> {
+                    while (!queue.isEmpty()) {
+                        result += queue.remove();
+                    }
+                }
+                default -> {
+                    result += sign * Integer.parseInt(string);
+                    /*switch (operator) {
+                        case "+":
+                            result += Integer.parseInt(string);
+                        case "-":
+                            result -= Integer.parseInt(string);
+                        default:
+                            // do nothing
+                    }*/
+                }
             }
-            int y = 0;
         }
 
         return result;
