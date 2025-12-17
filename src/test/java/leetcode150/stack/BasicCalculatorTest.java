@@ -44,4 +44,9 @@ public class BasicCalculatorTest {
     public void example8Test() {
         assertEquals(-15, new BasicCalculator().calculate("2-4-(8+2-6+(8+4-(1)+8-10))"));
     }
+
+    @Test
+    public void example9Test() {
+        assertEquals(-2147483648, new BasicCalculator().calculate("-2147483648"));
+    }
 }

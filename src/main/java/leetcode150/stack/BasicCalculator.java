@@ -1,8 +1,6 @@
 package leetcode150.stack;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Queue;
+import java.util.*;
 
 public class BasicCalculator {
     public int calculate(String s) {
@@ -11,6 +9,8 @@ public class BasicCalculator {
         int result = 0;
         String operator = "+";
         int negation = 1;
+        int nestingLevel = 0;
+        Map<Integer, Integer> nestingLevelToNegation = new HashMap<>();
 
         // I assume:
         // time complexity O(n)
@@ -24,26 +24,32 @@ public class BasicCalculator {
                     operator = "-";
                 }
                 case "(" -> {
-                    if (result != 0) queue.add(result);
-                    result = 0;
+                    nestingLevel++;
                     if (operator.equals("-")) {
                         negation *= -1;
                         operator = "+";
                     }
+                    nestingLevelToNegation.put(nestingLevel, negation);
+
+                    if (result != 0) queue.add(result);
+                    result = 0;
                 }
                 case ")" -> {
-                    if (negation == -1) negation = 1;
+                    nestingLevel--;
+                    negation = nestingLevelToNegation.getOrDefault(nestingLevel, 1);
+
                     while (!queue.isEmpty()) {
                         result += queue.remove();
                     }
                 }
                 default -> {
                     switch (operator) {
-                        case "+" -> result += negation * Integer.parseInt(string);
-                        case "-" -> result -= negation * Integer.parseInt(string);
+                        case "+" ->
+                                result += nestingLevelToNegation.getOrDefault(nestingLevel, 1) * Integer.parseInt(string);
+                        case "-" ->
+                                result += nestingLevelToNegation.getOrDefault(nestingLevel, 1) * Integer.parseInt("-" + string);
                         default -> throw new IllegalStateException("invalid operator");
                     }
-                    int x = 0;
                 }
             }
         }
