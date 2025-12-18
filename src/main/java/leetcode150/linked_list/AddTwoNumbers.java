@@ -6,15 +6,7 @@ public class AddTwoNumbers {
         ListNode result = new ListNode();
         ListNode head = result;
 
-        result.val = l1.val + l2.val;
-        if (result.val > 9) {
-            overflow = 1;
-            result.val -= 10;
-        }
-
-        while (l1.next != null && l2.next != null) {
-            l1 = l1.next;
-            l2 = l2.next;
+        while (l1 != null && l2 != null) {
             int temp = l1.val + l2.val + overflow;
             if (temp > 9) {
                 temp -= 10;
@@ -22,9 +14,14 @@ public class AddTwoNumbers {
             } else {
                 overflow = 0;
             }
-            result.next = new ListNode();
-            result.next.val = temp;
-            result = result.next;
+            result.val = temp;
+
+            if (l1.next != null && l2.next != null) {
+                result.next = new ListNode();
+                result = result.next;
+            }
+            l1 = l1.next;
+            l2 = l2.next;
         }
 
         return head;
