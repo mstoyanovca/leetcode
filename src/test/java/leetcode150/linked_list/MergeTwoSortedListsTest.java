@@ -24,4 +24,9 @@ public class MergeTwoSortedListsTest {
     public void example3Test() {
         assertEquals(new ListNode(0), new MergeTwoSortedLists().mergeTwoLists(null, new ListNode(0)));
     }
+
+    @Test
+    public void example4Test() {
+        assertEquals(new ListNode(1), new MergeTwoSortedLists().mergeTwoLists(new ListNode(1), null));
+    }
 }
