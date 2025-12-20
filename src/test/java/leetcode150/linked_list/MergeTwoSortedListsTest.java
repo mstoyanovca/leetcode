@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class MergeTwoSortedListsTest {
     @Test
     public void example1Test() {
-        ListNode expected = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(4))))));
         ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
         ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        ListNode expected = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(4))))));
 
         assertEquals(expected, new MergeTwoSortedLists().mergeTwoLists(list1, list2));
     }
@@ -28,5 +28,14 @@ public class MergeTwoSortedListsTest {
     @Test
     public void example4Test() {
         assertEquals(new ListNode(1), new MergeTwoSortedLists().mergeTwoLists(new ListNode(1), null));
+    }
+
+    @Test
+    public void example5Test() {
+        ListNode list1 = new ListNode(5);
+        ListNode list2 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        ListNode expected = new ListNode(1, new ListNode(2, new ListNode(4, new ListNode(5))));
+
+        assertEquals(expected, new MergeTwoSortedLists().mergeTwoLists(list1, list2));
     }
 }
