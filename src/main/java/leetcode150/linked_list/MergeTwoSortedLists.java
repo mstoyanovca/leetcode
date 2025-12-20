@@ -7,26 +7,29 @@ public class MergeTwoSortedLists {
         ListNode result = new ListNode();
         ListNode head = result;
 
+        // time complexity O(m+n)
+        // space complexity O(1)
         while (list1 != null || list2 != null) {
             if (list1 != null && list2 == null) {
                 result.val = list1.val;
+                list1 = list1.next;
             } else if (list1 == null) {
                 result.val = list2.val;
+                list2 = list2.next;
             } else {
-                result.val = Math.min(list1.val, list2.val);
-
-                result.next = new ListNode();
-                result = result.next;
-                result.val = Math.max(list1.val, list2.val);
+                if (list1.val <= list2.val) {
+                    result.val = list1.val;
+                    list1 = list1.next;
+                } else {
+                    result.val = list2.val;
+                    list2 = list2.next;
+                }
             }
 
-            if (list1 != null && list1.next != null || list2 != null && list2.next != null) {
+            if (list1 != null || list2 != null) {
                 result.next = new ListNode();
                 result = result.next;
             }
-
-            list1 = list1 != null ? list1.next : null;
-            list2 = list2 != null ? list2.next : list2;
         }
 
         return head;
