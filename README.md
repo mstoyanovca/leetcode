@@ -10,3 +10,6 @@ stripTrailing()
 stripLeading()
 Collections.reverse(Arrays.asList(array))
 Collections.max(map.values())
+
+interweave algorithm
+Floyd cycle detection algorithm
