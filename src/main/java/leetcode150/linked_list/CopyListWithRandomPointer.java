@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class CopyListWithRandomPointer {
     public Node copyRandomList(Node head) {
+        if (head == null) return null;
+
         // I assume:
         // time complexity O(n)
         // space complexity O(n)
@@ -27,10 +29,9 @@ public class CopyListWithRandomPointer {
             currentNode = currentNewNode.next;
         }
 
-        Node oldHead = head;
-        Node newHead = head.next;
-        Node oldNode = oldHead;
-        Node newNode = newHead;
+        Node oldNode = head;
+        Node newNode = head.next;
+        Node result = newNode;
         // split the old and new linked lists:
         while (oldNode != null) {
             oldNode.next = oldNode.next.next;
@@ -39,7 +40,7 @@ public class CopyListWithRandomPointer {
             newNode = newNode.next;
         }
 
-        return newHead;
+        return result;
     }
 
     public Node copyRandomList2(Node head) {
