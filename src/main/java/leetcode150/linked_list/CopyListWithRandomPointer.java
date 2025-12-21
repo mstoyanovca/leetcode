@@ -27,20 +27,19 @@ public class CopyListWithRandomPointer {
             currentNode = currentNewNode.next;
         }
 
-        currentNode = head;
-        Node result = currentNode.next;
-        // remove the old nodes:
-        while (currentNode.next != null) {
-            Node oldNode = currentNode;
-            Node newNode = currentNode.next;
-
-            oldNode.next = currentNode.next.next;
-            newNode.next = currentNode.next.next.next;
-
-            currentNode = currentNode.next.next;
+        Node oldHead = head;
+        Node newHead = head.next;
+        Node oldNode = oldHead;
+        Node newNode = newHead;
+        // split the old and new linked lists:
+        while (oldNode != null) {
+            oldNode.next = oldNode.next.next;
+            newNode.next = newNode.next != null ? newNode.next.next : null;
+            oldNode = oldNode.next;
+            newNode = newNode.next;
         }
 
-        return result;
+        return newHead;
     }
 
     public Node copyRandomList2(Node head) {
