@@ -7,9 +7,8 @@ public class CopyListWithRandomPointer {
     public Node copyRandomList(Node head) {
         if (head == null) return null;
 
-        // I assume:
         // time complexity O(n)
-        // space complexity O(n)
+        // space complexity O(1)
         Node currentNode = head;
         while (currentNode != null) {
             // interweaving algorithm: A -> A' -> B -> B' -> C -> C' -> D -> D'
@@ -31,7 +30,7 @@ public class CopyListWithRandomPointer {
 
         Node oldNode = head;
         Node newNode = head.next;
-        Node result = newNode;
+        Node result = head.next;
         // split the old and new linked lists:
         while (oldNode != null) {
             oldNode.next = oldNode.next.next;
