@@ -32,9 +32,10 @@ public class CopyListWithRandomPointer {
         Node newNode = head.next;
         Node result = head.next;
         // split the old and new linked lists:
-        while (oldNode != null) {
+        while (oldNode != null && newNode != null) {
             oldNode.next = oldNode.next.next;
             newNode.next = newNode.next != null ? newNode.next.next : null;
+
             oldNode = oldNode.next;
             newNode = newNode.next;
         }
