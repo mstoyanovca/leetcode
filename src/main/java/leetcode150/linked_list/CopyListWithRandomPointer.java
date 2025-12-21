@@ -5,29 +5,40 @@ import java.util.Map;
 
 public class CopyListWithRandomPointer {
     public Node copyRandomList(Node head) {
-        if (head == null) return null;
-
-        Map<Node, Node> oldToNew = new HashMap<>();
-        Node result = new Node(head.val);
-        Node resultHead = result;
+        Map<Node, Node> oldNodeToNewNode = new HashMap<>();
 
         Node temp = head;
-        while (temp.next != null) {
-            result.next = new Node(temp.next.val);
-            result = result.next;
+        while (temp != null) {
+            oldNodeToNewNode.put(temp, new Node(temp.val));
             temp = temp.next;
         }
 
         temp = head;
-        result = resultHead;
-        while (temp.next != null) {
-            Node next = temp.next;
-            temp.next = result;
-            result.next = next;
-            temp = next;
-            int x = 0;
+        while (temp != null) {
+            oldNodeToNewNode.get(temp).next = oldNodeToNewNode.get(temp.next);
+            oldNodeToNewNode.get(temp).random = oldNodeToNewNode.get(temp.random);
+            temp = temp.next;
         }
 
-        return resultHead;
+        return oldNodeToNewNode.get(head);
+    }
+
+    public Node copyRandomList2(Node head) {
+        Map<Node, Node> oldNodeToNewNode = new HashMap<>();
+
+        Node temp = head;
+        while (temp != null) {
+            oldNodeToNewNode.put(temp, new Node(temp.val));
+            temp = temp.next;
+        }
+
+        temp = head;
+        while (temp != null) {
+            oldNodeToNewNode.get(temp).next = oldNodeToNewNode.get(temp.next);
+            oldNodeToNewNode.get(temp).random = oldNodeToNewNode.get(temp.random);
+            temp = temp.next;
+        }
+
+        return oldNodeToNewNode.get(head);
     }
 }
