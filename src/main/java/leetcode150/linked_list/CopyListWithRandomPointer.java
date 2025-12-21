@@ -7,14 +7,19 @@ public class CopyListWithRandomPointer {
         Node result = new Node(head.val);
         Node resultHead = result;
 
-        // an example of interweave algorithm:
-        while (head.next != null) {
-            result.next = new Node(head.next.val);
-
-            Node temp = head;
-
+        Node temp = head;
+        while (temp.next != null) {
+            result.next = new Node(temp.next.val);
             result = result.next;
-            head = head.next;
+            temp = temp.next;
+        }
+
+        temp = head;
+        result = resultHead;
+        while (temp.next != null) {
+            result.next = new Node(temp.next.val);
+            result = result.next;
+            temp = temp.next;
         }
 
         return resultHead;
