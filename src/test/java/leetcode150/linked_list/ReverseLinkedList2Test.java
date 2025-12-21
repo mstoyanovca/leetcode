@@ -17,4 +17,9 @@ public class ReverseLinkedList2Test {
     public void example2Test() {
         assertEquals(new ListNode(5), new ReverseLinkedList2().reverseBetween(new ListNode(5), 1, 1));
     }
+
+    @Test
+    public void example3Test() {
+        assertEquals(new ListNode(5, new ListNode(3)), new ReverseLinkedList2().reverseBetween(new ListNode(3, new ListNode(5)), 1, 2));
+    }
 }

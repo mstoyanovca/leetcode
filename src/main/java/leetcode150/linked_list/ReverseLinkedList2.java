@@ -2,7 +2,9 @@ package leetcode150.linked_list;
 
 public class ReverseLinkedList2 {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode previous = head;
+        // if left = 1, previous points to head:
+        ListNode previous = new ListNode();
+        previous.next = head;
         ListNode result = head;
         int i = 0;
 
