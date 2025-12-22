@@ -23,4 +23,9 @@ public class RemoveNthNodeFromEndOfListTest {
     public void example3Test() {
         assertEquals(new ListNode(1), new RemoveNthNodeFromEndOfList().removeNthFromEnd(new ListNode(1, new ListNode(2)), 1));
     }
+
+    @Test
+    public void example4Test() {
+        assertEquals(new ListNode(2), new RemoveNthNodeFromEndOfList().removeNthFromEnd(new ListNode(1, new ListNode(2)), 2));
+    }
 }

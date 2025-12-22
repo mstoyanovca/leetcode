@@ -2,20 +2,21 @@ package leetcode150.linked_list;
 
 public class RemoveNthNodeFromEndOfList {
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null) return null;
+
         ListNode left = head;
         ListNode right = head;
 
-        for (int i = 0; i < n - 1; i++) right = right.next;
+        for (int i = 0; i < n; i++) right = right.next;
+        if (right == null) return head.next;
 
-        while (right.next.next != null) {
+        while (right.next != null) {
             left = left.next;
             right = right.next;
         }
 
-        ListNode previous = left;
         // left is the node to remove:
-        left = left.next;
-        previous.next = left.next;
+        left.next = left.next.next;
 
         return head;
     }
