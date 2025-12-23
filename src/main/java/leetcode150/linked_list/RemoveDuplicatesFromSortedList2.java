@@ -5,19 +5,18 @@ public class RemoveDuplicatesFromSortedList2 {
         ListNode result = new ListNode(101, head);
         ListNode previous = result;
 
-        while (head != null) {
-            if (head.next != null && head.val != head.next.val && head.next.val != previous.next.val) {
+        while (head != null && head.next != null) {
+            if (head.val != head.next.val) {
                 previous = head;
-                previous.next = head.next;
                 head = head.next;
-                int x = 0;
             } else {
+                while (head.next != null && head.val == head.next.val) {
+                    head = head.next;
+                }
                 head = head.next;
-                int x = 0;
+                previous.next = head;
             }
-            int x = 0;
         }
-
 
         return result.next;
     }
