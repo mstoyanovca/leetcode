@@ -2,8 +2,7 @@ package leetcode150.linked_list;
 
 public class ReverseNodesInKGroup {
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode result = new ListNode();
-        result.next = head;
+        ListNode result = new ListNode(0, head);
         ListNode previous = result;
         int length = 0;
         int count = 0;
