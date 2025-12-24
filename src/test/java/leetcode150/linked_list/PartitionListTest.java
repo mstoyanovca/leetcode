@@ -20,4 +20,12 @@ public class PartitionListTest {
 
         assertEquals(expected, new PartitionList().partition(head, 2));
     }
+
+    @Test
+    public void example3Test() {
+        ListNode head = new ListNode(4, new ListNode(3, new ListNode(2, new ListNode(5, new ListNode(2)))));
+        ListNode expected = new ListNode(2, new ListNode(2, new ListNode(4, new ListNode(3, new ListNode(5)))));
+
+        assertEquals(expected, new PartitionList().partition(head, 3));
+    }
 }
