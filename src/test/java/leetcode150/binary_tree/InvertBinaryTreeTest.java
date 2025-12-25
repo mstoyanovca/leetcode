@@ -13,8 +13,8 @@ public class InvertBinaryTreeTest {
                 new TreeNode(7, new TreeNode(6), new TreeNode(9))
         );
         TreeNode expected = new TreeNode(4,
-                new TreeNode(7, new TreeNode(6), new TreeNode(9)),
-                new TreeNode(2, new TreeNode(1), new TreeNode(3))
+                new TreeNode(7, new TreeNode(9), new TreeNode(6)),
+                new TreeNode(2, new TreeNode(3), new TreeNode(1))
         );
 
         assertEquals(expected, new InvertBinaryTree().invertTree(root));
