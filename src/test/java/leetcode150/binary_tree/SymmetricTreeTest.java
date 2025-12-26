@@ -25,4 +25,9 @@ public class SymmetricTreeTest {
 
         assertFalse(new SymmetricTree().isSymmetric(root));
     }
+
+    @Test
+    public void example3Test() {
+        assertFalse(new SymmetricTree().isSymmetric(new TreeNode(1, new TreeNode(2), new TreeNode(3))));
+    }
 }
