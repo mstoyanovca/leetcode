@@ -10,7 +10,7 @@ public class ConstructBinaryTreePreorderInorder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
 
-        return buildTreeUtil(preorder, 0, preorder.length - 1);
+        return buildTreeUtil(preorder, 0, inorder.length - 1);
     }
 
     private TreeNode buildTreeUtil(int[] preorder, int subtreeStart, int subtreeEnd) {
