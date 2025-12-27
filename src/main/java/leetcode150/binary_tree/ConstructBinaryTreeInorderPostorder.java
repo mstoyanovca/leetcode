@@ -9,6 +9,7 @@ public class ConstructBinaryTreeInorderPostorder {
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
+        postOrderIndex = postorder.length - 1;
 
         return buildTreeUtil(postorder, 0, postorder.length - 1);
     }
@@ -16,12 +17,12 @@ public class ConstructBinaryTreeInorderPostorder {
     private TreeNode buildTreeUtil(int[] postorder, int subtreeStart, int subtreeEnd) {
         if (subtreeStart > subtreeEnd) return null;
 
-        postOrderIndex = postorder.length - 1;
         int rootValue = postorder[postOrderIndex];
         postOrderIndex--;
         int inorderIndex = map.get(rootValue);
 
         TreeNode root = new TreeNode(rootValue);
+        if (subtreeStart == subtreeEnd) return root;
         root.left = buildTreeUtil(postorder, subtreeStart, inorderIndex - 1);
         root.right = buildTreeUtil(postorder, inorderIndex + 1, subtreeEnd);
 

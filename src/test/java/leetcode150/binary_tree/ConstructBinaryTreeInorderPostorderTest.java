@@ -12,8 +12,9 @@ public class ConstructBinaryTreeInorderPostorderTest {
         TreeNode expected = new TreeNode(3,
                 new TreeNode(9),
                 new TreeNode(20, new TreeNode(15), new TreeNode(7)));
+        TreeNode result = new ConstructBinaryTreeInorderPostorder().buildTree(inorder, postorder);
 
-        assertEquals(expected, new ConstructBinaryTreeInorderPostorder().buildTree(inorder, postorder));
+        assertEquals(expected, result);
     }
 
     @Test
