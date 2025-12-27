@@ -13,3 +13,11 @@ Collections.max(map.values())
 
 interweave algorithm
 Floyd cycle detection algorithm
+
+Binary tree traversal:
+- Inorder (Left, Root, Right)
+  -- for Binary Search Trees (BSTs), this yields nodes in ascending (sorted) order
+- Preorder (Root, Left, Right)
+  -- Creating a prefix (Polish) notation for expressions or copying/cloning the tree
+- Postorder (Left, Right, Root)
+  -- Deleting nodes in a binary tree or generating postfix (Reverse Polish) notation
