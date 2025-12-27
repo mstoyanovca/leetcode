@@ -4,27 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructBinaryTreeInorderPostorder {
-    private final Map<Integer, Integer> map = new HashMap<>();
-    int postOrderIndex;
+    Map<Integer, Integer> map = new HashMap<>();
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
-        postOrderIndex = postorder.length - 1;
-
-        return buildTreeUtil(postorder, 0, postorder.length - 1);
+        return buildTreeUtil(0, inorder.length - 1, postorder, 0, postorder.length - 1);
     }
 
-    private TreeNode buildTreeUtil(int[] postorder, int subtreeStart, int subtreeEnd) {
-        if (subtreeStart > subtreeEnd) return null;
+    public TreeNode buildTreeUtil(int inorderStart, int inorderEnd, int[] postorder, int postorderStart, int postorderEnd) {
+        if (inorderStart > inorderEnd || postorderStart > postorderEnd) return null;
 
-        int rootValue = postorder[postOrderIndex];
-        postOrderIndex--;
+        int rootValue = postorder[postorderEnd];
+        TreeNode root = new TreeNode(rootValue);
         int inorderIndex = map.get(rootValue);
 
-        TreeNode root = new TreeNode(rootValue);
-        if (subtreeStart == subtreeEnd) return root;
-        root.left = buildTreeUtil(postorder, subtreeStart, inorderIndex - 1);
-        root.right = buildTreeUtil(postorder, inorderIndex + 1, subtreeEnd);
+        root.left = buildTreeUtil(inorderStart, inorderIndex - 1, postorder, postorderStart, postorderStart + inorderIndex - inorderStart - 1);
+        root.right = buildTreeUtil(inorderIndex + 1, inorderEnd, postorder, postorderStart + inorderIndex - inorderStart, postorderEnd - 1);
 
         return root;
     }
