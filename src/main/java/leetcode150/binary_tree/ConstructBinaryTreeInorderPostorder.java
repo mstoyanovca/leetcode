@@ -13,7 +13,7 @@ public class ConstructBinaryTreeInorderPostorder {
         return build(postorder, 0, inorder.length - 1);
     }
 
-    public TreeNode build(int[] postorder, int subtreeStart, int subtreeEnd) {
+    private TreeNode build(int[] postorder, int subtreeStart, int subtreeEnd) {
         if (subtreeStart > subtreeEnd) return null;
 
         int rootVal = postorder[postorderIndex];
