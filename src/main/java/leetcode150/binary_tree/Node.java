@@ -30,13 +30,12 @@ public class Node {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Node node = (Node) o;
-        return val == node.val && Objects.equals(left, node.left) && Objects.equals(right, node.right) && Objects.equals(next, node.next);
+        if (!(o instanceof Node node)) return false;
+        return val == node.val;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, left, right, next);
+        return Objects.hashCode(val);
     }
 }

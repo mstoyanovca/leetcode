@@ -1,29 +1,26 @@
 package leetcode150.binary_tree;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class PopulateNextRightPointersEachNode2 {
     public Node connect(Node root) {
         if (root == null) return null;
 
-        if (root.left != null) {
-            if (root.right != null) {
-                root.left.next = root.right;
-            } else {
-                root.left.next = findNextNodeFromAnotherSubtree(root);
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size > 0) {
+                size--;
+                Node current = queue.remove();
+                if (size > 0) current.next = queue.element();
+                if (current.left != null) queue.add(current.left);
+                if (current.right != null) queue.add(current.right);
             }
         }
-        if (root.right != null) root.right.next = findNextNodeFromAnotherSubtree(root);
 
-        root.left = connect(root.left);
-        root.right = connect(root.right);
         return root;
-    }
-
-    private Node findNextNodeFromAnotherSubtree(Node root) {
-        while (root.next != null) {
-            if (root.next.left != null) return root.next.left;
-            if (root.next.right != null) return root.next.right;
-        }
-
-        return null;
     }
 }

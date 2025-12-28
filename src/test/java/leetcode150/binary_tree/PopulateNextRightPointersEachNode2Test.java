@@ -30,7 +30,9 @@ public class PopulateNextRightPointersEachNode2Test {
 
         expected2.right = new Node(7);
 
-        assertEquals(expected0, new PopulateNextRightPointersEachNode2().connect(root));
+        Node actual = new PopulateNextRightPointersEachNode2().connect(root);
+
+        assertEquals(expected0, actual);
     }
 
     @Test
