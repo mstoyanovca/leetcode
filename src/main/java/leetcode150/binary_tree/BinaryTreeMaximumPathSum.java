@@ -8,7 +8,7 @@ public class BinaryTreeMaximumPathSum {
         return result;
     }
 
-    public int maxPathSumUtil(TreeNode root) {
+    private int maxPathSumUtil(TreeNode root) {
         if (root == null) return 0;
 
         int left = maxPathSumUtil(root.left);
