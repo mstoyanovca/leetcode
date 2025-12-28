@@ -12,7 +12,7 @@ public class BinaryTreeMaximumPathSumTest {
 
     @Test
     public void example2Test() {
-        TreeNode root = new TreeNode(10,
+        TreeNode root = new TreeNode(-10,
                 new TreeNode(9),
                 new TreeNode(20, new TreeNode(15), new TreeNode(7)));
 
