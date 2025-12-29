@@ -11,13 +11,11 @@ public class BinaryTreeMaximumPathSum {
     private int maxPathSumUtil(TreeNode root) {
         if (root == null) return 0;
 
-        int left = maxPathSumUtil(root.left);
-        int right = maxPathSumUtil(root.right);
+        int left = Math.max(maxPathSumUtil(root.left), 0);
+        int right = Math.max(maxPathSumUtil(root.right), 0);
 
-        // find the MAX of root, root + left, root + right and root + left + right:
-        int tempSum = Math.max(Math.max(root.val, root.val + Math.max(left, right)), root.val + left + right);
-        result = Math.max(result, tempSum);
+        result = Math.max(result, root.val + left + right);
 
-        return tempSum;
+        return root.val + Math.max(left, right);
     }
 }
