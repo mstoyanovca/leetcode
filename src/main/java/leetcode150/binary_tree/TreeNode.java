@@ -22,13 +22,12 @@ public class TreeNode {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        TreeNode treeNode = (TreeNode) o;
-        return val == treeNode.val && Objects.equals(left, treeNode.left) && Objects.equals(right, treeNode.right);
+        if (!(o instanceof TreeNode treeNode)) return false;
+        return val == treeNode.val;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, left, right);
+        return Objects.hashCode(val);
     }
 }
