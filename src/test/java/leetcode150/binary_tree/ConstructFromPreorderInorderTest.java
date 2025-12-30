@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ConstructBinaryTreePreorderInorderTest {
+public class ConstructFromPreorderInorderTest {
     @Test
     public void example1Test() {
         int[] preorder = new int[]{3, 9, 20, 15, 7};
@@ -13,11 +13,11 @@ public class ConstructBinaryTreePreorderInorderTest {
                 new TreeNode(9),
                 new TreeNode(20, new TreeNode(15), new TreeNode(7)));
 
-        assertEquals(expected, new ConstructBinaryTreePreorderInorder().buildTree(preorder, inorder));
+        assertEquals(expected, new ConstructFromPreorderInorder().buildTree(preorder, inorder));
     }
 
     @Test
     public void example2Test() {
-        assertEquals(new TreeNode(-1), new ConstructBinaryTreePreorderInorder().buildTree(new int[]{-1}, new int[]{-1}));
+        assertEquals(new TreeNode(-1), new ConstructFromPreorderInorder().buildTree(new int[]{-1}, new int[]{-1}));
     }
 }

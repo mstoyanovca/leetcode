@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CountCompleteTreeNodesTest {
+public class CountTreeNodesTest {
     @Test
     public void example1Test() {
         TreeNode root = new TreeNode(1,
@@ -12,16 +12,16 @@ public class CountCompleteTreeNodesTest {
                 new TreeNode(3, new TreeNode(6), null)
         );
 
-        assertEquals(6, new CountCompleteTreeNodes().countNodes(root));
+        assertEquals(6, new CountTreeNodes().countNodes(root));
     }
 
     @Test
     public void example2Test() {
-        assertEquals(0, new CountCompleteTreeNodes().countNodes(null));
+        assertEquals(0, new CountTreeNodes().countNodes(null));
     }
 
     @Test
     public void example3Test() {
-        assertEquals(1, new CountCompleteTreeNodes().countNodes(new TreeNode(1)));
+        assertEquals(1, new CountTreeNodes().countNodes(new TreeNode(1)));
     }
 }

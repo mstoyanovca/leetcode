@@ -2,7 +2,7 @@ package leetcode150.binary_tree;
 
 import java.util.HashMap;
 
-public class ConstructBinaryTreeInorderPostorder {
+public class ConstructFromInorderPostorder {
     int postorderIndex;
     HashMap<Integer, Integer> map = new HashMap<>();
 

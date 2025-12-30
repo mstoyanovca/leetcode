@@ -1,6 +1,6 @@
 package leetcode150.binary_tree;
 
-public class BinaryTreeMaximumPathSum {
+public class MaximumPathSum {
     private int result = Integer.MIN_VALUE;
 
     public int maxPathSum(TreeNode root) {

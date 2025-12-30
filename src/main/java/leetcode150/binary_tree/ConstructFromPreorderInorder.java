@@ -3,7 +3,7 @@ package leetcode150.binary_tree;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConstructBinaryTreePreorderInorder {
+public class ConstructFromPreorderInorder {
     int preorderIndex = 0;
     private final Map<Integer, Integer> map = new HashMap<>();
 

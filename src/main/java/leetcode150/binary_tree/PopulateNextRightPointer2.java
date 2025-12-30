@@ -3,7 +3,7 @@ package leetcode150.binary_tree;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-public class PopulateNextRightPointersEachNode2 {
+public class PopulateNextRightPointer2 {
     public Node connect(Node root) {
         Node head = root;
 

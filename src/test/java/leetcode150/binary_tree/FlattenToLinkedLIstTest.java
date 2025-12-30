@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class FlattenBinaryTreeToLinkedLIstTest {
+public class FlattenToLinkedLIstTest {
     @Test
     public void example1Test() {
         TreeNode root = new TreeNode(1,
@@ -13,21 +13,21 @@ public class FlattenBinaryTreeToLinkedLIstTest {
                 new TreeNode(5, null, new TreeNode(6)));
         TreeNode expected = new TreeNode(1, null, new TreeNode(2, null, new TreeNode(3, null, new TreeNode(4, null, new TreeNode(5)))));
 
-        new FlattenBinaryTreeToLinkedLIst().flatten(root);
+        new FlattenToLinkedLIst().flatten(root);
         assertEquals(expected, root);
     }
 
     @Test
     public void example2Test() {
         TreeNode root = null;
-        new FlattenBinaryTreeToLinkedLIst().flatten(root);
+        new FlattenToLinkedLIst().flatten(root);
         assertNull(root);
     }
 
     @Test
     public void example3Test() {
         TreeNode root = new TreeNode(0);
-        new FlattenBinaryTreeToLinkedLIst().flatten(root);
+        new FlattenToLinkedLIst().flatten(root);
 
         assertEquals(new TreeNode(0), root);
     }

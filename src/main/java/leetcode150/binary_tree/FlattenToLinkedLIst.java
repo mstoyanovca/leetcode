@@ -1,6 +1,6 @@
 package leetcode150.binary_tree;
 
-public class FlattenBinaryTreeToLinkedLIst {
+public class FlattenToLinkedLIst {
     public void flatten(TreeNode root) {
         TreeNode current = root;
 

@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BinaryTreeMaximumPathSumTest {
+public class MaximumPathSumTest {
     @Test
     public void example1Test() {
-        assertEquals(6, new BinaryTreeMaximumPathSum().maxPathSum(new TreeNode(1, new TreeNode(2), new TreeNode(3))));
+        assertEquals(6, new MaximumPathSum().maxPathSum(new TreeNode(1, new TreeNode(2), new TreeNode(3))));
     }
 
     @Test
@@ -16,7 +16,7 @@ public class BinaryTreeMaximumPathSumTest {
                 new TreeNode(9),
                 new TreeNode(20, new TreeNode(15), new TreeNode(7)));
 
-        assertEquals(42, new BinaryTreeMaximumPathSum().maxPathSum(root));
+        assertEquals(42, new MaximumPathSum().maxPathSum(root));
     }
 
     @Test
@@ -25,6 +25,6 @@ public class BinaryTreeMaximumPathSumTest {
                 new TreeNode(4, new TreeNode(11, new TreeNode(7), new TreeNode(2)), null),
                 new TreeNode(8, new TreeNode(13), new TreeNode(4, null, new TreeNode(1))));
 
-        assertEquals(48, new BinaryTreeMaximumPathSum().maxPathSum(root));
+        assertEquals(48, new MaximumPathSum().maxPathSum(root));
     }
 }

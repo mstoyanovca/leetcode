@@ -1,6 +1,6 @@
 package leetcode150.binary_tree;
 
-public class CountCompleteTreeNodes {
+public class CountTreeNodes {
     private int count = 0;
 
     public int countNodes(TreeNode root) {

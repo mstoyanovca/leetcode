@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class PopulateNextRightPointersEachNode2Test {
+public class PopulateNextRightPointer2Test {
     @Test
     public void example1Test() {
         Node root = new Node(1,
@@ -30,13 +30,13 @@ public class PopulateNextRightPointersEachNode2Test {
 
         expected2.right = new Node(7);
 
-        Node actual = new PopulateNextRightPointersEachNode2().connect(root);
+        Node actual = new PopulateNextRightPointer2().connect(root);
 
         assertEquals(expected0, actual);
     }
 
     @Test
     public void example2Test() {
-        assertNull(new PopulateNextRightPointersEachNode2().connect(null));
+        assertNull(new PopulateNextRightPointer2().connect(null));
     }
 }
