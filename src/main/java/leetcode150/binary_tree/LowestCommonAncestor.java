@@ -2,18 +2,12 @@ package leetcode150.binary_tree;
 
 public class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null) return null;
+        if (root == null || root.val == p.val || root.val == q.val) return root;
 
-        if (root.left != null && root.right != null && (root.left.val == p.val && root.right.val == q.val || root.left.val == q.val && root.right.val == p.val)) {
-            return root;
-        } else if (root.left != null && root.left.val == p.val) {
-            return root.left;
-        } else if (root.right != null && root.right.val == p.val) {
-            return root.right;
-        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
 
-        root.left = lowestCommonAncestor(root.left, p, q);
-        root.right = lowestCommonAncestor(root.right, p, q);
-        return root;
+        if (left != null && right != null) return root;
+        return left == null ? right : left;
     }
 }
