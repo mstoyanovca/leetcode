@@ -7,22 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-public class RightSideView {
+public class LevelOrderTraversal {
     private final Queue<TreeNode> queue = new ArrayDeque<>();
-    private final List<Integer> result = new ArrayList<>();
+    private final List<List<Integer>> result = new ArrayList<>();
 
-    public List<Integer> rightSideView(TreeNode root) {
+    public List<List<Integer>> levelOrder(TreeNode root) {
         if (root != null) queue.add(root);
 
         while (!queue.isEmpty()) {
             int size = queue.size();
+            List<Integer> level = new ArrayList<>();
+
             for (int i = 0; i < size; i++) {
                 TreeNode current = queue.remove();
-                if (i == 0) result.add(current.val);
+                level.add(current.val);
 
-                if (current.right != null) queue.add(current.right);
                 if (current.left != null) queue.add(current.left);
+                if (current.right != null) queue.add(current.right);
             }
+
+            result.add(level);
         }
 
         return result;
