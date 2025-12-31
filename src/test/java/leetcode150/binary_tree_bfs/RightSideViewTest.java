@@ -36,6 +36,6 @@ public class RightSideViewTest {
 
     @Test
     public void example4Test() {
-        assertNull(new RightSideView().rightSideView(null));
+        assertEquals(List.of(), new RightSideView().rightSideView(null));
     }
 }

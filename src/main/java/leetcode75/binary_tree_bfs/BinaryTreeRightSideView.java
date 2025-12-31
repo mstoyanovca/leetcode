@@ -2,8 +2,8 @@ package leetcode75.binary_tree_bfs;
 
 import leetcode75.binary_tree_dfs.TreeNode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
@@ -24,7 +24,7 @@ public class BinaryTreeRightSideView {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
-        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {

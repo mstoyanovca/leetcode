@@ -8,27 +8,21 @@ import java.util.List;
 import java.util.Queue;
 
 public class RightSideView {
-    List<Integer> list = new ArrayList<>();
     Queue<TreeNode> queue = new ArrayDeque<>();
+    List<Integer> list = new ArrayList<>();
 
     public List<Integer> rightSideView(TreeNode root) {
         if (root == null) return list;
-
         queue.add(root);
-        list.add(root.val);
 
         while (!queue.isEmpty()) {
             int size = queue.size();
-            while (size > 0) {
-                size--;
+            for (int i = 0; i < size; i++) {
                 TreeNode current = queue.remove();
-                if (current.right != null) {
-                    queue.add(current.right);
-                    list.add(current.right.val);
-                } else if (current.left != null) {
-                    queue.add(current.left);
-                    list.add(current.left.val);
-                }
+                if (i == 0) list.add(current.val);
+
+                if (current.right != null) queue.add(current.right);
+                if (current.left != null) queue.add(current.left);
             }
         }
 
