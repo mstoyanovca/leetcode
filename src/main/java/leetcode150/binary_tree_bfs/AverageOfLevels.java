@@ -7,22 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-public class RightSideView {
-    Queue<TreeNode> queue = new ArrayDeque<>();
-    List<Integer> result = new ArrayList<>();
+public class AverageOfLevels {
+    private final Queue<TreeNode> queue = new ArrayDeque<>();
+    private final List<Double> result = new ArrayList<>();
 
-    public List<Integer> rightSideView(TreeNode root) {
+    public List<Double> averageOfLevels(TreeNode root) {
         if (root != null) queue.add(root);
 
         while (!queue.isEmpty()) {
             int size = queue.size();
+            double sumPerLevel = 0;
+            double nodesPerLevel = 0;
+
             for (int i = 0; i < size; i++) {
                 TreeNode current = queue.remove();
-                if (i == 0) result.add(current.val);
+
+                sumPerLevel += current.val;
+                nodesPerLevel++;
 
                 if (current.right != null) queue.add(current.right);
                 if (current.left != null) queue.add(current.left);
             }
+
+            result.add(sumPerLevel / nodesPerLevel);
         }
 
         return result;

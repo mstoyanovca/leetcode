@@ -21,3 +21,10 @@ Binary tree traversal:
   -- Creating a prefix (Polish) notation for expressions or copying/cloning the tree
 - Postorder (Left, Right, Root)
   -- Deleting nodes in a binary tree or generating postfix (Reverse Polish) notation
+
+DFS = Depth First Search;
+DFS builds the tree subtree by subtree;
+DFS uses dequeue/LIFO;
+BFS = Breadth First Search;
+BFS builds the tree level by level;
+BFS uses queue/FIFO;
