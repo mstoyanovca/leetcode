@@ -4,18 +4,19 @@ import leetcode150.binary_tree.TreeNode;
 
 public class MinimumAbsoluteDifference {
     int result = Integer.MAX_VALUE;
+    int previous = -1;
+    int current = -1;
+
 
     public int getMinimumDifference(TreeNode root) {
-        //if (root == null) return 0;
+        if (root == null) return 0;
+        //if (current == -1) current = root.val;
 
-        if (root.left != null) {
-            getMinimumDifference(root.left);
-            result = Math.min(result, root.val - root.left.val);
-        }
-        if (root.right != null) {
-            getMinimumDifference(root.right);
-            result = Math.min(result, root.val - root.right.val);
-        }
+        getMinimumDifference(root.left);
+        previous = current;
+        current = root.val;
+        if (previous != -1 && current != -1) result = Math.min(result, current - previous);
+        getMinimumDifference(root.right);
 
         return result;
     }

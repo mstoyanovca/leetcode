@@ -15,6 +15,7 @@ interweave algorithm
 Floyd cycle detection algorithm
 
 Binary tree traversal:
+
 - Inorder (Left, Root, Right)
   -- for Binary Search Trees (BSTs), this yields nodes in ascending (sorted) order
 - Preorder (Root, Left, Right)
@@ -28,3 +29,26 @@ DFS uses dequeue/LIFO;
 BFS = Breadth First Search;
 BFS builds the tree level by level;
 BFS uses queue/FIFO;
+
+```
+    public void preorder(TreeNode root, List<Integer> list) {
+        if (root == null) return;
+        list.add(root.val);
+        preorder(root.left, list);
+        preorder(root.right, list);
+    }
+
+    public void inorder(TreeNode root, List<Integer> list) {
+        if (root == null) return;
+        inorder(root.left, list);
+        list.add(root.val);
+        inorder(root.right, list);
+    }
+
+    public void postorder(TreeNode root, List<Integer> list) {
+        if (root == null) return;
+        postorder(root.left, list);
+        postorder(root.right, list);
+        list.add(root.val);
+    }
+```
