@@ -31,6 +31,7 @@ BFS builds the tree level by level;
 BFS uses queue/FIFO;
 
 ```
+    // DFS with recusrion:
     public void preorder(TreeNode root, List<Integer> list) {
         if (root == null) return;
         list.add(root.val);
@@ -50,5 +51,15 @@ BFS uses queue/FIFO;
         postorder(root.left, list);
         postorder(root.right, list);
         list.add(root.val);
+    }
+    
+    // BFS is done with a queue
+    while (!queue.isEmpty()) {
+        int size = queue.size();
+        for (int i = 0; i < size; i++) {
+            TreeNode current = queue.remove();
+            if (current.right != null) queue.add(current.right);
+            if (current.left != null) queue.add(current.left);
+        }
     }
 ```
