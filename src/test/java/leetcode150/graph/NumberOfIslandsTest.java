@@ -28,4 +28,15 @@ public class NumberOfIslandsTest {
 
         assertEquals(3, new NumberOfIslands().numIslands(grid));
     }
+
+    @Test
+    public void example3Test() {
+        char[][] grid = new char[][]{
+                {'1', '1', '1'},
+                {'0', '1', '0'},
+                {'1', '1', '1'},
+        };
+
+        assertEquals(1, new NumberOfIslands().numIslands(grid));
+    }
 }
