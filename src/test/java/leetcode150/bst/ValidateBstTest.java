@@ -23,4 +23,9 @@ public class ValidateBstTest {
                         new TreeNode(4, new TreeNode(3), new TreeNode(6))))
         );
     }
+
+    @Test
+    public void example3Test() {
+        assertTrue(new ValidateBst().isValidBST(new TreeNode(-2147483648)));
+    }
 }
