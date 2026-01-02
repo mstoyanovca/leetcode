@@ -10,7 +10,6 @@ public class MinimumAbsoluteDifference {
 
     public int getMinimumDifference(TreeNode root) {
         if (root == null) return 0;
-        //if (current == -1) current = root.val;
 
         getMinimumDifference(root.left);
         previous = current;
