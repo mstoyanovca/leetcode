@@ -19,7 +19,6 @@ public class SurroundedRegionsTest {
                 {'X', 'X', 'X', 'X'},
                 {'X', 'O', 'X', 'X'}
         };
-
         new SurroundedRegions().solve(board);
 
         assertArrayEquals(expected, board);
@@ -29,7 +28,40 @@ public class SurroundedRegionsTest {
     public void example2Test() {
         char[][] board = new char[][]{{'X'}};
         char[][] expected = new char[][]{{'X'}};
+        new SurroundedRegions().solve(board);
 
+        assertArrayEquals(expected, board);
+    }
+
+    @Test
+    public void example3Test() {
+        char[][] board = new char[][]{
+                {'O', 'O', 'O'},
+                {'O', 'O', 'O'},
+                {'O', 'O', 'O'}
+        };
+        char[][] expected = new char[][]{
+                {'O', 'O', 'O'},
+                {'O', 'O', 'O'},
+                {'O', 'O', 'O'}
+        };
+        new SurroundedRegions().solve(board);
+
+        assertArrayEquals(expected, board);
+    }
+
+    @Test
+    public void example4Test() {
+        char[][] board = new char[][]{
+                {'X', 'O', 'X'},
+                {'X', 'O', 'X'},
+                {'X', 'O', 'X'}
+        };
+        char[][] expected = new char[][]{
+                {'X', 'O', 'X'},
+                {'X', 'O', 'X'},
+                {'X', 'O', 'X'}
+        };
         new SurroundedRegions().solve(board);
 
         assertArrayEquals(expected, board);
