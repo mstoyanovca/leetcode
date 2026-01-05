@@ -12,11 +12,7 @@ public class CloneGraph {
         createNodeToNeighbors(node, nodeToNeighbors);
 
         List<Node> newNodes = nodeToNeighbors.keySet().stream().map(Node::new).toList();
-        //List<Node> newNodes = new ArrayList<>();
-        //for (int key : nodeToNeighbors.keySet()) newNodes.add(new Node(key));
-        for (Node current : newNodes) {
-            current.neighbors = newNodes.stream().filter(n -> nodeToNeighbors.get(current.val).contains(n.val)).toList();
-        }
+        for (Node current : newNodes) current.neighbors = newNodes.stream().filter(n -> nodeToNeighbors.get(current.val).contains(n.val)).toList();
 
         return newNodes.getFirst();
     }
