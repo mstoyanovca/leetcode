@@ -63,3 +63,11 @@ BFS uses queue/FIFO;
         }
     }
 ```
+Java Queue implementations:
+- ArrayDeque
+- LinkedList
+
+Java Map implementations:
+- HashMap - unordered
+- LinkedHashMap - insertion order
+- TreeMap - sorted order
