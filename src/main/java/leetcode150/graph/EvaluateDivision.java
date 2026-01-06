@@ -1,8 +1,6 @@
 package leetcode150.graph;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EvaluateDivision {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
@@ -10,7 +8,7 @@ public class EvaluateDivision {
         createGraph(graph, equations, values);
 
         double[] result = new double[queries.size()];
-        for (int i = 0; i < queries.size(); i++) result[i] = calculateResult(graph, queries.get(i));
+        for (int i = 0; i < queries.size(); i++) result[i] = dfs(graph, queries.get(i), new HashSet<>());
 
         return result;
     }
@@ -28,7 +26,7 @@ public class EvaluateDivision {
         }
     }
 
-    private double calculateResult(Map<String, Map<String, Double>> graph, List<String> query) {
+    private double dfs(Map<String, Map<String, Double>> graph, List<String> query, Set<String> visited) {
         String dividend = query.getFirst();  // a
         String divisor = query.get(1);       // c
 
@@ -39,60 +37,16 @@ public class EvaluateDivision {
         }
 
         Map<String, Double> node = graph.get(dividend);  // b -> 2.0
-        if (node.containsKey(divisor)) {
-            return node.get(divisor);
-        } else {
-            for (Map.Entry<String, Double> tuple : node.entrySet()) {
-                //return tuple.getValue() * calculateResult(graph, List.of(tuple.getKey(), divisor));
+        if (node.containsKey(divisor)) return node.get(divisor);
+
+        visited.add(dividend);
+        for (Map.Entry<String, Double> mapEntry : node.entrySet()) {
+            if (!visited.contains(mapEntry.getKey())) {
+                double weight = dfs(graph, List.of(mapEntry.getKey(), divisor), visited);
+                if (weight != -1.0) return mapEntry.getValue() * weight;
             }
         }
 
         return -1.0;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
