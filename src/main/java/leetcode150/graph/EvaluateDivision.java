@@ -19,29 +19,12 @@ public class EvaluateDivision {
         for (int i = 0; i < equations.size(); i++) {
             String dividend = equations.get(i).getFirst();
             String divisor = equations.get(i).get(1);
-            double value = values[i];
 
-            Map<String, Double> newNode = new HashMap<>();
-            newNode.put(divisor, value);
+            graph.putIfAbsent(dividend, new HashMap<>());
+            graph.get(dividend).put(divisor, values[i]);
 
-            if (!graph.containsKey(dividend)) {
-                graph.put(dividend, newNode);
-            } else {
-                Map<String, Double> existingNode = graph.get(dividend);
-                existingNode.put(divisor, value);
-                graph.put(dividend, existingNode);
-            }
-
-            Map<String, Double> reverseNode = new HashMap<>();
-            reverseNode.put(dividend, 1 / value);
-
-            if (!graph.containsKey(divisor)) {
-                graph.put(divisor, reverseNode);
-            } else {
-                Map<String, Double> existingNode = graph.get(divisor);
-                existingNode.put(dividend, 1 / value);
-                graph.put(divisor, existingNode);
-            }
+            graph.putIfAbsent(divisor, new HashMap<>());
+            graph.get(divisor).put(dividend, 1 / values[i]);
         }
     }
 
@@ -60,7 +43,7 @@ public class EvaluateDivision {
             return node.get(divisor);
         } else {
             for (Map.Entry<String, Double> tuple : node.entrySet()) {
-                return tuple.getValue() * calculateResult(graph, List.of(tuple.getKey(), divisor));
+                //return tuple.getValue() * calculateResult(graph, List.of(tuple.getKey(), divisor));
             }
         }
 
