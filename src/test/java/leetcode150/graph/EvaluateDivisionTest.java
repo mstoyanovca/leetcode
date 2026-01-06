@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class EvaluateDivisionTest {
     @Test
@@ -18,7 +18,7 @@ public class EvaluateDivisionTest {
         List<List<String>> queries = List.of(List.of("a", "c"), List.of("b", "a"), List.of("a", "e"), List.of("a", "a"), List.of("x", "x"));
         double[] expected = new double[]{6.0, 0.5, -1.0, 1.0, -1.0};
 
-        assertEquals(expected, new EvaluateDivision().calcEquation(equations, values, queries));
+        assertArrayEquals(expected, new EvaluateDivision().calcEquation(equations, values, queries));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class EvaluateDivisionTest {
         List<List<String>> queries = List.of(List.of("a", "c"), List.of("c", "b"), List.of("bc", "cd"), List.of("cd", "bc"));
         double[] expected = new double[]{3.75, 0.4, 5.0, 0.2};
 
-        assertEquals(expected, new EvaluateDivision().calcEquation(equations, values, queries));
+        assertArrayEquals(expected, new EvaluateDivision().calcEquation(equations, values, queries));
     }
 
     @Test
@@ -38,6 +38,6 @@ public class EvaluateDivisionTest {
         List<List<String>> queries = List.of(List.of("a", "b"), List.of("b", "a"), List.of("a", "c"), List.of("x", "y"));
         double[] expected = new double[]{0.5, 2.0, -1.0, -1.0};
 
-        assertEquals(expected, new EvaluateDivision().calcEquation(equations, values, queries));
+        assertArrayEquals(expected, new EvaluateDivision().calcEquation(equations, values, queries));
     }
 }
