@@ -73,3 +73,8 @@ Java Map implementations:
 - HashMap - unordered
 - LinkedHashMap - insertion order
 - TreeMap - sorted order
+
+
+Graph:
+- DFS/recusrion/cycle check
+- BFS/Kahn's algorithm
