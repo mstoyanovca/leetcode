@@ -29,15 +29,20 @@ public class CourseScheduleTest {
     @Test
     public void example5Test() {
         /*
-        * 0 -> 1
-        * 1 -> 3
-        * 3 -> 1
-        * 3 -> 2
-        *
-        * 0 requires 1, 1 requires 3, 3 requires 1, a cycle
-        * 0 doesn't lead back to 0, but there is a cycle for a required course
-        * a visited array has to be used to detect it
-        * */
+         * 0 -> 1
+         * 1 -> 3
+         * 3 -> 1
+         * 3 -> 2
+         *
+         * 0 requires 1, 1 requires 3, 3 requires 1, a cycle
+         * 0 doesn't lead back to 0, but there is a cycle for a required course
+         * a visited array has to be used to detect it
+         * */
         assertFalse(new CourseSchedule().canFinish(4, new int[][]{{0, 1}, {3, 1}, {1, 3}, {3, 2}}));
+    }
+
+    @Test
+    public void example6Test() {
+        assertTrue(new CourseSchedule().canFinish(5, new int[][]{{1, 4}, {2, 4}, {3, 1}, {3, 2}}));
     }
 }
