@@ -8,10 +8,22 @@ import java.util.Map;
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
+
+        for (int[] courseToPrerequisiteEntry : prerequisites) {
+            int course = courseToPrerequisiteEntry[0];
+            int prerequisite = courseToPrerequisiteEntry[1];
+
+            courseToPrerequisites.putIfAbsent(course, new ArrayList<>());
+            courseToPrerequisites.get(course).add(prerequisite);
+        }
+
+        return false;
+    }
+
+    public boolean canFinishDfs(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
         boolean[] visited = new boolean[numCourses];
 
-        // I assume:
-        // space complexity O(n)
         for (int[] courseToPrerequisiteEntry : prerequisites) {
             int course = courseToPrerequisiteEntry[0];
             int prerequisite = courseToPrerequisiteEntry[1];
