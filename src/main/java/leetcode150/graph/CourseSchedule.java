@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CourseSchedule {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    /*public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
 
         for (int[] courseToPrerequisiteEntry : prerequisites) {
@@ -18,9 +18,9 @@ public class CourseSchedule {
         }
 
         return false;
-    }
+    }*/
 
-    public boolean canFinishDfs(int numCourses, int[][] prerequisites) {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
         boolean[] visited = new boolean[numCourses];
 
