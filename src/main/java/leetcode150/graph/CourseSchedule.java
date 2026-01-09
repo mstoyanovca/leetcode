@@ -21,23 +21,23 @@ public class CourseSchedule {
 
         for (int course : courseToPrerequisites.keySet()) {
             boolean[] visited = new boolean[numCourses];
-            if (isCycle(course, course, courseToPrerequisites, visited)) return false;
+            if (isCycle(course, courseToPrerequisites, visited)) return false;
         }
 
         return true;
     }
 
-    private boolean isCycle(int originalCourse, int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited) {
+    private boolean isCycle(int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited) {
         if (visited[course]) return true;
-        if (!courseToPrerequisite.containsKey(course)) return false;
 
-        visited[course] = true;
-        for (int prerequisite : courseToPrerequisite.get(course))
-            if (originalCourse == prerequisite) {
-                return true;
-            } else {
-                return isCycle(originalCourse, prerequisite, courseToPrerequisite, visited);
+        if (courseToPrerequisite.containsKey(course)) {
+            for (int prerequisite : courseToPrerequisite.get(course)) {
+                if (courseToPrerequisite.containsKey(prerequisite)) {
+                    visited[course] = true;
+                    return isCycle(prerequisite, courseToPrerequisite, visited);
+                }
             }
+        }
 
         return false;
     }

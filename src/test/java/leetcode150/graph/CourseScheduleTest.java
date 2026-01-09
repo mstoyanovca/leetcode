@@ -45,4 +45,14 @@ public class CourseScheduleTest {
     public void example6Test() {
         assertTrue(new CourseSchedule().canFinish(5, new int[][]{{1, 4}, {2, 4}, {3, 1}, {3, 2}}));
     }
+
+    @Test
+    public void example7Test() {
+        assertFalse(new CourseSchedule().canFinish(4, new int[][]{{2, 0}, {1, 0}, {3, 1}, {3, 2}, {1, 3}}));
+    }
+
+    @Test
+    public void example8Test() {
+        assertFalse(new CourseSchedule().canFinish(4, new int[][]{{0, 1}, {1, 2}, {0, 3}, {3, 0}}));
+    }
 }
