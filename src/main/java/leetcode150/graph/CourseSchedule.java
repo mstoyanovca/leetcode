@@ -20,27 +20,18 @@ public class CourseSchedule {
             courseToPrerequisites.get(course).add(prerequisite);
         }
 
-        for (int course : courseToPrerequisites.keySet()) {
-            if (isCycle(course, courseToPrerequisites, visited)) {
-                return false;
-            }
-        }
+        for (int course : courseToPrerequisites.keySet()) if (isCycle(course, courseToPrerequisites, visited)) return false;
 
         return true;
     }
 
     private boolean isCycle(int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited) {
-        if (visited[course]) {
-            return true;
-        }
-        if (!courseToPrerequisite.containsKey(course)) {
-            return false;
-        }
-        for (int prerequisite : courseToPrerequisite.get(course))
-            if (!visited[course]) {
-                visited[course] = true;
-                return isCycle(prerequisite, courseToPrerequisite, visited);
-            }
+        if (visited[course]) return true;
+        if (!courseToPrerequisite.containsKey(course)) return false;
+
+        visited[course] = true;
+        for (int prerequisite : courseToPrerequisite.get(course)) return isCycle(prerequisite, courseToPrerequisite, visited);
+
         return false;
     }
 }
