@@ -8,6 +8,7 @@ import java.util.Map;
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
+        boolean[] visited = new boolean[numCourses];
 
         // I assume:
         // space complexity O(n)
@@ -19,10 +20,7 @@ public class CourseSchedule {
             courseToPrerequisites.get(course).add(prerequisite);
         }
 
-        for (int course : courseToPrerequisites.keySet()) {
-            boolean[] visited = new boolean[numCourses];
-            if (isCycle(course, courseToPrerequisites, visited)) return false;
-        }
+        for (int course : courseToPrerequisites.keySet()) if (isCycle(course, courseToPrerequisites, visited)) return false;
 
         return true;
     }
