@@ -6,24 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class CourseSchedule {
-    /*public boolean canFinish(int numCourses, int[][] prerequisites) {
-        Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
-
-        for (int[] courseToPrerequisiteEntry : prerequisites) {
-            int course = courseToPrerequisiteEntry[0];
-            int prerequisite = courseToPrerequisiteEntry[1];
-
-            courseToPrerequisites.putIfAbsent(course, new ArrayList<>());
-            courseToPrerequisites.get(course).add(prerequisite);
-        }
-
-        return false;
-    }*/
-
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
-        // boolean[] visited = new boolean[numCourses];
-        boolean[] visited2 = new boolean[numCourses];
+        boolean[] visited = new boolean[numCourses];
 
         for (int[] courseToPrerequisiteEntry : prerequisites) {
             int course = courseToPrerequisiteEntry[0];
@@ -34,7 +19,7 @@ public class CourseSchedule {
         }
 
         for (int course : courseToPrerequisites.keySet()) {
-            boolean[] visited = new boolean[numCourses];
+            boolean[] visited2 = new boolean[numCourses];
             if (isCycle(course, courseToPrerequisites, visited, visited2)) return false;
         }
 
