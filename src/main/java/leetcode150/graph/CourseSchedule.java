@@ -18,7 +18,7 @@ public class CourseSchedule {
         }
 
         for (int course : courseToPrerequisites.keySet()) {
-            // visited boolean flag per recursion stack:
+            // course nodes boolean flags per recursion stack:
             boolean[] visited = new boolean[numCourses];
             if (isCycle(course, courseToPrerequisites, visited)) return false;
         }
