@@ -18,7 +18,7 @@ public class CourseSchedule {
         }
 
         for (int course : courseToPrerequisites.keySet()) {
-            // course nodes boolean flags per recursion stack:
+            // per recursion stack:
             boolean[] visited = new boolean[numCourses];
             if (isCycle(course, courseToPrerequisites, visited)) return false;
         }
@@ -29,11 +29,9 @@ public class CourseSchedule {
     private boolean isCycle(int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited) {
         if (visited[course]) return true;
 
-        if (courseToPrerequisite.containsKey(course)) {
-            for (int prerequisite : courseToPrerequisite.get(course)) {
-                visited[course] = true;
-                return (isCycle(prerequisite, courseToPrerequisite, visited));
-            }
+        for (int prerequisite : courseToPrerequisite.containsKey(course) ? courseToPrerequisite.get(course) : List.<Integer>of()) {
+            visited[course] = true;
+            return (isCycle(prerequisite, courseToPrerequisite, visited));
         }
 
         return false;
