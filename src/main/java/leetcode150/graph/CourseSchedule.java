@@ -8,37 +8,42 @@ public class CourseSchedule {
     // space complexity O(V + E)
     // BFS version / Kahn's algorithm (with a queue):
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i < numCourses; i++) adj.add(new ArrayList<>());
+        int count = 0;
+        int[] inDegree2 = new int[numCourses];
 
-        // the direction of the graph is prerequisite to course:
         Map<Integer, List<Integer>> prerequisiteToCourses = new HashMap<>();
-        for (int[] prerequisiteToCourseEntry : prerequisites) {
-            int prerequisite = prerequisiteToCourseEntry[1];
-            int course = prerequisiteToCourseEntry[0];
+        for (int i = 0; i < numCourses; i++) prerequisiteToCourses.put(i, new ArrayList<>());
 
-            prerequisiteToCourses.putIfAbsent(prerequisite, new ArrayList<>());
-            prerequisiteToCourses.get(prerequisite).add(course);
-        }
-
-        int[] inDegree = new int[numCourses];
         for (int[] courseWithPrerequisite : prerequisites) {
             int prerequisite = courseWithPrerequisite[1];
             int course = courseWithPrerequisite[0];
+
+            prerequisiteToCourses.get(prerequisite).add(course);
+            inDegree2[course]++;
+        }
+
+        int[] inDegree = new int[numCourses];
+
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) adj.add(new ArrayList<>());
+
+        for (int[] courseWithPrerequisite : prerequisites) {
+            int prerequisite = courseWithPrerequisite[1];
+            int course = courseWithPrerequisite[0];
+
             adj.get(prerequisite).add(course);
             inDegree[course]++;
         }
 
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < numCourses; i++)
-            if (inDegree[i] == 0) queue.add(i);
+        Queue<Integer> queue = new ArrayDeque<>();
+        // if there are no nodes with inDegree[i] == 0, this is not a DAG
+        for (int i = 0; i < numCourses; i++) if (inDegree[i] == 0) queue.add(i);
 
-        int count = 0;
         while (!queue.isEmpty()) {
-            int node = queue.poll();
             count++;
+            int prerequisite = queue.remove();
 
-            for (int next : adj.get(node)) {
+            for (int next : adj.get(prerequisite)) {
                 inDegree[next]--;
                 if (inDegree[next] == 0) queue.add(next);
             }
