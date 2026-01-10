@@ -26,7 +26,7 @@ Binary tree traversal:
 
 - DFS = Depth First Search;
 - DFS builds the tree by subtrees;
-- DFS uses dequeue/LIFO;
+- DFS is usually done with recursion, but it can also be done with dequeue/LIFO;
 - BFS = Breadth First Search;
 - BFS builds the tree level by level;
 - BFS uses queue/FIFO;
