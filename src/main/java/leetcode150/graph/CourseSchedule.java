@@ -21,19 +21,21 @@ public class CourseSchedule {
         for (int course : courseToPrerequisites.keySet()) {
             // boolean flags per recursion stack:
             boolean[] visited = new boolean[numCourses];
-            if (isCycle(course, courseToPrerequisites, visited, visitedGlobal)) return false;
+            if (!visitedGlobal[course] && isCycle(course, courseToPrerequisites, visited, visitedGlobal)) return false;
         }
 
         return true;
     }
 
     private boolean isCycle(int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited, boolean[] visitedGlobal) {
-        if (visitedGlobal[course] && visited[course]) return true;
+        if (visitedGlobal[course] && visited[course])
+            return true;
 
         for (int prerequisite : courseToPrerequisite.containsKey(course) ? courseToPrerequisite.get(course) : List.<Integer>of()) {
             visitedGlobal[course] = true;
             visited[course] = true;
-            if (isCycle(prerequisite, courseToPrerequisite, visited, visitedGlobal)) return true;
+            if (isCycle(prerequisite, courseToPrerequisite, visited, visitedGlobal))
+                return true;
         }
 
         return false;
