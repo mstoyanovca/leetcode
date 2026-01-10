@@ -20,9 +20,7 @@ public class CourseSchedule {
             courseToPrerequisites.get(course).add(prerequisite);
         }
 
-        for (int course : courseToPrerequisites.keySet()) {
-            if (!visitedGlobal[course] && isCycle(course, courseToPrerequisites, visited, visitedGlobal)) return false;
-        }
+        for (int course : courseToPrerequisites.keySet()) if (isCycle(course, courseToPrerequisites, visited, visitedGlobal)) return false;
 
         return true;
     }
@@ -33,8 +31,7 @@ public class CourseSchedule {
 
         for (int prerequisite : courseToPrerequisite.containsKey(course) ? courseToPrerequisite.get(course) : List.<Integer>of()) {
             if (visitedGlobal[prerequisite] && visited[prerequisite]) return true;
-            if (isCycle(prerequisite, courseToPrerequisite, visited, visitedGlobal))
-                return true;
+            if (isCycle(prerequisite, courseToPrerequisite, visited, visitedGlobal)) return true;
         }
 
         visited[course] = false;
