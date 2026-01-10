@@ -1,12 +1,57 @@
 package leetcode150.graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CourseSchedule {
+    // I assume:
+    // time complexity O(V + E)
+    // space complexity O(V + E)
+    // BFS version / Kahn's algorithm (with a queue):
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) adj.add(new ArrayList<>());
+
+        // the direction of the graph is prerequisite to course:
+        Map<Integer, List<Integer>> prerequisiteToCourses = new HashMap<>();
+        for (int[] prerequisiteToCourseEntry : prerequisites) {
+            int prerequisite = prerequisiteToCourseEntry[1];
+            int course = prerequisiteToCourseEntry[0];
+
+            prerequisiteToCourses.putIfAbsent(prerequisite, new ArrayList<>());
+            prerequisiteToCourses.get(prerequisite).add(course);
+        }
+
+        int[] inDegree = new int[numCourses];
+        for (int[] courseWithPrerequisite : prerequisites) {
+            int prerequisite = courseWithPrerequisite[1];
+            int course = courseWithPrerequisite[0];
+            adj.get(prerequisite).add(course);
+            inDegree[course]++;
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++)
+            if (inDegree[i] == 0) queue.add(i);
+
+        int count = 0;
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            count++;
+
+            for (int next : adj.get(node)) {
+                inDegree[next]--;
+                if (inDegree[next] == 0) queue.add(next);
+            }
+        }
+
+        return count == numCourses;
+    }
+
+    // I assume:
+    // time complexity O(V + E)
+    // space complexity O(V + E)
+    // DFS version with recursion, it times out in the LeetCode engine
+    public boolean canFinishDfs(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
         boolean[] visitedGlobal = new boolean[numCourses];
         // boolean flags per recursion stack:

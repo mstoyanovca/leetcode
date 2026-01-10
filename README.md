@@ -76,5 +76,12 @@ Java Map implementations:
 
 
 Graph:
+- G = (V, E), m = E, n = V
+- vertex = node
+- edge = connection between vertices
+- adjacent = neighbour
+- degree = number of edges between 2 nodes
+- in-degree of a node = number of incoming edges 
 - DFS/recusrion/cycle check
-- BFS/Kahn's algorithm
+- BFS/Kahn's algorithm: topological sorting of a DAG (Directed Acyclic Graph)
+- both provide time complexity O(V + E) and space complexity O(V + E)
