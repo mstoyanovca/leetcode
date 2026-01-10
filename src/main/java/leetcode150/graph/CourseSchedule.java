@@ -8,6 +8,7 @@ import java.util.Map;
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> courseToPrerequisites = new HashMap<>();
+        boolean[] visitedGlobal = new boolean[numCourses];
 
         for (int[] courseToPrerequisiteEntry : prerequisites) {
             int course = courseToPrerequisiteEntry[0];
@@ -18,20 +19,21 @@ public class CourseSchedule {
         }
 
         for (int course : courseToPrerequisites.keySet()) {
-            // per recursion stack:
+            // boolean flags per recursion stack:
             boolean[] visited = new boolean[numCourses];
-            if (isCycle(course, courseToPrerequisites, visited)) return false;
+            if (!visitedGlobal[course] && isCycle(course, courseToPrerequisites, visited, visitedGlobal)) return false;
         }
 
         return true;
     }
 
-    private boolean isCycle(int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited) {
-        if (visited[course]) return true;
+    private boolean isCycle(int course, Map<Integer, List<Integer>> courseToPrerequisite, boolean[] visited, boolean[] visitedGlobal) {
+        if (visitedGlobal[course] && visited[course]) return true;
 
         for (int prerequisite : courseToPrerequisite.containsKey(course) ? courseToPrerequisite.get(course) : List.<Integer>of()) {
+            visitedGlobal[course] = true;
             visited[course] = true;
-            return (isCycle(prerequisite, courseToPrerequisite, visited));
+            return isCycle(prerequisite, courseToPrerequisite, visited, visitedGlobal);
         }
 
         return false;
