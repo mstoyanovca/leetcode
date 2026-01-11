@@ -8,8 +8,8 @@ public class CourseSchedule {
     // space complexity O(V + E)
     // BFS version / Kahn's algorithm (with a queue):
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int count = 0;
-        int[] inDegree2 = new int[numCourses];
+        int courses = 0;
+        int[] inDegree = new int[numCourses];
 
         Map<Integer, List<Integer>> prerequisiteToCourses = new HashMap<>();
         for (int i = 0; i < numCourses; i++) prerequisiteToCourses.put(i, new ArrayList<>());
@@ -19,19 +19,6 @@ public class CourseSchedule {
             int course = courseWithPrerequisite[0];
 
             prerequisiteToCourses.get(prerequisite).add(course);
-            inDegree2[course]++;
-        }
-
-        int[] inDegree = new int[numCourses];
-
-        List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i < numCourses; i++) adj.add(new ArrayList<>());
-
-        for (int[] courseWithPrerequisite : prerequisites) {
-            int prerequisite = courseWithPrerequisite[1];
-            int course = courseWithPrerequisite[0];
-
-            adj.get(prerequisite).add(course);
             inDegree[course]++;
         }
 
@@ -40,16 +27,16 @@ public class CourseSchedule {
         for (int i = 0; i < numCourses; i++) if (inDegree[i] == 0) queue.add(i);
 
         while (!queue.isEmpty()) {
-            count++;
+            courses++;
             int prerequisite = queue.remove();
 
-            for (int course : adj.get(prerequisite)) {
+            for (int course : prerequisiteToCourses.get(prerequisite)) {
                 inDegree[course]--;
                 if (inDegree[course] == 0) queue.add(course);
             }
         }
 
-        return count == numCourses;
+        return courses == numCourses;
     }
 
     // I assume:
