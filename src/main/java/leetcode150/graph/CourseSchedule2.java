@@ -6,7 +6,7 @@ public class CourseSchedule2 {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> prerequisiteToCourses = new HashMap<>();
         int[] inDegree = new int[numCourses];
-        Set<Integer> result = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
 
         for (int i = 0; i < numCourses; i++) prerequisiteToCourses.put(i, new ArrayList<>());
         for (int[] courseWithPrerequisite : prerequisites) {
@@ -29,6 +29,6 @@ public class CourseSchedule2 {
             }
         }
 
-        return result.stream().mapToInt(Integer::intValue).toArray();
+        return result.stream().distinct().mapToInt(i -> i).toArray();
     }
 }
