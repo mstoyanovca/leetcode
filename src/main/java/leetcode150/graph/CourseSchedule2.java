@@ -25,10 +25,10 @@ public class CourseSchedule2 {
             for (int course : prerequisiteToCourses.get(prerequisite)) {
                 inDegree[course]--;
                 if (inDegree[course] == 0) bfs.add(course);
-                result.add(course);
             }
         }
 
+        if (result.size() != numCourses) return new int[]{};
         return result.stream().distinct().mapToInt(i -> i).toArray();
     }
 }
