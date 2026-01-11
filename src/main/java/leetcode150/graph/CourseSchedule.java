@@ -36,16 +36,16 @@ public class CourseSchedule {
         }
 
         Queue<Integer> queue = new ArrayDeque<>();
-        // if there are no nodes with inDegree[i] == 0, this is not a DAG
+        // if there are no nodes with inDegree[i] == 0, this is not a DAG:
         for (int i = 0; i < numCourses; i++) if (inDegree[i] == 0) queue.add(i);
 
         while (!queue.isEmpty()) {
             count++;
             int prerequisite = queue.remove();
 
-            for (int next : adj.get(prerequisite)) {
-                inDegree[next]--;
-                if (inDegree[next] == 0) queue.add(next);
+            for (int course : adj.get(prerequisite)) {
+                inDegree[course]--;
+                if (inDegree[course] == 0) queue.add(course);
             }
         }
 
