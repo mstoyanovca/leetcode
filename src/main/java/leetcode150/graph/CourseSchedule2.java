@@ -21,7 +21,7 @@ public class CourseSchedule2 {
         for (int i = 0; i < numCourses; i++) if (inDegree[i] == 0) bfs.add(i);
         while (!bfs.isEmpty()) {
             int prerequisite = bfs.remove();
-            //result.add(prerequisite);
+            result.add(prerequisite);
             for (int course : prerequisiteToCourses.get(prerequisite)) {
                 inDegree[course]--;
                 if (inDegree[course] == 0) bfs.add(course);
