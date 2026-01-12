@@ -22,11 +22,11 @@ public class SnakesAndLadders {
                 int row = n - 1 - (next - 1) / n;
                 int col = (next - 1) % n;
                 int value = board[row][(row % 2 == 0) ? (n - 1 - col) : col];
-                int y = (value > 0 ? value : next);
-                if (y == n * n) return minRolls[current] + 1;
-                if (minRolls[y] == -1) {
-                    minRolls[y] = minRolls[current] + 1;
-                    bfs.offer(y);
+                int newValue = (value > 0 ? value : next);
+                if (newValue == n * n) return minRolls[current] + 1;
+                if (minRolls[newValue] == -1) {
+                    minRolls[newValue] = minRolls[current] + 1;
+                    bfs.add(newValue);
                 }
             }
         }
