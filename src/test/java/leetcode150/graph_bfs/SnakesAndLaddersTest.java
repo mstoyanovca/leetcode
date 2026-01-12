@@ -21,6 +21,19 @@ public class SnakesAndLaddersTest {
 
     @Test
     public void example2Test() {
-         assertEquals(1, new SnakesAndLadders().snakesAndLadders(new int[][]{{-1, -1}, {-1, -3}}));
+        assertEquals(1, new SnakesAndLadders().snakesAndLadders(new int[][]{{-1, -1}, {-1, -3}}));
+    }
+
+    @Test
+    public void example3Test() {
+        int[][] board = {
+                {2, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1},
+                {-1, -1, -1, -1, -1}
+        };
+
+        assertEquals(4, new SnakesAndLadders().snakesAndLadders(board));
     }
 }

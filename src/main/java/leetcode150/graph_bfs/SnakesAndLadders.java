@@ -19,14 +19,16 @@ public class SnakesAndLadders {
             for (int i = 1; i <= 6 && current + i <= n * n; i++) {
                 int next = current + i;
 
-                int row = n - 1 - (next - 1) / n;
+                int row = (next - 1) / n;
                 int col = (next - 1) % n;
-                int value = board[row][(row % 2 == 0) ? (n - 1 - col) : col];
+
+                int value = board[n - 1 - row][(row % 2 == 1) ? (n - 1 - col) : col];
                 int newValue = (value > 0 ? value : next);
+
                 if (newValue == n * n) return minRolls[current] + 1;
                 if (minRolls[newValue] == -1) {
                     minRolls[newValue] = minRolls[current] + 1;
-                    bfs.add(newValue);
+                    bfs.offer(newValue);
                 }
             }
         }
