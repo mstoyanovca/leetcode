@@ -1,13 +1,12 @@
 package leetcode150.graph_bfs;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class WordLadder {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        List<String> dictionary = new ArrayList<>(wordList);
+        // if this is a List, it times out in the LeetCode engine!
+        Set<String> dictionary = new HashSet<>(wordList);
+        if (!dictionary.contains(endWord)) return 0;
         char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         Queue<String> bfs = new ArrayDeque<>();
         bfs.add(beginWord);
