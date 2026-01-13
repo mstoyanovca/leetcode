@@ -16,4 +16,9 @@ public class WordLadderTest {
     public void example2Test() {
         assertEquals(0, new WordLadder().ladderLength("hit", "cog", List.of("hot", "dot", "dog", "lot", "log")));
     }
+
+    @Test
+    public void example3Test() {
+        assertEquals(3, new WordLadder().ladderLength("hot", "dog", List.of("hot", "dog", "dot")));
+    }
 }

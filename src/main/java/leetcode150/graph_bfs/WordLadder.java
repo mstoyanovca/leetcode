@@ -14,6 +14,7 @@ public class WordLadder {
         int numberOfWords = 0;
 
         while (!bfs.isEmpty()) {
+            numberOfWords++;
             int size = bfs.size();
 
             for (int i = 0; i < size; i++) {
@@ -36,10 +37,9 @@ public class WordLadder {
 
                     currentWordBuilder.setCharAt(j, originalChar);
                 }
-                numberOfWords++;
             }
         }
 
-        return numberOfWords;
+        return 0;
     }
 }
