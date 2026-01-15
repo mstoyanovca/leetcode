@@ -15,6 +15,6 @@ public class WordDictionary {
     }
 
     public boolean search(String word) {
-        return list.contains(word);
+        return false;
     }
 }

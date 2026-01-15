@@ -12,9 +12,9 @@ public class WordDictionaryTest {
         wordDictionary.addWord("bad");
         wordDictionary.addWord("dad");
         wordDictionary.addWord("mad");
-        assertFalse(new WordDictionary().search("pad"));
-        assertTrue(new WordDictionary().search("bad"));
-        // assertTrue(new WordDictionary().search(".ad"));
-        // assertTrue(new WordDictionary().search("b.."));
+        assertFalse(wordDictionary.search("pad"));
+        assertTrue(wordDictionary.search("bad"));
+        assertTrue(wordDictionary.search(".ad"));
+        assertTrue(wordDictionary.search("b.."));
     }
 }
