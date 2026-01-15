@@ -18,4 +18,17 @@ public class TrieTest {
         trie.insert("app");
         assertTrue(trie.search("app"));
     }
+
+    @Test
+    public void example2Test() {
+        Trie trie = new Trie();
+        trie.insert("app");
+        trie.insert("apple");
+        trie.insert("beer");
+        trie.insert("add");
+        trie.insert("jam");
+        trie.insert("rental");
+
+        assertTrue(trie.startsWith("rent"));
+    }
 }

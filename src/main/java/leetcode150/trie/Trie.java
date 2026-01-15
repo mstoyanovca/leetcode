@@ -1,24 +1,24 @@
 package leetcode150.trie;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Trie {
-    private final Map<String, String> map;
+    private final List<String> list;
 
     public Trie() {
-        map = new HashMap<>();
+        list = new ArrayList<>();
     }
 
     public void insert(String word) {
-        map.put(word, word);
+        list.add(word);
     }
 
     public boolean search(String word) {
-        return map.containsKey(word);
+        return list.contains(word);
     }
 
     public boolean startsWith(String prefix) {
-        return map.keySet().stream().map(k -> k.startsWith(prefix)).filter(k -> k).findFirst().orElse(false);
+        return list.stream().map(word -> word.startsWith(prefix)).filter(w -> w).findFirst().orElse(false) || list.contains(prefix);
     }
 }
