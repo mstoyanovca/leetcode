@@ -1,24 +1,33 @@
 package leetcode150.trie;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Trie {
-    private final List<String> list;
+    private final TrieNode root;
 
     public Trie() {
-        list = new ArrayList<>();
+        root = new TrieNode();
     }
 
     public void insert(String word) {
-        list.add(word);
+        TrieNode current = root;
+        for (char c : word.toCharArray()) current = current.children.computeIfAbsent(c, _ -> new TrieNode());
+        current.isEndOfWord = true;
     }
 
     public boolean search(String word) {
-        return list.contains(word);
+        TrieNode current = root;
+        for (char c : word.toCharArray()) {
+            current = current.children.get(c);
+            if (current == null) return false;
+        }
+        return current.isEndOfWord;
     }
 
     public boolean startsWith(String prefix) {
-        return list.stream().anyMatch(s -> s.startsWith(prefix));
+        TrieNode current = root;
+        for (char c : prefix.toCharArray()) {
+            current = current.children.get(c);
+            if (current == null) return false;
+        }
+        return true;
     }
 }
