@@ -19,6 +19,6 @@ public class Trie {
     }
 
     public boolean startsWith(String prefix) {
-        return list.stream().map(word -> word.startsWith(prefix)).filter(w -> w).findFirst().orElse(false) || list.contains(prefix);
+        return list.stream().anyMatch(s -> s.startsWith(prefix));
     }
 }
