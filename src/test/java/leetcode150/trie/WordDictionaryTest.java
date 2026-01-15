@@ -17,4 +17,16 @@ public class WordDictionaryTest {
         assertTrue(wordDictionary.search(".ad"));
         assertTrue(wordDictionary.search("b.."));
     }
+
+    @Test
+    public void example2Test() {
+        WordDictionary wordDictionary = new WordDictionary();
+        wordDictionary.addWord("at");
+        wordDictionary.addWord("and");
+        wordDictionary.addWord("an");
+        wordDictionary.addWord("add");
+        wordDictionary.addWord("bat");
+
+        assertTrue(wordDictionary.search(".at"));
+    }
 }

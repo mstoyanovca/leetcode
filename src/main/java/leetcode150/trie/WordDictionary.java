@@ -18,7 +18,10 @@ public class WordDictionary {
 
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if (c == '.') for (char child : current.children.keySet()) return search(word.substring(0, i) + child + word.substring(i + 1));
+            if (c == '.') {
+                for (char child : current.children.keySet()) if (search(word.substring(0, i) + child + word.substring(i + 1))) return true;
+                return false;
+            }
             current = current.children.get(c);
             if (current == null) return false;
         }
