@@ -12,15 +12,18 @@ public class WordSearch2 {
 
         // for each word:
         for (String word : words) {
+            // add the first character as a child to the root of the trie:
+            char firstCharacter = word.charAt(0);
+            root.children.putIfAbsent(firstCharacter, new TrieNode());
             // iterate over each character of the board:
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
                     // if it matches the first character of the word:
-                    if (word.charAt(0) == board[i][j]) {
+                    if (firstCharacter == board[i][j]) {
+                        // populate the child node subtree:
                         boolean[][] visited = new boolean[m][n];
-                        visited[i][j] = true;
-                        // create a trie:
-                        createTrie(i, j, board, root, visited);
+                        dfs(i, j, root.children.get(firstCharacter), visited, board);
+                        int x = 0;
                     }
                 }
             }
@@ -30,11 +33,17 @@ public class WordSearch2 {
         return result;
     }
 
-    private void createTrie(int i, int j, char[][] board, TrieNode root, boolean[][] visited) {
+    private void dfs(int i, int j, TrieNode current, boolean[][] visited, char[][] board) {
         int m = board.length;
         int n = board[0].length;
-        if (i < 0 || i > m - 1 || j < 0 || j > n - 1) return;
+        if (i < 0 || i > m - 1 || j < 0 || j > n - 1 || visited[i][j]) return;
 
+        current.children.computeIfAbsent(board[i][j], _ -> new TrieNode());
+        visited[i][j] = true;
 
+        dfs(i - 1, j, current, visited, board);
+        dfs(i + 1, j, current, visited, board);
+        dfs(i, j - 1, current, visited, board);
+        dfs(i, j + 1, current, visited, board);
     }
 }
