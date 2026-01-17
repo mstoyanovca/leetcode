@@ -1,49 +1,53 @@
 package leetcode150.trie;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class WordSearch2 {
     public List<String> findWords(char[][] board, String[] words) {
         int m = board.length;
         int n = board[0].length;
-        TrieNode root = new TrieNode();
-        List<String> result = new ArrayList<>();
+        TrieNode root = buildTrie(words);
+        Set<String> result = new HashSet<>();
 
-        // for each word:
-        for (String word : words) {
-            // add the first character as a child to the root of the trie:
-            char firstCharacter = word.charAt(0);
-            root.children.putIfAbsent(firstCharacter, new TrieNode());
-            // iterate over each character of the board:
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    // if it matches the first character of the word:
-                    if (firstCharacter == board[i][j]) {
-                        // populate the child node subtree:
-                        boolean[][] visited = new boolean[m][n];
-                        dfs(i, j, root.children.get(firstCharacter), visited, board);
-                        int x = 0;
-                    }
-                }
-            }
+        for (int i = 0; i < m; i++) for (int j = 0; j < n; j++) dfs(i, j, root, board, result);
 
-        }
-
-        return result;
+        return result.stream().toList();
     }
 
-    private void dfs(int i, int j, TrieNode current, boolean[][] visited, char[][] board) {
-        int m = board.length;
-        int n = board[0].length;
-        if (i < 0 || i > m - 1 || j < 0 || j > n - 1 || visited[i][j]) return;
+    private TrieNode buildTrie(String[] words) {
+        TrieNode root = new TrieNode();
 
-        current.children.computeIfAbsent(board[i][j], _ -> new TrieNode());
-        visited[i][j] = true;
+        for (String word : words) {
+            TrieNode current = root;
 
-        dfs(i - 1, j, current, visited, board);
-        dfs(i + 1, j, current, visited, board);
-        dfs(i, j - 1, current, visited, board);
-        dfs(i, j + 1, current, visited, board);
+            for (char c : word.toCharArray()) {
+                current.children.putIfAbsent(c, new TrieNode());
+                current = current.children.get(c);
+            }
+
+            current.word = word;
+        }
+
+        return root;
+    }
+
+    private void dfs(int i, int j, TrieNode root, char[][] board, Set<String> result) {
+        if (i < 0 || i > board.length - 1 || j < 0 || j > board[0].length - 1 || board[i][j] == '#') return;
+        if (root.children.get(board[i][j]) == null || board[i][j] == '#') return;
+
+        root = root.children.get(board[i][j]);
+        if (root.word != null) result.add(root.word);
+
+        char original = board[i][j];
+        board[i][j] = '#';
+
+        dfs(i - 1, j, root, board, result);
+        dfs(i + 1, j, root, board, result);
+        dfs(i, j - 1, root, board, result);
+        dfs(i, j + 1, root, board, result);
+
+        board[i][j] = original;
     }
 }
