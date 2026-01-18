@@ -17,12 +17,12 @@ public class PhoneNumberLetterCombinations {
 
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
-        dfs(0, digits, new StringBuilder(), result);
+        backtrack(0, digits, new StringBuilder(), result);
         return result;
     }
 
     // DFS with backtracking solution, it could be done with BFS with a queue too;
-    private void dfs(int i, String digits, StringBuilder builder, List<String> result) {
+    private void backtrack(int i, String digits, StringBuilder builder, List<String> result) {
         if (i == digits.length()) {
             result.add(builder.toString());
             return;
@@ -35,7 +35,7 @@ public class PhoneNumberLetterCombinations {
         String letters = digitToLetters.get(digit);  // for i = 0 abc, for i = 1 def
         for (char letter : letters.toCharArray()) {
             builder.append(letter);
-            dfs(i + 1, digits, builder, result);
+            backtrack(i + 1, digits, builder, result);
             builder.deleteCharAt(builder.length() - 1);
         }
     }
