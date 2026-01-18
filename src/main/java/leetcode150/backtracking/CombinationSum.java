@@ -6,14 +6,14 @@ import java.util.List;
 
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        // required in order for line 26 to work:
         Arrays.sort(candidates);
         List<List<Integer>> result = new ArrayList<>();
         backtrack(candidates, target, new ArrayList<>(), 0, result);
-        return result.stream().map(l -> l.stream().sorted().toList()).distinct().toList();
+        return result;
     }
 
     private void backtrack(int[] candidates, int target, List<Integer> combination, int currentSum, List<List<Integer>> result) {
-        // int currentSum = combination.stream().mapToInt(Integer::intValue).sum();
         if (currentSum == target) {
             result.add(new ArrayList<>(combination));
             return;
@@ -22,7 +22,8 @@ public class CombinationSum {
         }
 
         for (int candidate : candidates) {
-            // if (candidate < combination.getLast()) continue;
+            // removes duplicates:
+            if (!combination.isEmpty() && candidate < combination.getLast()) continue;
             combination.add(candidate);
             backtrack(candidates, target, combination, currentSum += candidate, result);
             int last = combination.getLast();
