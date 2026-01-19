@@ -6,22 +6,17 @@ import java.util.List;
 public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
-        backtrack(n, 0, 0, new StringBuilder(), result);
+        backtrack(n, 0, 0, "", result);
         return result;
     }
 
-    private void backtrack(int n, int opening, int closing, StringBuilder current, List<String> result) {
-        if (opening == closing && opening + closing == 2 * n) {
-            result.add(current.toString());
+    private void backtrack(int n, int opening, int closing, String current, List<String> result) {
+        if (current.length() == 2 * n) {
+            result.add(current);
             return;
         }
 
-        if (opening < n) {
-            backtrack(n, ++opening, closing, current.append("("), result);
-            //current.deleteCharAt(current.length() - 1);
-        } else if (closing < opening) {
-            backtrack(n, opening, ++closing, current.append(")"), result);
-            //current.deleteCharAt(current.length() - 1);
-        }
+        if (opening < n) backtrack(n, opening + 1, closing, current + "(", result);
+        if (closing < opening) backtrack(n, opening, closing + 1, current + ")", result);
     }
 }
