@@ -2,6 +2,7 @@ package leetcode150.backtracking;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WordSearchTest {
@@ -17,6 +18,16 @@ public class WordSearchTest {
 
     @Test
     public void example3Test() {
-        assertTrue(new WordSearch().exist(new char[][]{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "ABCB"));
+        assertFalse(new WordSearch().exist(new char[][]{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "ABCB"));
+    }
+
+    @Test
+    public void example4Test() {
+        assertTrue(new WordSearch().exist(new char[][]{{'a', 'b'}}, "ba"));
+    }
+
+    @Test
+    public void example5Test() {
+        assertFalse(new WordSearch().exist(new char[][]{{'b'}, {'a'}, {'b'}, {'b'}, {'a'}}, "baa"));
     }
 }
