@@ -1,4 +1,4 @@
-package leetcode150.two_pointers;
+package leetcode150.sliding_window;
 
 public class MinimumSizeSubarraySum {
     public int minSubArrayLen(int target, int[] nums) {
