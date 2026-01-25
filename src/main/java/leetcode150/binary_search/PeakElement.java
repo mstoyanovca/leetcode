@@ -5,14 +5,12 @@ public class PeakElement {
         int left = 0;
         int right = nums.length - 1;
 
-        while (left < right) {
+        while (left <= right) {
             int middle = left + (right - left) / 2;
-            int previous = nums[Math.max(0, middle - 1)];
-            int next = nums[Math.min(nums.length - 1, middle + 1)];
 
-            if (nums[middle] > previous && nums[middle] > next) {
+            if ((middle <= 0 || nums[middle] > nums[middle - 1]) && (middle >= nums.length - 1 || nums[middle] > nums[middle + 1])) {
                 return middle;
-            } else if (nums[middle] > previous) {
+            } else if (middle == 0 || nums[middle] > nums[middle - 1]) {
                 left = middle + 1;
             } else {
                 right = middle - 1;
