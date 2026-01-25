@@ -1,6 +1,6 @@
 package leetcode150.binary_search;
 
-public class PeakElement {
+public class FindPeakElement {
     public int findPeakElement(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
