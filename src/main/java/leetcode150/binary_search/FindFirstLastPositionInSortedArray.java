@@ -1,6 +1,6 @@
 package leetcode150.binary_search;
 
-public class FirstLastPositionInSortedArray {
+public class FindFirstLastPositionInSortedArray {
     public int[] searchRange(int[] nums, int target) {
         int[] result = new int[]{-1, -1};
         int left = 0;
