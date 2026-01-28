@@ -25,67 +25,52 @@ public class SortArray {
     // time complexity O(n * log(n))
     // space complexity O(n)
     public int[] mergeSort(int[] numbers) {
-        sort(numbers, 0, numbers.length - 1);
+        sort(0, numbers.length - 1, numbers);
         return numbers;
     }
 
-    public static void sort(int[] arr, int l, int r) {
-        if (l < r) {
-            // Find the middle point
-            int m = l + (r - l) / 2;
+    public void sort(int left, int right, int[] array) {
+        if (left >= right) return;
+        int middle = left + (right - left) / 2;
 
-            // Sort first and second halves
-            sort(arr, l, m);
-            sort(arr, m + 1, r);
+        sort(left, middle, array);
+        sort(middle + 1, right, array);
 
-            // Merge the sorted halves
-            merge(arr, l, m, r);
-        }
+        merge(left, middle, right, array);
     }
 
-    public static void merge(int[] arr, int l, int m, int r) {
-        // Find sizes of two subarrays to be merged
-        int n1 = m - l + 1;
-        int n2 = r - m;
+    // this a classic O(m + n) merge algorithm
+    public void merge(int left, int middle, int right, int[] array) {
+        int m = middle - left + 1;
+        int n = right - middle;
+        int[] leftArray = new int[m];
+        int[] rightArray = new int[n];
 
-        // Create temp arrays
-        int[] L = new int[n1];
-        int[] R = new int[n2];
+        for (int i = 0; i < m; i++) leftArray[i] = array[left + i];
+        for (int j = 0; j < n; j++) rightArray[j] = array[middle + j + 1];
 
-        // Copy data to temp arrays
-        for (int i = 0; i < n1; ++i)
-            L[i] = arr[l + i];
-        for (int j = 0; j < n2; ++j)
-            R[j] = arr[m + 1 + j];
-
-        // Merge the temp arrays
-
-        // Initial indices of first and second subarrays
-        int i = 0, j = 0;
-
-        // Initial index of merged subarray array
-        int k = l;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
+        int i = 0;
+        int j = 0;
+        int k = left;
+        while (i < m && j < n) {
+            if (leftArray[i] <= rightArray[j]) {
+                array[k] = leftArray[i];
                 i++;
             } else {
-                arr[k] = R[j];
+                array[k] = rightArray[j];
                 j++;
             }
             k++;
         }
 
-        // Copy remaining elements of L[] if any
-        while (i < n1) {
-            arr[k] = L[i];
+        while (i < m) {
+            array[k] = leftArray[i];
             i++;
             k++;
         }
 
-        // Copy remaining elements of R[] if any
-        while (j < n2) {
-            arr[k] = R[j];
+        while (j < n) {
+            array[k] = rightArray[j];
             j++;
             k++;
         }
