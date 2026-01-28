@@ -1,6 +1,6 @@
-package dsa_tutorial;
+package dsa_tutorial.array;
 
-public class MergeTwoSortedArrays {
+public class MergeSortedArrays {
     // most efficient is the two pointer approach
     // time complexity O(m + n)
     // space complexity O(m + n)
