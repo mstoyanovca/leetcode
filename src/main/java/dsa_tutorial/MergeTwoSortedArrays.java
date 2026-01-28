@@ -1,8 +1,8 @@
 package dsa_tutorial;
 
 public class MergeTwoSortedArrays {
-    // the most efficient way is the two pointer approach
-    // tine complexity O(m + n)
+    // most efficient is the two pointer approach
+    // time complexity O(m + n)
     // space complexity O(m + n)
     public int[] mergeSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length;
