@@ -25,22 +25,22 @@ public class SortArray {
     // time complexity O(n * log(n))
     // space complexity O(n)
     public int[] mergeSort(int[] numbers) {
-        sort(0, numbers.length - 1, numbers);
+        split(0, numbers.length - 1, numbers);
         return numbers;
     }
 
-    public void sort(int left, int right, int[] array) {
+    public void split(int left, int right, int[] array) {
         if (left >= right) return;
         int middle = left + (right - left) / 2;
 
-        sort(left, middle, array);
-        sort(middle + 1, right, array);
+        split(left, middle, array);
+        split(middle + 1, right, array);
 
-        merge(left, middle, right, array);
+        sortAndMerge(left, middle, right, array);
     }
 
     // this a classic O(m + n) merge algorithm
-    public void merge(int left, int middle, int right, int[] array) {
+    public void sortAndMerge(int left, int middle, int right, int[] array) {
         int m = middle - left + 1;
         int n = right - middle;
         int[] leftArray = new int[m];
