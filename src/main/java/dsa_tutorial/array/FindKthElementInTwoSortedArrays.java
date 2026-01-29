@@ -7,25 +7,25 @@ public class FindKthElementInTwoSortedArrays {
         if (a.length > b.length) return findKthElement(b, a, k);
         int m = a.length;
         int n = b.length;
-        int low = Math.max(0, k - n);
-        int high = Math.min(k, m);
+        int left = Math.max(0, k - n);
+        int right = Math.min(k, m);
 
-        while (low <= high) {
-            int pa = (low + high) / 2;
-            int pb = k - pa;
+        while (left <= right) {
+            int i = (left + right) / 2;
+            int j = k - i;
 
-            int leftA = (pa == 0) ? Integer.MIN_VALUE : a[pa - 1];
-            int rightA = (pa == m) ? Integer.MAX_VALUE : a[pa];
+            int leftA = (i == 0) ? Integer.MIN_VALUE : a[i - 1];
+            int rightA = (i == m) ? Integer.MAX_VALUE : a[i];
 
-            int leftB = (pb == 0) ? Integer.MIN_VALUE : b[pb - 1];
-            int rightB = (pb == n) ? Integer.MAX_VALUE : b[pb];
+            int leftB = (j == 0) ? Integer.MIN_VALUE : b[j - 1];
+            int rightB = (j == n) ? Integer.MAX_VALUE : b[j];
 
             if (leftA <= rightB && leftB <= rightA) {
                 return Math.max(leftA, leftB);
             } else if (leftA > rightB) {
-                high = pa - 1;
+                right = i - 1;
             } else {
-                low = pa + 1;
+                left = i + 1;
             }
         }
 
