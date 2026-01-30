@@ -6,6 +6,7 @@ public class FindKthElementInTwoSortedArrays {
     public int findKthElement(int[] a, int[] b, int k) {
         if (a.length > b.length) return findKthElement(b, a, k);
 
+        // m < n
         int m = a.length;
         int n = b.length;
         // number of elements from 'a' can range from max(0, k - m) to min(k, n):
@@ -22,6 +23,7 @@ public class FindKthElementInTwoSortedArrays {
             int l2 = m2 > 0 ? b[m2 - 1] : Integer.MIN_VALUE;  // 2
             int r2 = m2 < n ? b[m2] : Integer.MAX_VALUE;      // 2
 
+            // the array l2-r2 is within l1-r1: l1, l2, r2, r1
             if (l1 <= r2 && l2 <= r1) {
                 // a valid partition:
                 return Math.max(l1, l2);
