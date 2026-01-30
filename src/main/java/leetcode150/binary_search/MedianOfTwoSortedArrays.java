@@ -2,7 +2,7 @@ package leetcode150.binary_search;
 
 public class MedianOfTwoSortedArrays {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        if (nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums2);
+        if (nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums1);
 
         int m = nums1.length;
         int n = nums2.length;
@@ -10,7 +10,7 @@ public class MedianOfTwoSortedArrays {
         int max = m;
 
         while (min <= max) {
-            int m1 = min + max / 2;
+            int m1 = (min + max) / 2;
             int m2 = (m + n + 1) / 2 - m1;
 
             // the four boundary elements for both partitions:
