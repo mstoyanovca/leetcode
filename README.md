@@ -3,6 +3,7 @@
 - https://leetcode.com/u/mstoyanovca/
 
 Functions to remember:
+
 ```
 List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
 Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]))
@@ -17,12 +18,13 @@ Collections.max(map.values())
 - Floyd cycle detection algorithm
 
 Binary tree traversal:
+
 - Inorder (Left, Root, Right)
-  - for Binary Search Trees (BSTs), this yields nodes in ascending (sorted) order
+    - for Binary Search Trees (BSTs), this yields nodes in ascending (sorted) order
 - Preorder (Root, Left, Right)
-  - Creating a prefix (Polish) notation for expressions or copying/cloning the tree
+    - Creating a prefix (Polish) notation for expressions or copying/cloning the tree
 - Postorder (Left, Right, Root)
-  - Deleting nodes in a binary tree or generating postfix (Reverse Polish) notation
+    - Deleting nodes in a binary tree or generating postfix (Reverse Polish) notation
 
 - DFS = Depth First Search;
 - DFS builds the tree by subtrees;
@@ -66,22 +68,35 @@ Binary tree traversal:
 ```
 
 Java Queue implementations:
+
+- LinkedList: implements List, Queue and Deque interfaces
 - ArrayDeque
-- LinkedList
+    - implements Queue and Deque interfaces
+    - backed by a resizable array and is generally more efficient than LinkedList for queue operations in a single-threaded environment
+    - does not permit null elements
+- PriorityQueue
+    - min-heap by default, the smallest element is always at the head of the queue
+    - a max-heap can be implemented by providing a custom Comparator
+    - elements with higher priority are processed first, not necessarily in the order they were inserted
+    - the element with the lowest value is considered to have the highest priority and is accessed with peek() or removed with poll() in (O(log n)) time
+    - does not permit null elements
+      `Queue<Integer> minHeap = new PriorityQueue<>();`
+      `Queue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());`
 
 Java Map implementations:
+
 - HashMap - unordered
 - LinkedHashMap - insertion order
 - TreeMap - sorted order
 
-
 Graph:
+
 - G = (V, E), m = E, n = V
 - vertex = node
 - edge = connection between vertices
 - adjacent = neighbour
 - degree = number of edges between 2 nodes
-- in-degree of a node = number of incoming edges 
+- in-degree of a node = number of incoming edges
 - DFS/recusrion/cycle check
 - BFS/Kahn's algorithm: topological sorting of a DAG (Directed Acyclic Graph)
 - both provide time complexity O(V + E) and space complexity O(V + E)
