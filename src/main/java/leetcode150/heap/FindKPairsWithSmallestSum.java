@@ -7,13 +7,7 @@ public class FindKPairsWithSmallestSum {
         Queue<List<Integer>> minHeap = new PriorityQueue<>(Comparator.comparingInt(List::getFirst));
         List<List<Integer>> result = new ArrayList<>();
 
-        for (int i = 0; i < k && i < nums1.length; i++) {
-            List<Integer> currentSum = new ArrayList<>();
-            currentSum.add(nums1[i] + nums2[0]);
-            currentSum.add(0);
-
-            minHeap.add(currentSum);
-        }
+        for (int i = 0; i < k && i < nums1.length; i++) minHeap.add(List.of(nums1[i] + nums2[0], 0));
 
         while (k > 0 && !minHeap.isEmpty()) {
             List<Integer> currentSum = minHeap.remove();
@@ -21,16 +15,9 @@ public class FindKPairsWithSmallestSum {
             int nums2Index = currentSum.get(1);
             int nums1Value = sum - nums2[nums2Index];
 
-            List<Integer> currentPair = new ArrayList<>();
-            currentPair.add(nums1Value);
-            currentPair.add(nums2[nums2Index]);
-            result.add(currentPair);
+            result.add(List.of(nums1Value, nums2[nums2Index]));
 
-            if (nums2Index + 1 < nums2.length) {
-                int newSum = sum - nums2[nums2Index] + nums2[nums2Index + 1];
-                minHeap.add(List.of(newSum, nums2Index + 1));
-            }
-
+            if (nums2Index + 1 < nums2.length) minHeap.add(List.of(sum - nums2[nums2Index] + nums2[nums2Index + 1], nums2Index + 1));
             k--;
         }
 
