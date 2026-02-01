@@ -3,7 +3,6 @@
 - https://leetcode.com/u/mstoyanovca/
 
 Functions to remember:
-
 ```
 List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
 Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]))
@@ -12,13 +11,16 @@ stripTrailing()
 stripLeading()
 Collections.reverse(Arrays.asList(array))
 Collections.max(map.values())
+int x = Character.getNumericValue(a.charAt(i));
 ```
 
+DSA algorithms:
 - interweave algorithm
 - Floyd cycle detection algorithm
+- Kadane's algorithm
+- Kahn's algorithm
 
 Binary tree traversal:
-
 - Inorder (Left, Root, Right)
     - for Binary Search Trees (BSTs), this yields nodes in ascending (sorted) order
 - Preorder (Root, Left, Right)
@@ -68,7 +70,6 @@ Binary tree traversal:
 ```
 
 Java Queue implementations:
-
 - LinkedList: implements List, Queue and Deque interfaces
 - ArrayDeque
     - implements Queue and Deque interfaces
@@ -84,13 +85,11 @@ Java Queue implementations:
       `Queue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());`
 
 Java Map implementations:
-
 - HashMap - unordered
 - LinkedHashMap - insertion order
 - TreeMap - sorted order
 
 Graph:
-
 - G = (V, E), m = E, n = V
 - vertex = node
 - edge = connection between vertices
