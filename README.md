@@ -12,6 +12,7 @@ stripLeading()
 Collections.reverse(Arrays.asList(array))
 Collections.max(map.values())
 int x = Character.getNumericValue(a.charAt(i));
+int x = Integer.parseInt("110", 2);
 ```
 
 DSA algorithms:
