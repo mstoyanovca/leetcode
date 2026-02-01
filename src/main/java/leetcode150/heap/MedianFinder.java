@@ -1,9 +1,6 @@
 package leetcode150.heap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class MedianFinder {
     private final Queue<Double> minHeap;
@@ -18,6 +15,7 @@ public class MedianFinder {
 
     public double findMedian() {
         List<Double> temp = new ArrayList<>(minHeap);
+        Collections.sort(temp);
         int length = minHeap.size();
         int middleIndex = length / 2;
 
