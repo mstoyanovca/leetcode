@@ -1,31 +1,29 @@
 package leetcode150.heap;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class MedianFinder {
-    private final List<Double> list;
+    private final Queue<Integer> minHeap;
+    private final Queue<Integer> maxHeap;
 
     public MedianFinder() {
-        list = new ArrayList<>();
+        minHeap = new PriorityQueue<>();
+        maxHeap = new PriorityQueue<>(Collections.reverseOrder());
     }
 
     public void addNum(int num) {
-        list.add((double) num);
+        maxHeap.add(num);
+        minHeap.add(maxHeap.remove());
+        if (minHeap.size() > maxHeap.size()) maxHeap.add(minHeap.remove());
     }
 
     public double findMedian() {
-        Collections.sort(list);
-        int length = list.size();
-        int middleIndex = length / 2;
-
-        if (length % 2 == 0) {
-            double left = list.get(middleIndex - 1);
-            double right = list.get(middleIndex);
-            return (left + right) / 2;
+        if (maxHeap.size() > minHeap.size()) {
+            return maxHeap.element();
         } else {
-            return list.get(middleIndex);
+            return (minHeap.element() + maxHeap.element()) / 2.0;
         }
     }
 }
