@@ -7,16 +7,17 @@ public class SqrtX {
         int result = 0;
 
         while (left <= right) {
-            int middle = left + (right - left) / 2;
+            long middle = left + (right - left) / 2;
+            long temp = middle * middle;
 
-            if (middle * middle == x) {
-                return middle;
-            } else if (middle * middle > x) {
-                right = middle - 1;
+            if (temp == x) {
+                return (int) middle;
+            } else if (temp > x) {
+                right = (int) (middle - 1);
             } else {
-                left = middle + 1;
+                left = (int) (middle + 1);
                 // we are returning an integer result, take the case where result^2 < x:
-                result = middle;
+                result = (int) middle;
             }
         }
 
