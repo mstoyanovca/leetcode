@@ -15,8 +15,7 @@ public class SqrtX {
                 right = middle - 1;
             } else {
                 left = middle + 1;
-                // we are returning an integer result;
-                // take the case where result^2 < x:
+                // we are returning an integer result, take the case where result^2 < x:
                 result = middle;
             }
         }
