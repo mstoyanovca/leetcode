@@ -19,4 +19,9 @@ public class PowXNTest {
     public void example3Test() {
         assertEquals(0.25, new PowXN().myPow(2.0, -2));
     }
+
+    @Test
+    public void example4Test() {
+        assertEquals(1.0, new PowXN().myPow(1.0, -2147483648));
+    }
 }

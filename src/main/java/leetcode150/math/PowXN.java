@@ -2,12 +2,16 @@ package leetcode150.math;
 
 public class PowXN {
     public double myPow(double x, int n) {
-        if (n < 0) return myPow(1 / x, -n);
+        return myPowUtility(x, n);
+    }
+
+    public double myPowUtility(double x, long n) {
+        if (n < 0) return myPowUtility(1 / x, -n);
         if (n == 0) return 1;
         if (n % 2 == 0) {
-            return myPow(x * x, n / 2);
+            return myPowUtility(x * x, n / 2);
         } else {
-            return myPow(x * x, (n - 1) / 2) * x;
+            return myPowUtility(x * x, (n - 1) / 2) * x;
         }
     }
 

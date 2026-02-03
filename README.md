@@ -20,6 +20,7 @@ DSA algorithms:
 - Floyd cycle detection algorithm
 - Kadane's algorithm
 - Kahn's algorithm
+- binary exponentiation
 
 Binary tree traversal:
 - Inorder (Left, Root, Right)
