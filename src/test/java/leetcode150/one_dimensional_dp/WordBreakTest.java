@@ -22,4 +22,9 @@ public class WordBreakTest {
     public void example3Test() {
         assertFalse(new WordBreak().wordBreak("catsandog", List.of("cats", "dog", "sand", "and", "cat")));
     }
+
+    @Test
+    public void example4Test() {
+        assertTrue(new WordBreak().wordBreak("cars", List.of("car", "ca", "rs")));
+    }
 }
