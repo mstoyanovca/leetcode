@@ -7,6 +7,7 @@ public class WordBreak {
         return wordBreakUtility(s, wordDict);
     }
 
+    // this works, but it times out, it needs a map:
     public boolean wordBreakUtility(String s, List<String> wordDict) {
         if (s.isEmpty()) return true;
 
