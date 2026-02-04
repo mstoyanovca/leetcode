@@ -1,22 +1,18 @@
 package leetcode150.one_dimensional_dp;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class WordBreak {
     public boolean wordBreak(String s, List<String> wordDict) {
-        return wordBreakUtility(s, wordDict, new HashMap<>());
+        return wordBreakUtility(s, wordDict);
     }
 
-    public boolean wordBreakUtility(String s, List<String> wordDict, Map<String, Boolean> map) {
+    public boolean wordBreakUtility(String s, List<String> wordDict) {
         if (s.isEmpty()) return true;
-        //if (map.containsKey(s)) return map.get(s);
 
         for (int left = 0; left < s.length(); left++) {
-            String substring = s.substring(0, left + 1);
-            if (wordDict.contains(substring)) {
-                return wordBreakUtility(s.substring(left + 1), wordDict, map);
+            if (wordDict.contains(s.substring(0, left + 1)) && wordBreakUtility(s.substring(left + 1), wordDict)) {
+                return true;
             }
         }
 
