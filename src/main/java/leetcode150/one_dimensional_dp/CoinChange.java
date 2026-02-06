@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class CoinChange {
     public int coinChange(int[] coins, int amount) {
-        int ans = coinChangeUtility(coins, amount);
-        return (ans == Integer.MAX_VALUE) ? -1 : ans;
+        return coinChangeUtility(coins, amount);
     }
 
     // recursion (top-down approach)
@@ -13,12 +12,12 @@ public class CoinChange {
     // space complexity O(amount)
     public int coinChangeUtility(int[] coins, int amount) {
         if (amount == 0) return 0;
-        if (amount < 0) return Integer.MAX_VALUE;
-        int minCoins = Integer.MAX_VALUE;
+        if (amount < 0) return -1;
+        int minCoins = -1;
 
         for (int coin : coins) {
-            int ans = coinChangeUtility(coins, amount - coin);
-            if (ans != Integer.MAX_VALUE) minCoins = Math.min(minCoins, 1 + ans);
+            int result = coinChangeUtility(coins, amount - coin);
+            if (result >= 0) minCoins = minCoins == -1 ? 1 + result : Math.min(minCoins, 1 + result);
         }
 
         return minCoins;
