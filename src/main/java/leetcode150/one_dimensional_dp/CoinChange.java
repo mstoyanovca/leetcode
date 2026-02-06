@@ -16,14 +16,9 @@ public class CoinChange {
         if (amount < 0) return Integer.MAX_VALUE;
         int minCoins = Integer.MAX_VALUE;
 
-        for (int i = 0; i < coins.length; i++) {
-            int ans = coinChangeUtility(coins, amount - coins[i]);
-
-            if (ans != Integer.MAX_VALUE) {
-                //we have returned 0 in ans, so now we are updating the ans count
-                //hence 1 + ans
-                minCoins = Math.min(minCoins, 1 + ans);
-            }
+        for (int coin : coins) {
+            int ans = coinChangeUtility(coins, amount - coin);
+            if (ans != Integer.MAX_VALUE) minCoins = Math.min(minCoins, 1 + ans);
         }
 
         return minCoins;
