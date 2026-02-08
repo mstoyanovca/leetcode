@@ -16,4 +16,9 @@ public class TriangleTest {
     public void example2Test() {
         assertEquals(-10, new Triangle().minimumTotal(List.of(List.of(-10))));
     }
+
+    @Test
+    public void example3Test() {
+        assertEquals(-1, new Triangle().minimumTotal(List.of(List.of(-1), List.of(2, 3), List.of(1, -1, -3))));
+    }
 }
