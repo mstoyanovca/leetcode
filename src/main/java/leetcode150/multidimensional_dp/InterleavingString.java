@@ -20,13 +20,11 @@ public class InterleavingString {
         if (i == s1.length() && j == s2.length()) return true;
         if (dp[i][j] != null) return dp[i][j];
 
-        int k = i + j;
-
-        if (i < s1.length() && s1.charAt(i) == s3.charAt(k)) {
+        if (i < s1.length() && s1.charAt(i) == s3.charAt(i + j)) {
             if (isInterleaveUtility(i + 1, j, s1, s2, s3)) return dp[i][j] = true;
         }
 
-        if (j < s2.length() && s2.charAt(j) == s3.charAt(k)) {
+        if (j < s2.length() && s2.charAt(j) == s3.charAt(i + j)) {
             if (isInterleaveUtility(i, j + 1, s1, s2, s3)) return dp[i][j] = true;
         }
 
