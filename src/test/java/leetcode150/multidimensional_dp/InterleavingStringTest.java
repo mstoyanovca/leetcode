@@ -20,4 +20,9 @@ public class InterleavingStringTest {
     public void example3Test() {
         assertTrue(new InterleavingString().isInterleave("", "", ""));
     }
+
+    @Test
+    public void example4Test() {
+        assertTrue(new InterleavingString().isInterleave("", "b", "b"));
+    }
 }
