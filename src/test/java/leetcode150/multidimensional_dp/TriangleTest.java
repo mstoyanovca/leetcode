@@ -2,6 +2,7 @@ package leetcode150.multidimensional_dp;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TriangleTest {
     @Test
     public void example1Test() {
-        assertEquals(11, new Triangle().minimumTotal(List.of(List.of(2), List.of(3, 4), List.of(6, 5, 7), List.of(4, 1, 8, 3))));
+        assertEquals(11, new Triangle().minimumTotal(List.of(new ArrayList<>(List.of(2)), new ArrayList<>(List.of(3, 4)), new ArrayList<>(List.of(6, 5, 7)), new ArrayList<>(List.of(4, 1, 8, 3)))));
     }
 
     @Test
@@ -19,6 +20,6 @@ public class TriangleTest {
 
     @Test
     public void example3Test() {
-        assertEquals(-1, new Triangle().minimumTotal(List.of(List.of(-1), List.of(2, 3), List.of(1, -1, -3))));
+        assertEquals(-1, new Triangle().minimumTotal(List.of(new ArrayList<>(List.of(-1)), new ArrayList<>(List.of(2, 3)), new ArrayList<>(List.of(1, -1, -3)))));
     }
 }

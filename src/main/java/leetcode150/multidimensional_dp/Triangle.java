@@ -7,16 +7,14 @@ public class Triangle {
     // time complexity O(n ^ 2)
     // space complexity O(1)
     public int minimumTotal(List<List<Integer>> triangle) {
-        int sum = 0;
-        int previousRowIndex = 0;
-
-        for (List<Integer> integers : triangle) {
-            if (previousRowIndex + 1 <= integers.size() - 1 && integers.get(previousRowIndex + 1) < integers.get(previousRowIndex))
-                previousRowIndex++;
-            sum += integers.get(previousRowIndex);
+        for (int i = triangle.size() - 2; i >= 0; i--) {
+            for (int j = 0; j < triangle.get(i).size() - 1; j++) {
+                int temp = triangle.get(i).get(j) + Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
+                triangle.get(i).set(j, temp);
+            }
         }
 
-        return sum;
+        return triangle.getFirst().getFirst();
     }
 
     // top-down approach, won't work without recursion and memoization:
@@ -25,8 +23,7 @@ public class Triangle {
         int previousRowIndex = 0;
 
         for (List<Integer> integers : triangle) {
-            if (previousRowIndex + 1 <= integers.size() - 1 && integers.get(previousRowIndex + 1) < integers.get(previousRowIndex))
-                previousRowIndex++;
+            if (previousRowIndex + 1 <= integers.size() - 1 && integers.get(previousRowIndex + 1) < integers.get(previousRowIndex)) previousRowIndex++;
             sum += integers.get(previousRowIndex);
         }
 
