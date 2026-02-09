@@ -3,21 +3,24 @@ package leetcode150.multidimensional_dp;
 import java.util.Arrays;
 
 public class BestTImeBuySellStock4 {
+    // time complexity O(n * k)
+    // space complexity O(k)
     public int maxProfit(int k, int[] prices) {
         if (k == 0) return 0;
 
         int[] buy = new int[k];
-        Arrays.fill(buy, Integer.MIN_VALUE);
+        Arrays.fill(buy, Integer.MAX_VALUE);
         int[] profit = new int[k];
 
         for (int price : prices) {
-            buy[0] = Math.max(buy[0], -price);
-            profit[0] = Math.max(profit[0], buy[0] + price);
-            for (int j = 1; j < k; j++) { // The i-th time buy & sell depens on the (i - 1)-th time buy & sell
-                buy[j] = Math.max(buy[j], profit[j - 1] - price);
-                profit[j] = Math.max(profit[j], buy[j] + price);
+            buy[0] = Math.min(buy[0], price);
+            profit[0] = Math.max(profit[0], price - buy[0]);
+            for (int i = 1; i < k; i++) {
+                buy[i] = Math.min(buy[i], price - profit[i - 1]);
+                profit[i] = Math.max(profit[i], price - buy[i]);
             }
         }
+
         return profit[k - 1];
     }
 }
