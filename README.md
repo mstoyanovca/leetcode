@@ -1,5 +1,5 @@
 - LeetCode 75 problems workbook;
-- LeetCode 150 problems workbook;
+- Top Interview 150 problems workbook;
 - https://leetcode.com/u/mstoyanovca/
 
 Functions to remember:
