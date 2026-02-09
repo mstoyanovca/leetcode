@@ -101,3 +101,6 @@ Graph:
 - DFS/recusrion/cycle check
 - BFS/Kahn's algorithm: topological sorting of a DAG (Directed Acyclic Graph)
 - both provide time complexity O(V + E) and space complexity O(V + E)
+
+Dynamic Programming
+- often called "memoized recursion" or "optimized recursion"
