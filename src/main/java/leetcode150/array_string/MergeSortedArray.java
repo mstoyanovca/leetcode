@@ -2,28 +2,19 @@ package leetcode150.array_string;
 
 public class MergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int inserts = 0;
-        int startIndex = 0;
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
 
-        // time complexity O(m+n)
-        // space complexity O(1)
-        for (int j = 0; j < n; j++) {
-            for (int i = startIndex; i < (m + n); i++) {
-                startIndex = i;
-                if (nums1[i] > nums2[j] || (i >= m + inserts && nums1[i] == 0)) {
-                    inserts++;
-                    insert(nums1, i, nums2[j]);
-                    break;
-                }
+        while (j >= 0) {
+            if (i >= 0 && nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
             }
-        }
-    }
-
-    public void insert(int[] numbers, int position, int number) {
-        for (int i = position; i < numbers.length; i++) {
-            int acc = numbers[i];
-            numbers[i] = number;
-            number = acc;
+            k--;
         }
     }
 }
