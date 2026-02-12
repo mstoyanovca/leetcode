@@ -2,33 +2,28 @@ package leetcode150.array_string;
 
 public class RemoveElement {
     public int removeElement(int[] nums, int val) {
-        int result = nums.length;
+        int n = nums.length;
+        if (n == 0) return 0;
         int left = 0;
-        int right = nums.length > 0 ? nums.length - 1 : 0;
+        int right = Math.max(0, n - 1);
+        int result = 0;
 
         // time complexity O(n)
         // space complexity O(1)
-        while (left != right) {
+        while (right >= left) {
             if (nums[right] == val) {
-                // move the right pointer to the left, till it hits a non-val:
                 right--;
-                result--;
-            } else if (nums[left] != val) {
-                // move the left pointer to the right, till it hits a val:
-                left++;
-            } else if (nums[left] == val && nums[right] != val) {
-                // swap them:
-                nums[left] = nums[right];
-                nums[right] = val;
-                right--;
-                result--;
+                continue;
             }
-        }
-
-        // edge case when, all nums[i] elements were == val:
-        if (nums.length > 0 && nums[left] == val) {
-            nums = new int[0];
-            result = 0;
+            if (nums[left] == val) {
+                nums[left] = nums[right];
+                left++;
+                right--;
+                result++;
+            } else {
+                left++;
+                result++;
+            }
         }
 
         return result;
