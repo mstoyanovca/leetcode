@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RemoveDuplicates2Test {
+public class RemoveDuplicatesFromSortedArray2Test {
     @Test
     public void example1Test() {
-        assertEquals(5, new RemoveDuplicates2().removeDuplicates(new int[]{1, 1, 1, 2, 2, 3}));
+        assertEquals(5, new RemoveDuplicatesFromSortedArray2().removeDuplicates(new int[]{1, 1, 1, 2, 2, 3}));
     }
 }

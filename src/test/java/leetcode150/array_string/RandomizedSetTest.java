@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InsertDeleteTest {
+public class RandomizedSetTest {
     @Test
     public void example1Test() {
         RandomizedSet randomizedSet = new RandomizedSet();

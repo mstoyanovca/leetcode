@@ -1,6 +1,6 @@
 package leetcode150.array_string;
 
-public class RemoveDuplicates2 {
+public class RemoveDuplicatesFromSortedArray2 {
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return 1;
