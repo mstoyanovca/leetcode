@@ -2,16 +2,16 @@ package leetcode150.array_string;
 
 public class RotateArray {
     public void rotate(int[] nums, int k) {
-        int l = nums.length;
-        if (l == 1 || l == k) return;
-        // if k > n, rotating every n times will bring you to the same state, normalize:
-        k %= l;
+        int n = nums.length;
+        if (n == 1 || n == k) return;
+        // if k > n, rotating every n times brings the same state, normalize:
+        k %= n;
 
         // time complexity O(n)
         // space complexity O(1)
-        reverse(nums, 0, l - 1);
+        reverse(nums, 0, n - 1);
         reverse(nums, 0, k - 1);
-        reverse(nums, k, l - 1);
+        reverse(nums, k, n - 1);
     }
 
     private void reverse(int[] nums, int left, int right) {
@@ -27,7 +27,7 @@ public class RotateArray {
     public void rotateBruteForce(int[] nums, int k) {
         if (nums.length == 1 || nums.length == k) return;
 
-        // time complexity O(k*n)
+        // time complexity O(k * n)
         // space complexity O(1)
         rotateRight(nums, k);
     }
