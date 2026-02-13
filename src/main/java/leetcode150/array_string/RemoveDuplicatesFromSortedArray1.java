@@ -3,24 +3,23 @@ package leetcode150.array_string;
 public class RemoveDuplicatesFromSortedArray1 {
     public int removeDuplicates(int[] nums) {
         int n = nums.length;
-        if (n == 0 || n == 1) return n;
+        // use 3 pointers: left, right and k:
         int left = 0;
-        int right = 1;
-        int k = 1;
+        int right = 0;
+        int k = 0;
 
         // time complexity O(n)
         // space complexity O(1)
-        while (right <= n - 1) {
+        while (right < n) {
             if (nums[right] == nums[left]) {
                 right++;
-            } else if (nums[right] > nums[left]) {
-                left++;
-                nums[left] = nums[right];
-                right++;
+            } else {
                 k++;
+                nums[k] = nums[right];
+                left = right;
             }
         }
 
-        return k;
+        return ++k;
     }
 }

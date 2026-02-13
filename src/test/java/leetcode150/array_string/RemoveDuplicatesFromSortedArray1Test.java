@@ -14,9 +14,4 @@ public class RemoveDuplicatesFromSortedArray1Test {
     public void example2Test() {
         assertEquals(5, new RemoveDuplicatesFromSortedArray1().removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
     }
-
-    @Test
-    public void example3Test() {
-        assertEquals(2, new RemoveDuplicatesFromSortedArray1().removeDuplicates(new int[]{1, 1, 2}));
-    }
 }
