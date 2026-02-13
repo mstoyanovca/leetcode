@@ -2,21 +2,21 @@ package leetcode150.array_string;
 
 public class RemoveDuplicatesFromSortedArray1 {
     public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
-
-        // number of unique elements:
-        int k = 1;
+        int n = nums.length;
+        if (n == 0 || n == 1) return n;
         int left = 0;
-        int right = 0;
+        int right = 1;
+        int k = 1;
 
         // time complexity O(n)
         // space complexity O(1)
-        while (right < nums.length) {
+        while (right <= n - 1) {
             if (nums[right] == nums[left]) {
                 right++;
             } else if (nums[right] > nums[left]) {
-                left = right;
-                nums[k] = nums[right];
+                left++;
+                nums[left] = nums[right];
+                right++;
                 k++;
             }
         }
