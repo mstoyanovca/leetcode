@@ -2,9 +2,7 @@ package leetcode150.array_string;
 
 public class BestTimeBuySellStock1 {
     public int maxProfit(int[] prices) {
-        int n = prices.length;
         int buy = prices[0];
-        int sell = prices[0];
         int profit = 0;
 
         // time complexity O(n)
