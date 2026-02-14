@@ -9,4 +9,9 @@ public class BestTimeBuySellStock1Test {
     public void example1Test() {
         assertEquals(5, new BestTimeBuySellStock1().maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
     }
+
+    @Test
+    public void example2Test() {
+        assertEquals(0, new BestTimeBuySellStock1().maxProfit(new int[]{7, 6, 4, 3, 1}));
+    }
 }
