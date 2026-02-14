@@ -9,7 +9,7 @@ public class BestTimeBuySellStock1 {
 
         // time complexity O(n)
         // space complexity O(1)
-        // looking for a global extremum;
+        // find a global extremum:
         while (right < n) {
             // slide the left pointer downhill to the next local minimum:
             while (left + 1 < n && prices[left + 1] < prices[left]) {
