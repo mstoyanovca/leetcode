@@ -7,6 +7,8 @@ public class JumpGame2 {
         int right = 0;
         int jumps = 0;
 
+        // time complexity O(n)
+        // space complexity O(1)
         for (int i = 0; i < n - 1; i++) {
             right = Math.max(right, i + nums[i]);
             if (left == i) {
