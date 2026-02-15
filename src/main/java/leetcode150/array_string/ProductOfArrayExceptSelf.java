@@ -3,77 +3,41 @@ package leetcode150.array_string;
 public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
-        // optimized version for O(1) space complexity;
-        // use nums as prefix;
-        // use answer as suffix
-        // calculate suffix first, before you overwrite nums :);
-        int acc = 1;
-        int[] answer = new int[n];  // this is suffix now, prefixes are stored in nums
+        int[] result = new int[n];
 
         // time complexity O(n)
         // space complexity O(1)
-        // using answer as suffix:
+        // use the result as an in-place suffix array:
         for (int i = n - 1; i >= 0; i--) {
             if (i == n - 1) {
-                answer[i] = 1;
+                result[i] = 1;
             } else if (i == n - 2) {
-                answer[i] = nums[n - 1];
+                result[i] = nums[i + 1];
             } else {
-                answer[i] = answer[i + 1] * nums[i + 1];
+                result[i] = result[i + 1] * nums[i + 1];
             }
         }
-
-        // using nums as prefix:
+        // use the input as an in-place prefix array:
+        int acc = nums[0];
         for (int i = 0; i < n; i++) {
             if (i == 0) {
-                acc = nums[0];
-                nums[0] = 1;
-            } else {
-                int newValue = acc;
-                acc = acc * nums[i];
-                nums[i] = newValue;
-            }
-        }
-
-        for (int i = 0; i < n; i++) {
-            answer[i] = nums[i] * answer[i];
-        }
-
-        return answer;
-    }
-
-    public int[] productExceptSelfBruteForce(int[] nums) {
-        int n = nums.length;
-        int[] prefix = new int[n];
-        int[] suffix = new int[n];
-        int[] answer = new int[n];
-
-        // time complexity O(n)
-        // space complexity O(n)
-        for (int i = 0; i < n; i++) {
-            if (i == 0) {
-                prefix[i] = 1;
+                nums[i] = 1;
             } else if (i == 1) {
-                prefix[i] = nums[0];
+                int temp = nums[i];
+                nums[i] = nums[i - 1] * acc;
+                acc = temp;
             } else {
-                prefix[i] = prefix[i - 1] * nums[i - 1];
+                int temp = nums[i];
+                nums[i] = nums[i - 1] * acc;
+                acc = temp;
             }
         }
-
-        for (int i = n - 1; i >= 0; i--) {
-            if (i == n - 1) {
-                suffix[i] = 1;
-            } else if (i == n - 2) {
-                suffix[i] = nums[n - 1];
-            } else {
-                suffix[i] = suffix[i + 1] * nums[i + 1];
-            }
-        }
-
+        // each result[i] = prefix[i] * suffix[i]:
+        // calculate suffix first, before you overwrite the input array :)
         for (int i = 0; i < n; i++) {
-            answer[i] = prefix[i] * suffix[i];
+            result[i] *= nums[i];
         }
 
-        return answer;
+        return result;
     }
 }
