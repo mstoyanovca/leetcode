@@ -9,8 +9,8 @@ public class Candy {
 
         // time complexity O(n)
         // space complexity O(n)
-        // the easiest thing is to iterate uphill and on a plateau, downhill requires lookahead
-        // from here the idea to iterate twice, left to right and right to left
+        // the easiest thing is to iterate uphill and on a plateau, downhill requires lookahead;
+        // from here the idea to iterate twice, left to right and right to left:
         for (int i = 0; i < n; i++) {
             if (i == 0) {
                 candies[0] = 1;
