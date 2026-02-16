@@ -23,8 +23,8 @@
 - Longest Common Prefix - E
 - Reverse Words in a String - M
 - Zigzag Conversion - M
-- Find the Index of the First Occurrence in a String - E
-- Text Justification - H
+- Find the Index of the First Occurrence in a String (skip) - E
+- Text Justification (skip) - H
 
 
 ## Functions to remember
