@@ -10,6 +10,10 @@ public class LongestCommonPrefix {
         int n = Math.min(first.length(), last.length());
         StringBuilder result = new StringBuilder();
 
+        // n - length of the string array;
+        // m - length of the longer of the first and the last words;
+        // time complexity O(n * log(n) + O(m))
+        // space complexity O(1)
         int i = 0;
         while (i < n && first.charAt(i) == last.charAt(i)) {
             result.append(first.charAt(i));
