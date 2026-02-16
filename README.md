@@ -1,8 +1,21 @@
-- LeetCode 75 problems workbook;
-- Top Interview 150 problems workbook;
-- https://leetcode.com/u/mstoyanovca/
 
-Functions to remember:
+## LeetCode 75 problems workbook
+
+## Top Interview 150 problems workbook
+
+https://leetcode.com/u/mstoyanovca/
+
+
+#### Review in groups
+
+1. Array/String, Two Pointers, Sliding Window
+2. Matrix, Intervals (optional)
+3. HashMap, Stack, Linked List, Binary Tree, Graph, Trie, Binary Search, Heap
+4. Backtracking, Divide & Conquer, Kadane's Algorithm, Bit Manipulation, Math, 1D DP, Multi D DP (optional)
+
+
+### Functions to remember
+
 ```
 List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
 Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]))
