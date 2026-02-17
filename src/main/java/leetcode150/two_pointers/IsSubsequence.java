@@ -8,6 +8,8 @@ public class IsSubsequence {
         int subSeqPointer = 0;
         int stringPointer = 0;
 
+        // time complexity O(m + n)
+        // space complexity O(1)
         while (subSeqPointer < s.length()) {
             if (s.charAt(subSeqPointer) == t.charAt(stringPointer)) subSeqPointer++;
             if (subSeqPointer < s.length()) stringPointer++;
