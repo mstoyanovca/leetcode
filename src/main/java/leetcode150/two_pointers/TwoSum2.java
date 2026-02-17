@@ -7,6 +7,8 @@ public class TwoSum2 {
         int right = n - 1;
         int[] result = new int[2];
 
+        // time complexity O(n)
+        // space complexity O(1)
         while (left < right) {
             if (numbers[left] + numbers[right] > target) {
                 right--;

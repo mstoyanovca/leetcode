@@ -9,7 +9,7 @@ public class TripletSum {
         int right;
         Set<List<Integer>> set = new HashSet<>();
 
-        // time complexity O(n*2)
+        // time complexity O(n * 2)
         // space complexity O(n)
         Arrays.sort(nums);
         for (int i = 0; i < n - 2; i++) {

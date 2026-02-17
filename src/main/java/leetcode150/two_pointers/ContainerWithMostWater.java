@@ -7,6 +7,8 @@ public class ContainerWithMostWater {
         int right = n - 1;
         int result = 0;
 
+        // time complexity O(n)
+        // space complexity O(1)
         while (left < right) {
             result = Math.max(result, (right - left) * Math.min(height[left], height[right]));
             if (height[left] < height[right]) {
