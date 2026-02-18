@@ -27,7 +27,7 @@
 - Text Justification (skip) - H
 
 
-## Functions to remember
+#### Functions to remember
 
 ```
 String[] array = ["flower","flow","flight"];

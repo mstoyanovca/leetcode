@@ -9,7 +9,7 @@
 4. Backtracking, Divide & Conquer, Kadane's Algorithm, Bit Manipulation, Math, 1D DP, Multi D DP (advanced)
 
 
-### Functions to remember
+#### Functions to remember
 
 ```
 List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
