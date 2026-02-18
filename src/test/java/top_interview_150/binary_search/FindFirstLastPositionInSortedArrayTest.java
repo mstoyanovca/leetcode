@@ -1,0 +1,22 @@
+package top_interview_150.binary_search;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+public class FindFirstLastPositionInSortedArrayTest {
+    @Test
+    public void example1Test() {
+        assertArrayEquals(new int[]{3, 4}, new FindFirstLastPositionInSortedArray().searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8));
+    }
+
+    @Test
+    public void example2Test() {
+        assertArrayEquals(new int[]{-1, -1}, new FindFirstLastPositionInSortedArray().searchRange(new int[]{5, 7, 7, 8, 8, 10}, 6));
+    }
+
+    @Test
+    public void example3Test() {
+        assertArrayEquals(new int[]{-1, -1}, new FindFirstLastPositionInSortedArray().searchRange(new int[]{}, 0));
+    }
+}
