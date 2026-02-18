@@ -1,0 +1,23 @@
+package top_interview_150.linked_list;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ReverseNodesInKGroupTest {
+    @Test
+    public void example1Test() {
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        ListNode expected = new ListNode(2, new ListNode(1, new ListNode(4, new ListNode(3, new ListNode(5)))));
+
+        assertEquals(expected, new ReverseNodesInKGroup().reverseKGroup(head, 2));
+    }
+
+    @Test
+    public void example2Test() {
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+        ListNode expected = new ListNode(3, new ListNode(2, new ListNode(1, new ListNode(4, new ListNode(5)))));
+
+        assertEquals(expected, new ReverseNodesInKGroup().reverseKGroup(head, 3));
+    }
+}
