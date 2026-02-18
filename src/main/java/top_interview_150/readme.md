@@ -5,7 +5,7 @@
 
 1. Array/String, Two Pointers, Sliding Window
 2. Matrix, Intervals (optional)
-3. HashMap, Stack, Linked List, Binary Tree, Graph, Trie, Binary Search, Heap
+3. HashMap (skip), Stack, Linked List, Binary Tree, Graph, Trie, Binary Search, Heap
 4. Backtracking, Divide & Conquer, Kadane's Algorithm, Bit Manipulation, Math, 1D DP, Multi D DP (advanced)
 
 
