@@ -2,7 +2,7 @@ package leet_code_75.linked_list;
 
 import java.util.Objects;
 
-public class ListNode {
+class ListNode {
     int val;
     ListNode next;
 
