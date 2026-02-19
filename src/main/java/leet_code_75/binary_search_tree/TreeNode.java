@@ -1,4 +1,4 @@
-package leet_code_75.binary_tree_dfs;
+package leet_code_75.binary_search_tree;
 
 import java.util.Objects;
 
@@ -21,8 +21,7 @@ class TreeNode {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        TreeNode treeNode = (TreeNode) o;
+        if (!(o instanceof TreeNode treeNode)) return false;
         return val == treeNode.val && Objects.equals(left, treeNode.left) && Objects.equals(right, treeNode.right);
     }
 

@@ -1,7 +1,5 @@
 package leet_code_75.binary_tree_bfs;
 
-import leet_code_75.binary_tree_dfs.TreeNode;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +7,7 @@ import java.util.Queue;
 
 // problem 40:
 public class MaximumLevelSum {
-    public int maxLevelSum(TreeNode root) {
+    int maxLevelSum(TreeNode root) {
         if (root == null) return 0;
         Queue<TreeNode> nodesPerLevel = new LinkedList<>();
         nodesPerLevel.add(root);

@@ -1,14 +1,11 @@
 package leet_code_75.binary_search_tree;
 
-import leet_code_75.binary_tree_dfs.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
 // problem 41;
-// Binary Search Tree (BST);
 public class SearchBST {
-    public TreeNode searchBST(TreeNode root, int val) {
+    TreeNode searchBST(TreeNode root, int val) {
         if (root == null || root.val == val) return root;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);

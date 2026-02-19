@@ -2,7 +2,7 @@ package leet_code_75.binary_tree_dfs;
 
 // problem 35:
 public class CountGoodNodesInBinaryTree {
-    public int goodNodes(TreeNode root) {
+    int goodNodes(TreeNode root) {
         return dfs(root, root.val);
     }
 

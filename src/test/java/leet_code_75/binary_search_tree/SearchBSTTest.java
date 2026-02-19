@@ -1,6 +1,5 @@
 package leet_code_75.binary_search_tree;
 
-import leet_code_75.binary_tree_dfs.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

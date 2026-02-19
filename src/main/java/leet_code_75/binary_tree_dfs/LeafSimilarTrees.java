@@ -5,7 +5,7 @@ import java.util.List;
 
 // problem 34:
 public class LeafSimilarTrees {
-    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+    boolean leafSimilar(TreeNode root1, TreeNode root2) {
         return dfs(root1).equals(dfs(root2));
     }
 

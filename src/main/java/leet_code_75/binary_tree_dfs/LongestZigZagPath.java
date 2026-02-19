@@ -6,7 +6,7 @@ public class LongestZigZagPath {
     private static final String LEFT = "LEFT";
     private static final String RIGHT = "RIGHT";
 
-    public int longestZigZag(TreeNode root) {
+    int longestZigZag(TreeNode root) {
         return Math.max(dfs(root, LEFT, 0), dfs(root, RIGHT, 0));
     }
 
