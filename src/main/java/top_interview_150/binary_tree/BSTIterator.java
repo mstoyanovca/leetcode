@@ -6,7 +6,7 @@ import java.util.Queue;
 public class BSTIterator {
     private final Queue<Integer> queue = new ArrayDeque<>();
 
-    public BSTIterator(TreeNode root) {
+    BSTIterator(TreeNode root) {
         createList(root);
     }
 

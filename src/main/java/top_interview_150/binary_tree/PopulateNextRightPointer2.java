@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class PopulateNextRightPointer2 {
-    public Node connect(Node root) {
+    Node connect(Node root) {
         Node head = root;
 
         // time complexity O(n)
@@ -32,7 +32,7 @@ public class PopulateNextRightPointer2 {
         return root;
     }
 
-    public Node connect2(Node root) {
+    Node connect2(Node root) {
         if (root == null) return null;
 
         Queue<Node> queue = new ArrayDeque<>();

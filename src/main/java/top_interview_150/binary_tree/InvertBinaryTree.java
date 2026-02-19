@@ -1,7 +1,7 @@
 package top_interview_150.binary_tree;
 
 public class InvertBinaryTree {
-    public TreeNode invertTree(TreeNode root) {
+    TreeNode invertTree(TreeNode root) {
         if (root == null || root.left == null && root.right == null) return root;
 
         TreeNode temp = root.left;

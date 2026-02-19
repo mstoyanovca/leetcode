@@ -7,7 +7,7 @@ public class ConstructFromPreorderInorder {
     int preorderIndex = 0;
     private final Map<Integer, Integer> map = new HashMap<>();
 
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    TreeNode buildTree(int[] preorder, int[] inorder) {
         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
 
         return buildTreeUtil(preorder, 0, inorder.length - 1);

@@ -2,7 +2,7 @@ package top_interview_150.binary_tree;
 
 import java.util.Objects;
 
-public class Node {
+class Node {
     public int val;
     public Node left;
     public Node right;

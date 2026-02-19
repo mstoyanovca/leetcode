@@ -1,7 +1,7 @@
 package top_interview_150.binary_tree;
 
 public class FlattenToLinkedLIst {
-    public void flatten(TreeNode root) {
+    void flatten(TreeNode root) {
         TreeNode current = root;
 
         while (current != null) {

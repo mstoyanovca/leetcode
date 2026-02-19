@@ -3,7 +3,7 @@ package top_interview_150.binary_tree;
 public class MaximumPathSum {
     private int result = Integer.MIN_VALUE;
 
-    public int maxPathSum(TreeNode root) {
+    int maxPathSum(TreeNode root) {
         maxPathSumUtil(root);
         return result;
     }

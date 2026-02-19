@@ -1,14 +1,12 @@
 package top_interview_150.binary_tree_bfs;
 
-import top_interview_150.binary_tree.TreeNode;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
 public class ZigzagLevelOrderTraversal {
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+    List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();
         List<List<Integer>> result = new ArrayList<>();
         boolean reverse = false;

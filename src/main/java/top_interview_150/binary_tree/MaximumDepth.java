@@ -1,7 +1,7 @@
 package top_interview_150.binary_tree;
 
 public class MaximumDepth {
-    public int maxDepth(TreeNode root) {
+    int maxDepth(TreeNode root) {
         if (root == null) return 0;
 
         int leftDepth = maxDepth(root.left);

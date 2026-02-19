@@ -1,14 +1,12 @@
 package top_interview_150.bst;
 
-import top_interview_150.binary_tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class KthSmallestElement {
     List<Integer> list = new ArrayList<>();
 
-    public int kthSmallest(TreeNode root, int k) {
+    int kthSmallest(TreeNode root, int k) {
         inorder(root);
         return list.get(k - 1);
     }

@@ -1,4 +1,4 @@
-package top_interview_150.binary_tree;
+package top_interview_150.binary_tree_bfs;
 
 import java.util.Objects;
 

@@ -1,7 +1,5 @@
 package top_interview_150.binary_tree_bfs;
 
-import top_interview_150.binary_tree.TreeNode;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,7 @@ public class AverageOfLevels {
     private final Queue<TreeNode> queue = new ArrayDeque<>();
     private final List<Double> result = new ArrayList<>();
 
-    public List<Double> averageOfLevels(TreeNode root) {
+    List<Double> averageOfLevels(TreeNode root) {
         if (root != null) queue.add(root);
 
         while (!queue.isEmpty()) {

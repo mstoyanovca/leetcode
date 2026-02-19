@@ -6,7 +6,7 @@ public class ConstructFromInorderPostorder {
     int postorderIndex;
     HashMap<Integer, Integer> map = new HashMap<>();
 
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
+    TreeNode buildTree(int[] inorder, int[] postorder) {
         postorderIndex = postorder.length - 1;
         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
 
