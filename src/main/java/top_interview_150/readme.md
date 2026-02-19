@@ -25,7 +25,7 @@ int x = Integer.parseInt("110", 2);
 
 DSA algorithms:
 - interweave algorithm
-- Floyd cycle detection algorithm
+- Floyd's cycle detection algorithm
 - Kadane's algorithm
 - Kahn's algorithm
 - binary exponentiation
