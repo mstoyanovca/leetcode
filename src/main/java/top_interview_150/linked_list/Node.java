@@ -2,7 +2,7 @@ package top_interview_150.linked_list;
 
 import java.util.Objects;
 
-public class Node {
+class Node {
     int val;
     Node next;
     Node random;

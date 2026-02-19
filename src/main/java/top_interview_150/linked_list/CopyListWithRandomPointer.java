@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CopyListWithRandomPointer {
-    public Node copyRandomList(Node head) {
+    Node copyRandomList(Node head) {
         if (head == null) return null;
 
         // time complexity O(n)
@@ -43,7 +43,7 @@ public class CopyListWithRandomPointer {
         return result;
     }
 
-    public Node copyRandomList2(Node head) {
+    Node copyRandomList2(Node head) {
         Map<Node, Node> oldNodeToNewNode = new HashMap<>();
 
         // I assume:

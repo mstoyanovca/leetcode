@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class RotateList {
-    public ListNode rotateRight(ListNode head, int k) {
+    ListNode rotateRight(ListNode head, int k) {
         if (head == null || head.next == null || k == 0) return head;
 
         ListNode left = head;

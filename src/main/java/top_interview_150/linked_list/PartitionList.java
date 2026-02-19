@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class PartitionList {
-    public ListNode partition(ListNode head, int x) {
+    ListNode partition(ListNode head, int x) {
         if (head == null || head.next == null) return head;
 
         ListNode left = new ListNode(101, head);

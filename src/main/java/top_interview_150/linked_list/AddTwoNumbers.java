@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class AddTwoNumbers {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int overflow = 0;
         ListNode result = new ListNode();
         ListNode head = result;

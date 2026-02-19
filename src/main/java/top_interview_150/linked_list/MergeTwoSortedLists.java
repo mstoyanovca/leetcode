@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class MergeTwoSortedLists {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null && list2 == null) return null;
 
         ListNode result = new ListNode();

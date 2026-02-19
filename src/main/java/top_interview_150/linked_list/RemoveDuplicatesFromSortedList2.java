@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class RemoveDuplicatesFromSortedList2 {
-    public ListNode deleteDuplicates(ListNode head) {
+    ListNode deleteDuplicates(ListNode head) {
         ListNode result = new ListNode(101, head);
         ListNode previous = result;
 

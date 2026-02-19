@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class ReverseNodesInKGroup {
-    public ListNode reverseKGroup(ListNode head, int k) {
+    ListNode reverseKGroup(ListNode head, int k) {
         ListNode result = new ListNode(0, head);
         ListNode previous = result;
         int length = 0;

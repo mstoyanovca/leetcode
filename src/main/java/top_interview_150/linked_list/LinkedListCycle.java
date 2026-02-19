@@ -1,7 +1,7 @@
 package top_interview_150.linked_list;
 
 public class LinkedListCycle {
-    public boolean hasCycle(ListNode head) {
+    boolean hasCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
 
