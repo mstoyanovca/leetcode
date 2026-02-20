@@ -3,12 +3,17 @@ package top_interview_150.binary_tree;
 import java.util.HashMap;
 
 public class ConstructFromInorderPostorder {
-    int postorderIndex;
-    HashMap<Integer, Integer> map = new HashMap<>();
+    private int postorderIndex;
+    private final HashMap<Integer, Integer> inorderMap = new HashMap<>();
 
+    // preorder gives the root first
+    // postorder gives the root last
+    // inorder allows to split the tree into left and right subtrees, based on the root's position
+    // time complexity O(n)
+    // space complexity O(n)
     TreeNode buildTree(int[] inorder, int[] postorder) {
         postorderIndex = postorder.length - 1;
-        for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
+        for (int i = 0; i < inorder.length; i++) inorderMap.put(inorder[i], i);
 
         return build(postorder, 0, inorder.length - 1);
     }
@@ -18,7 +23,7 @@ public class ConstructFromInorderPostorder {
 
         int rootVal = postorder[postorderIndex];
         postorderIndex--;
-        int inorderIndex = map.get(rootVal);
+        int inorderIndex = inorderMap.get(rootVal);
 
         TreeNode root = new TreeNode(rootVal);
         root.right = build(postorder, inorderIndex + 1, subtreeEnd);
