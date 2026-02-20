@@ -2,9 +2,7 @@ package top_interview_150.array_string;
 
 public class BestTimeBuySellStock2 {
     public int maxProfit(int[] prices) {
-        int n = prices.length;
         int buy = prices[0];
-        int sell = prices[0];
         int profit = 0;
 
         // time complexity O(n)
