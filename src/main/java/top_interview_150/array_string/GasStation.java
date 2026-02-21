@@ -14,6 +14,7 @@ public class GasStation {
             totalGas += gas[i];
             totalCost += cost[i];
             currentGas += gas[i] - cost[i];
+
             if (currentGas < 0) {
                 currentGas = 0;
                 result = i + 1;
