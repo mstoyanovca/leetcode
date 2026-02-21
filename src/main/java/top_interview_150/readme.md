@@ -12,20 +12,41 @@
 #### Functions to remember
 
 ```
-List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
-Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]))
-Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]))
-stripTrailing()
-stripLeading()
-Collections.reverse(Arrays.asList(array))
-Collections.max(map.values())
 int x = Character.getNumericValue(a.charAt(i));
 int x = Integer.parseInt("110", 2);
+Character.isLetter(s.charAt(left));
+Character.isDigit(s.charAt(left));
+Character.isLetterOrDigit(s.charAt(left));
+
+String[] array = ["flower","flow","flight"];
+Arrays.sort(array);
+// it becomes flight, flow, flower
+String csvString = String.join(",", array);
+
+List<String> items = Arrays.asList("apple", "banana", "orange");
+String csvString = String.join(",", items);
+String csvString = items.stream().collect(Collectors.joining(","));
+
+String s = "the sky is blue"
+String result = String.join(" ", Arrays.stream(s.trim().split(" ")).map(String::trim).filter(Predicate.not(String::isBlank)).toList().reversed());
+// it becomes: "blue is sky the"
+String[] input = s.replace(" ", "").split("(?<=\\+)|(?=\\+)|(?<=-)|(?=-)|(?<=\\()|(?=\\()|(?<=\\))|(?=\\))");
+String filtered = s.chars().mapToObj(c -> (char) c).filter(Character::isLetterOrDigit).map(Character::toLowerCase).map(String::valueOf).collect(Collectors.joining());
+
+String.stripTrailing()
+String.stripLeading()
+
+Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+Collections.reverse(Arrays.asList(array))
+Collections.max(map.values())
 ```
 
 DSA algorithms:
 - interweave algorithm
 - Floyd's cycle detection algorithm
+  - this is the most efficient method for linked lists, as it uses constant extra space
 - Kadane's algorithm
 - Kahn's algorithm
 - binary exponentiation
