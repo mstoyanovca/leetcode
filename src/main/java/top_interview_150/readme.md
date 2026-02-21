@@ -18,6 +18,10 @@ Character.isLetter(s.charAt(left));
 Character.isDigit(s.charAt(left));
 Character.isLetterOrDigit(s.charAt(left));
 
+char[] chars = s.toCharArray();
+Arrays.sort(chars);
+String key = new String(chars);
+
 String[] array = ["flower","flow","flight"];
 Arrays.sort(array);
 // it becomes flight, flow, flower
