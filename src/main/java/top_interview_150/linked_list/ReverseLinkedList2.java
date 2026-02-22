@@ -2,12 +2,11 @@ package top_interview_150.linked_list;
 
 public class ReverseLinkedList2 {
     ListNode reverseBetween(ListNode head, int left, int right) {
-        // if left = 1, previous points to head:
-        ListNode result = new ListNode();
-        result.next = head;
-        ListNode previous = result;
-        int i = 0;
+        ListNode previous = new ListNode();
+        previous.next = head;
+        ListNode result = previous;
 
+        int i = 0;
         while (i < left - 1) {
             previous = head;
             head = head.next;
