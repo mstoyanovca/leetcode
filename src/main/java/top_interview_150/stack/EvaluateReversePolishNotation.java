@@ -2,21 +2,23 @@ package top_interview_150.stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class EvaluateReversePolishNotation {
+    private final Set<String> operators = new HashSet<>(Set.of("+", "-", "*", "/"));
+
     public int evalRPN(String[] tokens) {
-        List<String> operators = List.of("+", "-", "*", "/");
         Deque<String> deque = new ArrayDeque<>();
 
-        for (String s : tokens) {
-            if (!operators.contains(s)) {
-                // s is an integer:
-                deque.add(s);
+        for (String token : tokens) {
+            if (!operators.contains(token)) {
+                // token is an integer:
+                deque.add(token);
             } else {
                 int secondOperand = Integer.parseInt(deque.removeLast());
                 int firstOperand = Integer.parseInt(deque.removeLast());
-                int result = switch (s) {
+                int result = switch (token) {
                     case "+" -> firstOperand + secondOperand;
                     case "-" -> firstOperand - secondOperand;
                     case "*" -> firstOperand * secondOperand;

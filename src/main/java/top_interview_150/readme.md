@@ -40,11 +40,14 @@ String filtered = s.chars().mapToObj(c -> (char) c).filter(Character::isLetterOr
 String.stripTrailing()
 String.stripLeading()
 
+Arrays.sort(points,  (a, b) -> a[0] - b[0]);
 Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
 
 Collections.reverse(Arrays.asList(array))
 Collections.max(map.values())
+
+Set<String> operators = new HashSet<>(Set.of("+", "-", "*", "/"));
 ```
 
 DSA algorithms:
