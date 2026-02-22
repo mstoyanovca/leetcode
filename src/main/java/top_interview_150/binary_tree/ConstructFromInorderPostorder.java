@@ -12,10 +12,11 @@ public class ConstructFromInorderPostorder {
     // time complexity O(n)
     // space complexity O(n)
     TreeNode buildTree(int[] inorder, int[] postorder) {
-        postorderIndex = postorder.length - 1;
-        for (int i = 0; i < inorder.length; i++) inorderMap.put(inorder[i], i);
+        int n = postorder.length;
+        postorderIndex = n - 1;
+        for (int i = 0; i < n; i++) inorderMap.put(inorder[i], i);
 
-        return build(postorder, 0, inorder.length - 1);
+        return build(postorder, 0, n - 1);
     }
 
     private TreeNode build(int[] postorder, int subtreeStart, int subtreeEnd) {
@@ -26,6 +27,7 @@ public class ConstructFromInorderPostorder {
         int inorderIndex = inorderMap.get(rootVal);
 
         TreeNode root = new TreeNode(rootVal);
+        // don't swap next 2 lines:
         root.right = build(postorder, inorderIndex + 1, subtreeEnd);
         root.left = build(postorder, subtreeStart, inorderIndex - 1);
 

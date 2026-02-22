@@ -15,10 +15,10 @@ public class ConstructFromPreorderInorder {
     TreeNode buildTree(int[] preorder, int[] inorder) {
         for (int i = 0; i < inorder.length; i++) inorderMap.put(inorder[i], i);
 
-        return buildTreeUtil(preorder, 0, inorder.length - 1);
+        return buildSubTree(preorder, 0, inorder.length - 1);
     }
 
-    private TreeNode buildTreeUtil(int[] preorder, int subtreeStart, int subtreeEnd) {
+    private TreeNode buildSubTree(int[] preorder, int subtreeStart, int subtreeEnd) {
         if (subtreeStart > subtreeEnd) return null;
 
         int rootVal = preorder[preorderIndex];
@@ -26,8 +26,8 @@ public class ConstructFromPreorderInorder {
         int inorderIndex = inorderMap.get(rootVal);
 
         TreeNode root = new TreeNode(rootVal);
-        root.left = buildTreeUtil(preorder, subtreeStart, inorderIndex - 1);
-        root.right = buildTreeUtil(preorder, inorderIndex + 1, subtreeEnd);
+        root.left = buildSubTree(preorder, subtreeStart, inorderIndex - 1);
+        root.right = buildSubTree(preorder, inorderIndex + 1, subtreeEnd);
 
         return root;
     }
