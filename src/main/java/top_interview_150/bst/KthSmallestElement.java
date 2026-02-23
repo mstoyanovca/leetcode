@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KthSmallestElement {
-    List<Integer> list = new ArrayList<>();
-
+    // this problem asks for the inorder list of the tree
     int kthSmallest(TreeNode root, int k) {
-        inorder(root);
-        return list.get(k - 1);
+        List<TreeNode> inorderList = new ArrayList<>();
+        buildInorderList(root, inorderList);
+        return inorderList.get(k - 1).val;
     }
 
-    private void inorder(TreeNode root) {
-        if (root == null) return;
+    // inorder = left - root - right
+    private void buildInorderList(TreeNode root, List<TreeNode> inorder) {
+        if (root == null) {
+            return;
+        }
 
-        inorder(root.left);
-        list.add(root.val);
-        inorder(root.right);
+        buildInorderList(root.left, inorder);
+        inorder.add(root);
+        buildInorderList(root.right, inorder);
     }
 }
