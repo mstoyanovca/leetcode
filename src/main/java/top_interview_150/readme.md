@@ -1,14 +1,4 @@
 
-## Top Interview 150
-
-#### Review in groups
-
-1. Array/String, Two Pointers, Sliding Window
-2. Matrix, Intervals (optional)
-3. HashMap (skip), Stack, Linked List, Binary Tree, Graph, Trie, Binary Search, Heap
-4. Backtracking, Divide & Conquer, Kadane's Algorithm, Bit Manipulation, Math, 1D DP, Multi D DP (advanced)
-
-
 #### Functions to remember
 
 ```
@@ -51,12 +41,14 @@ Set<String> operators = new HashSet<>(Set.of("+", "-", "*", "/"));
 ```
 
 DSA algorithms:
-- interweave algorithm
-- Floyd's cycle detection algorithm
-  - this is the most efficient method for linked lists, as it uses constant extra space
-- Kadane's algorithm
-- Kahn's algorithm
-- binary exponentiation
+- interweave algorithm: in-place array rearranging, that runs in linear time with constant extra space
+- Floyd's cycle detection algorithm: efficient for linked lists, because it uses constant extra space
+- Kadane's algorithm: O(n) time and O(1) space DP technique to find the maximum sum of a contiguous subarray
+- Kahn's algorithm: BFS method for generating a topological sort of a Directed Acyclic Graph (DAG) in O(V + E) time
+- binary exponentiation:
+  - calculate x ^ n in O(log(n)) time, instead of O(n)
+  - repeatedly square the base and halve the exponent
+- memoization: memoized or optimized recursion
 
 Binary tree traversal:
 - Inorder (Left, Root, Right)
@@ -66,7 +58,7 @@ Binary tree traversal:
 
 - DFS = Depth First Search;
 - DFS builds the tree by subtrees;
-- DFS is usually done with recursion, but it can also be done with dequeue/LIFO;
+- DFS is usually done with recursion, but it can be done with dequeue/LIFO;
 - BFS = Breadth First Search;
 - BFS builds the tree level by level;
 - BFS uses queue/FIFO;
@@ -135,6 +127,3 @@ Graph:
 - DFS/recusrion/cycle check
 - BFS/Kahn's algorithm: topological sorting of a DAG (Directed Acyclic Graph)
 - both provide time complexity O(V + E) and space complexity O(V + E)
-
-Dynamic Programming
-- often called "memoized recursion" or "optimized recursion"
