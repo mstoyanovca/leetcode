@@ -1,27 +1,35 @@
 package top_interview_150.graph;
 
 public class NumberOfIslands {
-    private int islands = 0;
-
     public int numIslands(char[][] grid) {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == '1') islands++;
-                numIslandsUtil(i, j, grid);
+        int m = grid.length;
+        int n = grid[0].length;
+        int numberOfIslands = 0;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    numberOfIslands++;
+                    deleteIsland(i, j, grid);
+                }
             }
         }
 
-        return islands;
+        return numberOfIslands;
     }
 
-    private void numIslandsUtil(int i, int j, char[][] grid) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] != '1') return;
+    private void deleteIsland(int i, int j, char[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == '0') {
+            return;
+        }
 
         grid[i][j] = '0';
 
-        numIslandsUtil(i - 1, j, grid);
-        numIslandsUtil(i + 1, j, grid);
-        numIslandsUtil(i, j - 1, grid);
-        numIslandsUtil(i, j + 1, grid);
+        deleteIsland(i + 1, j, grid);
+        deleteIsland(i - 1, j, grid);
+        deleteIsland(i, j + 1, grid);
+        deleteIsland(i, j - 1, grid);
     }
 }
