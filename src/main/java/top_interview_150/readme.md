@@ -44,7 +44,11 @@ DSA algorithms:
 - interweave algorithm: in-place array rearranging, that runs in linear time with constant extra space
 - Floyd's cycle detection algorithm: efficient for linked lists, because it uses constant extra space
 - Kadane's algorithm: O(n) time and O(1) space DP technique to find the maximum sum of a contiguous subarray
-- Kahn's algorithm: BFS method for generating a topological sort of a Directed Acyclic Graph (DAG) in O(V + E) time
+- Kahn's algorithm: BFS method for topological sorting of a Directed Acyclic Graph (DAG) in O(V + E) time
+  - all vertices with an in-degree of 0 are added to a queue, as they can appear first in the ordering
+  - repeatedly remove a vertex from the queue, add it to the result list, and reduce the in-degree of all its adjacent vertices
+  - if any of those vertices now have an in-degree of 0, they are added to the queue
+  - continue until the queue is empty, the resulting order represents one valid topological sort of the graph
 - binary exponentiation:
   - calculate x ^ n in O(log(n)) time, instead of O(n)
   - repeatedly square the base and halve the exponent

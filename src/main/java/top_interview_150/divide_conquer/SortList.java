@@ -1,14 +1,9 @@
 package top_interview_150.divide_conquer;
 
 public class SortList {
-    // a linked list cannot use random access, merge sort is used
+    // merge sort algorithm, uses the divide-and-conquer approach
     // O(n*log(n)) time complexity
     // O(1) space complexity
-    // keeps the order of equal elements
-    // LinkedList friendly: merge sort does not require random access
-    // divide: use slow and fast pointer to find the middle of the linked list
-    // conquer: recursively sort both halves
-    // combine: merge the sorted halves into one sorted list
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
 
