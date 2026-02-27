@@ -29,7 +29,7 @@ public class SortArray {
         return numbers;
     }
 
-    public void split(int left, int right, int[] array) {
+    private void split(int left, int right, int[] array) {
         if (left >= right) return;
         int middle = left + (right - left) / 2;
 
@@ -40,7 +40,7 @@ public class SortArray {
     }
 
     // this a classic O(m + n) merge algorithm
-    public void sortAndMerge(int left, int middle, int right, int[] array) {
+    private void sortAndMerge(int left, int middle, int right, int[] array) {
         int m = middle - left + 1;
         int n = right - middle;
         int[] leftArray = new int[m];

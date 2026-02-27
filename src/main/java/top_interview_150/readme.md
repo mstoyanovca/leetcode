@@ -27,8 +27,8 @@ String result = String.join(" ", Arrays.stream(s.trim().split(" ")).map(String::
 String[] input = s.replace(" ", "").split("(?<=\\+)|(?=\\+)|(?<=-)|(?=-)|(?<=\\()|(?=\\()|(?<=\\))|(?=\\))");
 String filtered = s.chars().mapToObj(c -> (char) c).filter(Character::isLetterOrDigit).map(Character::toLowerCase).map(String::valueOf).collect(Collectors.joining());
 
-String.stripTrailing()
 String.stripLeading()
+String.stripTrailing()
 
 Arrays.sort(points,  (a, b) -> a[0] - b[0]);
 Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
