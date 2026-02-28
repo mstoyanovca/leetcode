@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class HouseRobber {
     public int rob(int[] nums) {
-        return robUtilityWithMemoization(0, nums, new HashMap<>());
+        return robUtilityRecursive(0, nums);
     }
 
     // time complexity O(n)
