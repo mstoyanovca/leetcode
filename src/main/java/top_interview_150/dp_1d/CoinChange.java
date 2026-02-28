@@ -3,54 +3,10 @@ package top_interview_150.dp_1d;
 import java.util.Arrays;
 
 public class CoinChange {
+    // bottom-up DP approach
+    // time complexity O(n * amount)
+    // space complexity O(amount)
     public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount + 1];
-        Arrays.fill(dp, -1);
-
-        return coinChangeMemoization(coins, amount, dp);
-    }
-
-    // recursion with memoization
-    // time complexity O(n * amount)
-    // space complexity O(amount)
-    int coinChangeMemoization(int[] coins, int amount, int[] dp) {
-        if (amount == 0) return 0;
-        if (amount < 0) return -1;
-        if (dp[amount] != -1) return dp[amount];
-        int minCoins = -2;
-
-        for (int coin : coins) {
-            int result = coinChangeMemoization(coins, amount - coin, dp);
-            if (result >= 0) minCoins = minCoins == -2 ? 1 + result : Math.min(minCoins, 1 + result);
-        }
-
-        return dp[amount] = minCoins == -2 ? -1 : minCoins;
-    }
-
-    // recursion (top-down approach)
-    // time complexity O(n ^ amount)
-    // space complexity O(amount)
-    // it times out in the LeetCode engine
-    public int coinChangeRecursion(int[] coins, int amount) {
-        if (amount == 0) {
-            return 0;
-        } else if (amount < 0) {
-            return -1;
-        }
-        int minCoins = -1;
-
-        for (int coin : coins) {
-            int result = coinChangeRecursion(coins, amount - coin);
-            if (result >= 0) minCoins = minCoins == -1 ? 1 + result : Math.min(minCoins, 1 + result);
-        }
-
-        return minCoins;
-    }
-
-    // a classic bottom-up DP problem
-    // time complexity O(n * amount)
-    // space complexity O(amount)
-    public int coinChangeBottomUp(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, amount + 1);
         dp[0] = 0;
@@ -64,5 +20,22 @@ public class CoinChange {
         }
 
         return dp[amount] > amount ? -1 : dp[amount];
+    }
+
+    // recursion (top-down approach)
+    // time complexity O(n ^ amount)
+    // space complexity O(amount)
+    // it times out in the LeetCode engine
+    public int coinChangeRecursion(int[] coins, int amount) {
+        if (amount == 0) return 0;
+        else if (amount < 0) return -1;
+        int minCoins = -1;
+
+        for (int coin : coins) {
+            int coinsRemaining = coinChangeRecursion(coins, amount - coin);
+            if (coinsRemaining >= 0) minCoins = minCoins == -1 ? 1 + coinsRemaining : Math.min(minCoins, 1 + coinsRemaining);
+        }
+
+        return minCoins;
     }
 }
