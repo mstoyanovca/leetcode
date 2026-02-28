@@ -7,20 +7,20 @@ public class CoinChange {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, -1);
 
-        return coinChangeUtility(coins, amount, dp);
+        return coinChangeMemoization(coins, amount, dp);
     }
 
-    // recursion with memoization (top-down approach)
+    // recursion with memoization
     // time complexity O(n * amount)
     // space complexity O(amount)
-    int coinChangeUtility(int[] coins, int amount, int[] dp) {
+    int coinChangeMemoization(int[] coins, int amount, int[] dp) {
         if (amount == 0) return 0;
         if (amount < 0) return -1;
         if (dp[amount] != -1) return dp[amount];
         int minCoins = -2;
 
         for (int coin : coins) {
-            int result = coinChangeUtility(coins, amount - coin, dp);
+            int result = coinChangeMemoization(coins, amount - coin, dp);
             if (result >= 0) minCoins = minCoins == -2 ? 1 + result : Math.min(minCoins, 1 + result);
         }
 
@@ -30,14 +30,14 @@ public class CoinChange {
     // recursion (top-down approach)
     // time complexity O(n ^ amount)
     // space complexity O(amount)
-    // it times out
-    public int coinChangeUtilityRecursion(int[] coins, int amount) {
+    // it times out in the LeetCode engine
+    public int coinChangeRecursion(int[] coins, int amount) {
         if (amount == 0) return 0;
         if (amount < 0) return -1;
         int minCoins = -1;
 
         for (int coin : coins) {
-            int result = coinChangeUtilityRecursion(coins, amount - coin);
+            int result = coinChangeRecursion(coins, amount - coin);
             if (result >= 0) minCoins = minCoins == -1 ? 1 + result : Math.min(minCoins, 1 + result);
         }
 
