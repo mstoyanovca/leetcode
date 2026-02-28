@@ -4,21 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ClimbingStairs {
+    // recursion with memoization:
+    // time complexity O(n)
+    // space complexity O(n)
     public int climbStairs(int n) {
-        Map<Integer, Integer> map = new HashMap<>();
-        return climbStairsUtility(n, map);
+        return climbStairsUtility(n, new HashMap<>());
     }
 
-    public int climbStairsUtility(int n, Map<Integer, Integer> map) {
+    private int climbStairsUtility(int n, Map<Integer, Integer> memo) {
         if (n <= 2) return n;
-        // avoid repeating recursion steps:
-        if (!map.containsKey(n)) map.put(n, climbStairsUtility(n - 1, map) + climbStairsUtility(n - 2, map));
-        return map.get(n);
+        if (!memo.containsKey(n)) memo.put(n, climbStairsUtility(n - 1, memo) + climbStairsUtility(n - 2, memo));
+        return memo.get(n);
     }
 
-    // time complexity O(2^n), it times out
+    // recursion:
+    // time complexity O(2 ^ n), it times out in the LeetCode engine:
     public int climbStairsRecursive(int n) {
-        if (n == 0 || n == 1) return 1;
+        if (n <= 2) return n;
         return climbStairsRecursive(n - 1) + climbStairsRecursive(n - 2);
     }
 }
