@@ -32,8 +32,11 @@ public class CoinChange {
     // space complexity O(amount)
     // it times out in the LeetCode engine
     public int coinChangeRecursion(int[] coins, int amount) {
-        if (amount == 0) return 0;
-        if (amount < 0) return -1;
+        if (amount == 0) {
+            return 0;
+        } else if (amount < 0) {
+            return -1;
+        }
         int minCoins = -1;
 
         for (int coin : coins) {
