@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class HouseRobber {
     public int rob(int[] nums) {
-        return robUtilityRecursive(0, nums);
+        return robMemo(0, nums, new HashMap<>());
     }
 
     // time complexity O(n)
     // space complexity O(n)
-    private int robUtilityWithMemoization(int i, int[] nums, Map<Integer, Integer> memo) {
+    private int robMemo(int i, int[] nums, Map<Integer, Integer> memo) {
         if (i >= nums.length) return 0;
-        if (!memo.containsKey(i)) memo.put(i, Math.max((nums[i] + robUtilityWithMemoization(i + 2, nums, memo)), robUtilityWithMemoization(i + 1, nums, memo)));
+        if (!memo.containsKey(i)) memo.put(i, Math.max((nums[i] + robMemo(i + 2, nums, memo)), robMemo(i + 1, nums, memo)));
         return memo.get(i);
     }
 
