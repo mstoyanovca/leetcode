@@ -1,4 +1,4 @@
-package dsa_tutorial.array;
+package dsa_misc;
 
 public class BinarySearchSortedArray {
     // time complexity O(log(n))
