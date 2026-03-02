@@ -2,7 +2,6 @@ package dsa_misc;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class CellPhones {
     /* int[][] cellphones = new int[][]{{10, 15}, {10, 15}, {10, 15}};
@@ -16,63 +15,26 @@ public class CellPhones {
        talk on cellphone1 for 10 minutes, plug it in to charge (timestamp 10 to 20, it will be fully charged at timestamp 35);
        talk on cellphone2 for 10 minutes, plug it in to charge (timestamp 20 to 30, it will be fully charged at timestamp 45);
        return to cellphone0 for 10 minutes, done;
-       talk on cellphone1 for another 5 minutes, done;
        result should be List.of(0, 1, 2, 0);
     */
     public List<Integer> talk(int[][] cellphones, int time) {
-        List<CellPhone> phones = new ArrayList<>();
-        for (int[] cellphone : cellphones) {
-            phones.add(new CellPhone(cellphone[0], cellphone[1]));
-        }
-        int currentPhone = 0;
-        int totalConversationTime = 0;
+        int n = cellphones.length;
+        int[] availableAt = new int[n];
+        int timestamp = 0;
         List<Integer> result = new ArrayList<>();
 
-        while (totalConversationTime < time) {
-            int currentConversationTime;
-            if (currentPhone == 0) {
-                result.add(currentPhone);
-                currentConversationTime = phones.get(currentPhone).talkTime;
-                totalConversationTime += currentConversationTime;
-                phones.get(currentPhone).talkTime -= currentConversationTime;
-                currentPhone++;
-            } else {
-                if (phones.get(currentPhone - 1).chargeTime > phones.get(currentPhone).talkTime) {
-                    result.add(currentPhone);
-                    currentConversationTime = phones.get(currentPhone).talkTime;
-                    totalConversationTime += currentConversationTime;
-                    phones.get(currentPhone).talkTime -= currentConversationTime;
-                    currentPhone++;
-                } else {
-                    currentConversationTime = phones.get(currentPhone - 1).chargeTime;
-                    totalConversationTime += currentConversationTime;
-                    phones.get(currentPhone).talkTime -= currentConversationTime;
-                    currentPhone++;
+        while (timestamp < time) {
+            for (int i = 0; i < n; i++) {
+                if (availableAt[i] <= timestamp) {
+                    timestamp += cellphones[i][0];
+                    availableAt[i] = timestamp + cellphones[i][1];
+                    result.add(i);
+                    break;
                 }
             }
         }
 
+
         return result;
-    }
-
-    private static class CellPhone {
-        int talkTime;
-        int chargeTime;
-
-        public CellPhone(int talkTime, int chargeTime) {
-            this.talkTime = talkTime;
-            this.chargeTime = chargeTime;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (!(o instanceof CellPhone cellPhone)) return false;
-            return talkTime == cellPhone.talkTime && chargeTime == cellPhone.chargeTime;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(talkTime, chargeTime);
-        }
     }
 }
