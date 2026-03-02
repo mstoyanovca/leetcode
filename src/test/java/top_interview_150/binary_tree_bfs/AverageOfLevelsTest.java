@@ -1,6 +1,5 @@
 package top_interview_150.binary_tree_bfs;
 
-import top_interview_150.binary_tree.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

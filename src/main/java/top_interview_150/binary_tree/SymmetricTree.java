@@ -1,7 +1,7 @@
 package top_interview_150.binary_tree;
 
 public class SymmetricTree {
-    public boolean isSymmetric(TreeNode root) {
+    boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
         if (root.left == null || root.right == null) return root.left == null && root.right == null;
 

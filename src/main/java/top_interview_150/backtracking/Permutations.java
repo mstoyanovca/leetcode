@@ -5,21 +5,21 @@ import java.util.List;
 
 public class Permutations {
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        backtrack(nums, new ArrayList<>(), result);
-        return result;
+        List<List<Integer>> permutations = new ArrayList<>();
+        backtrack(nums, new ArrayList<>(), permutations);
+        return permutations;
     }
 
-    private void backtrack(int[] nums, List<Integer> permutation, List<List<Integer>> result) {
+    private void backtrack(int[] nums, List<Integer> permutation, List<List<Integer>> permutations) {
         if (permutation.size() == nums.length) {
-            result.add(new ArrayList<>(permutation));
+            permutations.add(new ArrayList<>(permutation));
             return;
         }
 
         for (int num : nums) {
             if (permutation.contains(num)) continue;
             permutation.add(num);
-            backtrack(nums, permutation, result);
+            backtrack(nums, permutation, permutations);
             permutation.removeLast();
         }
     }

@@ -4,25 +4,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructFromPreorderInorder {
-    int preorderIndex = 0;
-    private final Map<Integer, Integer> map = new HashMap<>();
+    private int preorderIndex = 0;
+    private final Map<Integer, Integer> inorderMap = new HashMap<>();
 
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
+    // preorder gives the root first
+    // postorder gives the root last
+    // inorder allows to split the tree into left and right subtrees, based on the root's position
+    // time complexity O(n)
+    // space complexity O(n)
+    TreeNode buildTree(int[] preorder, int[] inorder) {
+        for (int i = 0; i < inorder.length; i++) inorderMap.put(inorder[i], i);
 
-        return buildTreeUtil(preorder, 0, inorder.length - 1);
+        return buildSubTree(preorder, 0, inorder.length - 1);
     }
 
-    private TreeNode buildTreeUtil(int[] preorder, int subtreeStart, int subtreeEnd) {
+    private TreeNode buildSubTree(int[] preorder, int subtreeStart, int subtreeEnd) {
         if (subtreeStart > subtreeEnd) return null;
 
         int rootVal = preorder[preorderIndex];
         preorderIndex++;
-        int inorderIndex = map.get(rootVal);
+        int inorderIndex = inorderMap.get(rootVal);
 
         TreeNode root = new TreeNode(rootVal);
-        root.left = buildTreeUtil(preorder, subtreeStart, inorderIndex - 1);
-        root.right = buildTreeUtil(preorder, inorderIndex + 1, subtreeEnd);
+        root.left = buildSubTree(preorder, subtreeStart, inorderIndex - 1);
+        root.right = buildSubTree(preorder, inorderIndex + 1, subtreeEnd);
 
         return root;
     }

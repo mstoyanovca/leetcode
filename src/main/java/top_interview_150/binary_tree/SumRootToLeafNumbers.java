@@ -1,7 +1,7 @@
 package top_interview_150.binary_tree;
 
 public class SumRootToLeafNumbers {
-    public int sumNumbers(TreeNode root) {
+    int sumNumbers(TreeNode root) {
         return sumNumbersUtil(root, 0);
     }
 

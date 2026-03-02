@@ -1,12 +1,10 @@
 package top_interview_150.binary_tree_bfs;
 
-import top_interview_150.binary_tree.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class RightSideViewTest {
     @Test

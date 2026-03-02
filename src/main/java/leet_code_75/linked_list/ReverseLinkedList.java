@@ -2,7 +2,7 @@ package leet_code_75.linked_list;
 
 // problem 31:
 public class ReverseLinkedList {
-    public ListNode reverseList(ListNode head) {
+    ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) return head;
 
         ListNode previous = head;

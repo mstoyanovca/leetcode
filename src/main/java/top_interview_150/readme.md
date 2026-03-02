@@ -1,46 +1,68 @@
 
-## Top Interview 150
-
-#### Review in groups
-
-1. Array/String, Two Pointers, Sliding Window
-2. Matrix, Intervals (optional)
-3. HashMap, Stack, Linked List, Binary Tree, Graph, Trie, Binary Search, Heap
-4. Backtracking, Divide & Conquer, Kadane's Algorithm, Bit Manipulation, Math, 1D DP, Multi D DP (advanced)
-
-
-### Functions to remember
+#### Functions to remember
 
 ```
-List<String> list = Arrays.stream(s.trim().split(" ")).map(String::trim).filter(e → !e.isBlank()).toList().reversed();
-Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]))
-Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]))
-stripTrailing()
-stripLeading()
-Collections.reverse(Arrays.asList(array))
-Collections.max(map.values())
 int x = Character.getNumericValue(a.charAt(i));
 int x = Integer.parseInt("110", 2);
+Character.isLetter(s.charAt(left));
+Character.isDigit(s.charAt(left));
+Character.isLetterOrDigit(s.charAt(left));
+
+char[] chars = s.toCharArray();
+Arrays.sort(chars);
+String key = new String(chars);
+
+String[] array = ["flower","flow","flight"];
+Arrays.sort(array);
+// it becomes flight, flow, flower
+String csvString = String.join(",", array);
+
+List<String> items = Arrays.asList("apple", "banana", "orange");
+String csvString = String.join(",", items);
+String csvString = items.stream().collect(Collectors.joining(","));
+
+String s = "the sky is blue"
+String result = String.join(" ", Arrays.stream(s.trim().split(" ")).map(String::trim).filter(Predicate.not(String::isBlank)).toList().reversed());
+// it becomes: "blue is sky the"
+String[] input = s.replace(" ", "").split("(?<=\\+)|(?=\\+)|(?<=-)|(?=-)|(?<=\\()|(?=\\()|(?<=\\))|(?=\\))");
+String filtered = s.chars().mapToObj(c -> (char) c).filter(Character::isLetterOrDigit).map(Character::toLowerCase).map(String::valueOf).collect(Collectors.joining());
+
+String.stripLeading()
+String.stripTrailing()
+
+Arrays.sort(points,  (a, b) -> a[0] - b[0]);
+Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+Collections.reverse(Arrays.asList(array))
+Collections.max(map.values())
+
+Set<String> operators = new HashSet<>(Set.of("+", "-", "*", "/"));
 ```
 
 DSA algorithms:
-- interweave algorithm
-- Floyd cycle detection algorithm
-- Kadane's algorithm
-- Kahn's algorithm
-- binary exponentiation
+- interweave algorithm: in-place array rearranging, that runs in linear time with constant extra space
+- Floyd's cycle detection algorithm: efficient for linked lists, because it uses constant extra space
+- Kadane's algorithm: O(n) time and O(1) space DP technique to find the maximum sum of a contiguous subarray
+- Kahn's algorithm: BFS method for topological sorting of a Directed Acyclic Graph (DAG) in O(V + E) time
+  - all vertices with an in-degree of 0 are added to a queue, as they can appear first in the ordering
+  - repeatedly remove a vertex from the queue, add it to the result list, and reduce the in-degree of all its adjacent vertices
+  - if any of those vertices now have an in-degree of 0, they are added to the queue
+  - continue until the queue is empty, the resulting order represents one valid topological sort of the graph
+- binary exponentiation:
+  - calculate x ^ n in O(log(n)) time, instead of O(n)
+  - repeatedly square the base and halve the exponent
+- memoization: memoized or optimized recursion
 
 Binary tree traversal:
 - Inorder (Left, Root, Right)
-    - for Binary Search Trees (BSTs), this yields nodes in ascending (sorted) order
+    - for BST, this yields nodes in ascending (sorted) order
 - Preorder (Root, Left, Right)
-    - Creating a prefix (Polish) notation for expressions or copying/cloning the tree
 - Postorder (Left, Right, Root)
-    - Deleting nodes in a binary tree or generating postfix (Reverse Polish) notation
 
 - DFS = Depth First Search;
 - DFS builds the tree by subtrees;
-- DFS is usually done with recursion, but it can also be done with dequeue/LIFO;
+- DFS is usually done with recursion, but it can be done with dequeue/LIFO;
 - BFS = Breadth First Search;
 - BFS builds the tree level by level;
 - BFS uses queue/FIFO;
@@ -109,6 +131,3 @@ Graph:
 - DFS/recusrion/cycle check
 - BFS/Kahn's algorithm: topological sorting of a DAG (Directed Acyclic Graph)
 - both provide time complexity O(V + E) and space complexity O(V + E)
-
-Dynamic Programming
-- often called "memoized recursion" or "optimized recursion"

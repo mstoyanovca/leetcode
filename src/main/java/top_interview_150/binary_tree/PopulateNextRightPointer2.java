@@ -1,10 +1,7 @@
 package top_interview_150.binary_tree;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class PopulateNextRightPointer2 {
-    public Node connect(Node root) {
+    Node connect(Node root) {
         Node head = root;
 
         // time complexity O(n)
@@ -27,28 +24,6 @@ public class PopulateNextRightPointer2 {
                 head = head.next;
             }
             head = firstNodeNextLevel.next;
-        }
-
-        return root;
-    }
-
-    public Node connect2(Node root) {
-        if (root == null) return null;
-
-        Queue<Node> queue = new ArrayDeque<>();
-        queue.add(root);
-
-        // time complexity O(n)
-        // space complexity O(W)
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            while (size > 0) {
-                size--;
-                Node current = queue.remove();
-                if (size > 0) current.next = queue.element();
-                if (current.left != null) queue.add(current.left);
-                if (current.right != null) queue.add(current.right);
-            }
         }
 
         return root;

@@ -1,7 +1,5 @@
 package leet_code_75.binary_tree_bfs;
 
-import leet_code_75.binary_tree_dfs.TreeNode;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ import java.util.Queue;
  */
 public class BinaryTreeRightSideView {
     // problem 39, Queue/FIFO:
-    public List<Integer> rightSideView(TreeNode root) {
+    List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
         Queue<TreeNode> queue = new ArrayDeque<>();
@@ -38,19 +36,5 @@ public class BinaryTreeRightSideView {
         }
 
         return result;
-    }
-
-    // problem 39, recursive:
-    public List<Integer> rightSideViewRecursive(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        bfs(root, result, 0);
-        return result;
-    }
-
-    private void bfs(TreeNode node, List<Integer> result, int level) {
-        if (node == null) return;
-        if (result.size() == level) result.add(node.val);
-        bfs(node.right, result, level + 1);
-        bfs(node.left, result, level + 1);
     }
 }

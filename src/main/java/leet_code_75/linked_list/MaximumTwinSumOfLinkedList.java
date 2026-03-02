@@ -2,7 +2,7 @@ package leet_code_75.linked_list;
 
 //problem 31:
 public class MaximumTwinSumOfLinkedList {
-    public int pairSum(ListNode head) {
+    int pairSum(ListNode head) {
         // length is always even:
         int maxIndex = 0;
         ListNode current = head;

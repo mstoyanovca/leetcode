@@ -1,9 +1,8 @@
 package top_interview_150.linked_list;
 
 public class RemoveNthNodeFromEndOfList {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null) return null;
-
         ListNode left = head;
         ListNode right = head;
 
@@ -14,7 +13,6 @@ public class RemoveNthNodeFromEndOfList {
             left = left.next;
             right = right.next;
         }
-
         // left is the node to remove:
         left.next = left.next.next;
 

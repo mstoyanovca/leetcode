@@ -2,7 +2,7 @@ package leet_code_75.binary_tree_dfs;
 
 import java.util.Objects;
 
-public class TreeNode {
+class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;

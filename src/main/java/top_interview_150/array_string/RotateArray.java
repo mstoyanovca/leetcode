@@ -23,26 +23,4 @@ public class RotateArray {
             right--;
         }
     }
-
-    public void rotateBruteForce(int[] nums, int k) {
-        if (nums.length == 1 || nums.length == k) return;
-
-        // time complexity O(k * n)
-        // space complexity O(1)
-        rotateRight(nums, k);
-    }
-
-    private void rotateRight(int[] nums, int k) {
-        for (int i = 0; i < k; i++) {
-            int acc = nums[nums.length - 1];
-            shiftRight(nums);
-            nums[0] = acc;
-        }
-    }
-
-    private void shiftRight(int[] nums) {
-        for (int i = nums.length - 1; i > 0; i--) {
-            nums[i] = nums[i - 1];
-        }
-    }
 }
