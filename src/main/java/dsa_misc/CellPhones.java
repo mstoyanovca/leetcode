@@ -7,16 +7,17 @@ import java.util.Objects;
 public class CellPhones {
     /* int[][] cellphones = new int[][]{{10, 15}, {10, 15}, {10, 15}};
        cellphone0 talks 10 minutes, charges 15 minutes, etc.
-       start talking on the first phone, till the battery is dead, plug it in to charge
-       continue talking on the second phone, etc., till one of the previous phones is charged
-       return to a previous phone, which charges first
+       start talking on the first phone, till the battery is empty, plug it in to charge
+       continue talking on the second, third phone, etc., till one of the previous phones has fully charged
+       return to a previous phone with the lowest index, which has fully charged
        return the index of the phones, in the order talked for 'time' minutes
-       for time = 30 minutes:
-       talk on cellphone0 for 10 minutes, plug it in to charge;
-       talk on cellphone1 for 5 minutes, while cellphone0 is fully charged;
-       switch back to cellphone0 for 10 minutes, plug it in to charge;
+       for time = 40 minutes:
+       talk on cellphone0 for 10 minutes, plug it in to charge (timestamp 0 to 10, it will be fully charged at timestamp 25);
+       talk on cellphone1 for 10 minutes, plug it in to charge (timestamp 10 to 20, it will be fully charged at timestamp 35);
+       talk on cellphone2 for 10 minutes, plug it in to charge (timestamp 20 to 30, it will be fully charged at timestamp 45);
+       return to cellphone0 for 10 minutes, done;
        talk on cellphone1 for another 5 minutes, done;
-       result should be List.of(0, 1, 0, 1);
+       result should be List.of(0, 1, 2, 0);
     */
     public List<Integer> talk(int[][] cellphones, int time) {
         List<CellPhone> phones = new ArrayList<>();
@@ -24,28 +25,28 @@ public class CellPhones {
             phones.add(new CellPhone(cellphone[0], cellphone[1]));
         }
         int currentPhone = 0;
-        int timestamp = 0;
+        int totalConversationTime = 0;
         List<Integer> result = new ArrayList<>();
 
-        while (timestamp < time) {
-            int nextConversation;
+        while (totalConversationTime < time) {
+            int currentConversationTime;
             if (currentPhone == 0) {
                 result.add(currentPhone);
-                nextConversation = phones.get(currentPhone).talkTime;
-                timestamp += nextConversation;
-                phones.get(currentPhone).talkTime -= nextConversation;
+                currentConversationTime = phones.get(currentPhone).talkTime;
+                totalConversationTime += currentConversationTime;
+                phones.get(currentPhone).talkTime -= currentConversationTime;
                 currentPhone++;
             } else {
                 if (phones.get(currentPhone - 1).chargeTime > phones.get(currentPhone).talkTime) {
                     result.add(currentPhone);
-                    nextConversation = phones.get(currentPhone).talkTime;
-                    timestamp += nextConversation;
-                    phones.get(currentPhone).talkTime -= nextConversation;
+                    currentConversationTime = phones.get(currentPhone).talkTime;
+                    totalConversationTime += currentConversationTime;
+                    phones.get(currentPhone).talkTime -= currentConversationTime;
                     currentPhone++;
                 } else {
-                    nextConversation = phones.get(currentPhone - 1).chargeTime;
-                    timestamp += nextConversation;
-                    phones.get(currentPhone).talkTime -= nextConversation;
+                    currentConversationTime = phones.get(currentPhone - 1).chargeTime;
+                    totalConversationTime += currentConversationTime;
+                    phones.get(currentPhone).talkTime -= currentConversationTime;
                     currentPhone++;
                 }
             }
