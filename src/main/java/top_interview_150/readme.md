@@ -7,6 +7,12 @@ int x = Integer.parseInt("110", 2);
 Character.isLetter(s.charAt(left));
 Character.isDigit(s.charAt(left));
 Character.isLetterOrDigit(s.charAt(left));
+Character.isWhitespace(char ch);
+Character.isUpperCase(char ch);
+Characterand.isLowerCase(char ch); 
+Character.toUpperCase(char ch);
+Characterand.toLowerCase(char ch);
+Characterand.toString(char ch);
 
 char[] chars = s.toCharArray();
 Arrays.sort(chars);
