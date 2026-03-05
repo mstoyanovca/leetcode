@@ -1,5 +1,4 @@
-
-#### Functions to remember
+#### Array, Character, String
 
 ```
 int x = Character.getNumericValue(a.charAt(i));
@@ -9,10 +8,10 @@ Character.isDigit(s.charAt(left));
 Character.isLetterOrDigit(s.charAt(left));
 Character.isWhitespace(char ch);
 Character.isUpperCase(char ch);
-Characterand.isLowerCase(char ch); 
+Character.isLowerCase(char ch); 
 Character.toUpperCase(char ch);
-Characterand.toLowerCase(char ch);
-Characterand.toString(char ch);
+Character.toLowerCase(char ch);
+Character.toString(char ch);
 
 char[] chars = s.toCharArray();
 Arrays.sort(chars);
@@ -46,21 +45,33 @@ Collections.max(map.values())
 Set<String> operators = new HashSet<>(Set.of("+", "-", "*", "/"));
 ```
 
-DSA algorithms:
+#### DSA algorithms
+
 - interweave algorithm: in-place array rearranging, that runs in linear time with constant extra space
 - Floyd's cycle detection algorithm: efficient for linked lists, because it uses constant extra space
 - Kadane's algorithm: O(n) time and O(1) space DP technique to find the maximum sum of a contiguous subarray
 - Kahn's algorithm: BFS method for topological sorting of a Directed Acyclic Graph (DAG) in O(V + E) time
-  - all vertices with an in-degree of 0 are added to a queue, as they can appear first in the ordering
-  - repeatedly remove a vertex from the queue, add it to the result list, and reduce the in-degree of all its adjacent vertices
-  - if any of those vertices now have an in-degree of 0, they are added to the queue
-  - continue until the queue is empty, the resulting order represents one valid topological sort of the graph
+    - all vertices with an in-degree of 0 are added to a queue, as they can appear first in the ordering
+    - repeatedly remove a vertex from the queue, add it to the result list, and reduce the in-degree of all its adjacent vertices
+    - if any of those vertices now have an in-degree of 0, they are added to the queue
+    - continue until the queue is empty, the resulting order represents one valid topological sort of the graph
 - binary exponentiation:
-  - calculate x ^ n in O(log(n)) time, instead of O(n)
-  - repeatedly square the base and halve the exponent
+    - calculate x ^ n in O(log(n)) time, instead of O(n)
+    - repeatedly square the base and halve the exponent
 - memoization: memoized or optimized recursion
 
+Sorting:
+
+- Java’s built-in sorting methods, such as Arrays.sort(), adapt their algorithm depending on the type of data being processed:
+    - for primitive arrays like int[] or double[], Java uses Dual-Pivot Quick Sort, which tends to be faster in practice but doesn’t guarantee stable sorting.
+    - for arrays of objects that implement Comparable, it switches to a hybrid sorting algorithm called TimSort. TimSort draws its structure from Merge Sort.
+- Merge Sort is consistent in its time complexity and is a stable sorting algorithm. It is suitable for both arrays and linked lists but requires additional
+  space.
+- Quick Sort is faster in practice and uses less auxiliary space compared to Merge Sort. It can perform poorly with certain datasets, leading to its worst-case
+  time complexity of O(n²).
+
 Binary tree traversal:
+
 - Inorder (Left, Root, Right)
     - for BST, this yields nodes in ascending (sorted) order
 - Preorder (Root, Left, Right)
@@ -107,27 +118,8 @@ Binary tree traversal:
     }
 ```
 
-Java Queue implementations:
-- LinkedList: implements List, Queue and Deque interfaces
-- ArrayDeque
-    - implements Queue and Deque interfaces
-    - backed by a resizable array and is generally more efficient than LinkedList for queue operations in a single-threaded environment
-    - does not permit null elements
-- PriorityQueue
-    - min-heap by default, the smallest element is always at the head of the queue
-    - a max-heap can be implemented by providing a custom Comparator
-    - elements with higher priority are processed first, not necessarily in the order they were inserted
-    - the element with the lowest value is considered to have the highest priority and is accessed with peek() or removed with poll() in (O(log n)) time
-    - does not permit null elements
-      `Queue<Integer> minHeap = new PriorityQueue<>();`
-      `Queue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());`
-
-Java Map implementations:
-- HashMap - unordered
-- LinkedHashMap - insertion order
-- TreeMap - sorted order
-
 Graph:
+
 - G = (V, E), m = E, n = V
 - vertex = node
 - edge = connection between vertices
@@ -137,3 +129,65 @@ Graph:
 - DFS/recusrion/cycle check
 - BFS/Kahn's algorithm: topological sorting of a DAG (Directed Acyclic Graph)
 - both provide time complexity O(V + E) and space complexity O(V + E)
+
+#### Collections
+
+| Operation        | ArrayList | LinkedList |
+|:-----------------|:----------|:-----------|
+| Reading first    | O(1)      | O(1)       |
+| Reading last     | O(1)      | O(1)       |
+| Reading middle   | O(1)      | O(n)       |
+| Adding last      | O(1)      | O(1)       |
+| Inserting first  | O(n)      | O(1)       |
+| Inserting middle | O(n)      | O(n)       |
+
+Java Map implementations:
+
+- HashMap - unordered
+- LinkedHashMap - insertion order
+- TreeMap - sorted order
+
+Java Queue implementations:
+
+- LinkedList: implements List, Queue and Deque interfaces
+- ArrayDeque
+    - implements Queue and Deque interfaces
+    - backed by a resizable array and is generally more efficient than LinkedList for queue operations in a single-threaded environment
+    - does not permit null elements
+- PriorityQueue
+    - min-heap by default, the smallest element is always at the head of the queue
+    - a max-heap can be implemented by providing a custom Comparator
+    - elements with higher priority are processed first, not necessarily in the order they were inserted
+    - the element with the lowest value is considered to have the highest priority and is accessed with peek() or removed with poll() in (O(log(n))) time
+    - does not permit null elements
+      `Queue<Integer> minHeap = new PriorityQueue<>();`
+      `Queue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());`
+
+Queue methods (FIFO):
+
+| Method         | Behavior when the queue is full or empty |
+|:---------------|:-----------------------------------------|
+| add(element)   | throws an IllegalStateException          |
+| offer(element) | returns false                            |
+| remove()       | throws a NoSuchElementException          |
+| poll()         | returns false                            |
+| element()      | throws a NoSuchElementException          |
+| peek()         | returns null                             |
+
+Deque methods (LIFO):
+
+| Method              | Behavior when the queue is full or empty |
+|:--------------------|:-----------------------------------------|
+| addFirst(element)   | throws an IllegalStateException          |
+| offerFirst(element) | returns false                            |
+| remove()            | throws a NoSuchElementException          |
+| poll()              | returns null                             |
+| element()           | throws a NoSuchElementException          |
+| peek()              | returns null                             |
+
+- add() = addLast()
+- offer = offerLast()
+- remove() = removeFirst()
+- poll() = pollFirst()
+- element() = getFirst()
+- peek() = peekFirst()
