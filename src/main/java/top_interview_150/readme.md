@@ -191,3 +191,19 @@ Deque methods (LIFO):
 - poll() = pollFirst()
 - element() = getFirst()
 - peek() = peekFirst()
+
+Java Design Patterns:
+
+- creational:
+    - singleton
+    - factory
+- structural:
+    - decorator (wrapper)
+    - facade (hides internal implementation)
+    - proxy
+- behavioral:
+    - iterator
+    - observer (listener, one to many)
+    - visitor - defines new operation
+        - Element - accept(Visitor)
+        - Visitor - visit(Element)
