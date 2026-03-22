@@ -25,4 +25,9 @@ public class ValidPalindromeTest {
     public void example4Test() {
         assertTrue(new ValidPalindrome().isPalindrome(".,"));
     }
+
+    @Test
+    public void example5Test() {
+        assertTrue(new ValidPalindrome().isPalindrome("\"Sue,\" Tom smiles, \"Selim smote us.\""));
+    }
 }
