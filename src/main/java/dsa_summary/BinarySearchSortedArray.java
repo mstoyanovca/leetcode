@@ -1,4 +1,4 @@
-package dsa_misc;
+package dsa_summary;
 
 public class BinarySearchSortedArray {
     // time complexity O(log(n))
