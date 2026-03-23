@@ -1,4 +1,4 @@
-package dsa_summary;
+package dsa_summary.array;
 
 import org.junit.jupiter.api.Test;
 

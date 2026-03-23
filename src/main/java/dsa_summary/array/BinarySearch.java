@@ -1,6 +1,6 @@
-package dsa_summary;
+package dsa_summary.array;
 
-public class BinarySearchSortedArray {
+public class BinarySearch {
     // time complexity O(log(n))
     // space complexity O(1)
     // return the index of target, or -1

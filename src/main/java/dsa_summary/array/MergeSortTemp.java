@@ -1,4 +1,4 @@
-package dsa_summary;
+package dsa_summary.array;
 
 public class MergeSortTemp {
     // time complexity O(n * log(n))

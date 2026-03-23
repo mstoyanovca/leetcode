@@ -6,8 +6,8 @@
 - sliding window
 - rotate an array
 - merge sorted arrays
-- sort an array (mergesort, divide and conquer)
-- array to BST (divide and conquer)
+- mergesort, divide and conquer
+- array to binary tree, divide and conquer
 - binary search
 - backtracking
 - Kadane's algorithm

@@ -1,9 +1,9 @@
-package dsa_summary;
+package dsa_summary.array;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class MergeSortArrays {
+public class MergeSort {
     public int[] sortAscending(int[] numbers) {
         Arrays.sort(numbers);
         return numbers;
