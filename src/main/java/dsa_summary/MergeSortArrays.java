@@ -36,11 +36,11 @@ public class MergeSortArrays {
         split(left, middle, array);
         split(middle + 1, right, array);
 
-        sortAndMerge(left, middle, right, array);
+        merge(left, middle, right, array);
     }
 
-    // this a classic O(m + n) merge algorithm
-    private void sortAndMerge(int left, int middle, int right, int[] array) {
+    // this a classic time complexity O(m + n) merge algorithm
+    private void merge(int left, int middle, int right, int[] array) {
         int m = middle - left + 1;
         int n = right - middle;
         int[] leftArray = new int[m];
