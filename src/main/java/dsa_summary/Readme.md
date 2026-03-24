@@ -15,6 +15,7 @@
 
 ### Linked List
 
+- Floyd's cycle detection algorithm
 - merge two sorted linked lists
 - rotate linked list
 - reverse linked list

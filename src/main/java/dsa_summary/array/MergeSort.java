@@ -1,26 +1,6 @@
 package dsa_summary.array;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public class MergeSort {
-    public int[] sortAscending(int[] numbers) {
-        Arrays.sort(numbers);
-        return numbers;
-    }
-
-    public int[] sortDescending(int[] numbers) {
-        return Arrays.stream(numbers).boxed().sorted(Comparator.reverseOrder()).mapToInt(Integer::intValue).toArray();
-    }
-
-    /*
-     * Java’s built-in sorting methods, such as Arrays.sort(), adapt their algorithm depending on the type of data being processed.
-     * For primitive arrays like int[] or double[], Java uses Dual-Pivot Quick Sort, which tends to be faster in practice but doesn’t guarantee stable sorting.
-     * For arrays of objects that implement Comparable, it switches to a hybrid sorting algorithm called TimSort. TimSort draws its structure from Merge Sort.
-     *
-     * Merge Sort is consistent in its time complexity and is a stable sorting algorithm. It is suitable for both arrays and linked lists but requires additional space.
-     * Quick Sort is faster in practice and uses less auxiliary space compared to Merge Sort. It can perform poorly with certain datasets, leading to its worst-case time complexity of O(n²).
-     */
     // divide-and-conquer algorithm
     // time complexity O(n * log(n))
     // space complexity O(n)
