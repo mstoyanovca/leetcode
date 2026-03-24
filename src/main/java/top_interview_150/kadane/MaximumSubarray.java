@@ -1,6 +1,8 @@
 package top_interview_150.kadane;
 
 public class MaximumSubarray {
+    // time complexity O(n)
+    // space complexity O(1)
     public int maxSubArray(int[] nums) {
         int currentSum = nums[0];
         int maxSum = nums[0];
