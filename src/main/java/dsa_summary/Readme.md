@@ -19,10 +19,10 @@
 - merge two sorted linked lists
 - rotate linked list
 - reverse linked list
+
+### Binary Tree
+
 - average of levels
-
-### BST
-
 - invert binary tree
 - binary tree to linked list
 - kth smallest element
