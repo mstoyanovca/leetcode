@@ -2,7 +2,7 @@ package dsa_summary.linked_list;
 
 import java.util.Objects;
 
-public class ListNode {
+class ListNode {
     int value;
     ListNode next;
 

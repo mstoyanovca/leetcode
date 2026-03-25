@@ -26,6 +26,3 @@
 - binary tree to linked list (preorder traversal)
 - kth smallest element (inorder traversal)
 - binary tree level order traversal (BFS, queue)
-
-- do DFS with recursion
-- do DFS with a queue
