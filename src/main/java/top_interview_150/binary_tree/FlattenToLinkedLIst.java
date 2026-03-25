@@ -20,10 +20,10 @@ public class FlattenToLinkedLIst {
         }
     }
 
+    // preorder = root - left - right
     private void preorder(TreeNode root, List<TreeNode> nodes) {
         if (root == null) return;
 
-        // preorder: root - left - right
         nodes.add(root);
         preorder(root.left, nodes);
         preorder(root.right, nodes);

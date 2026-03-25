@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Permutations {
+    // I assume:
+    // time complexity O(n!)
+    // space complexity O(n!)
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> permutations = new ArrayList<>();
         backtrack(nums, new ArrayList<>(), permutations);

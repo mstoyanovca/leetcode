@@ -1,4 +1,4 @@
-package dsa_misc;
+package dsa_summary.array;
 
 public class MergeSortedArrays {
     // most efficient is the two pointer approach

@@ -5,6 +5,8 @@ import java.util.List;
 
 public class KthSmallestElement {
     // this problem asks for the inorder list of the tree
+    // time complexity O(n)
+    // space complexity O(n)
     int kthSmallest(TreeNode root, int k) {
         List<TreeNode> inorderList = new ArrayList<>();
         buildInorderList(root, inorderList);

@@ -1,6 +1,8 @@
 package top_interview_150.divide_conquer;
 
 public class SortedArrayToBST {
+    // time complexity O(log(n))
+    // space complexity O(n)
     public TreeNode sortedArrayToBST(int[] nums) {
         return divideAndConquer(0, nums.length - 1, nums);
     }
@@ -8,7 +10,7 @@ public class SortedArrayToBST {
     private TreeNode divideAndConquer(int left, int right, int[] nums) {
         if (left > right) return null;
 
-        int middle = (left + right) / 2;
+        int middle = left + (right - left) / 2;
         TreeNode root = new TreeNode(nums[middle]);
         root.left = divideAndConquer(left, middle - 1, nums);
         root.right = divideAndConquer(middle + 1, right, nums);

@@ -13,7 +13,7 @@ public class ReverseLinkedList2 {
             i++;
         }
 
-        while (i >= left - 1 && i < right - 1) {
+        while (i < right - 1) {
             ListNode next = head.next;
 
             head.next = next.next;

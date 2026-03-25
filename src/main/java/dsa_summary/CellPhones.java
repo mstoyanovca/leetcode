@@ -1,4 +1,4 @@
-package dsa_misc;
+package dsa_summary;
 
 import java.util.ArrayList;
 import java.util.List;
