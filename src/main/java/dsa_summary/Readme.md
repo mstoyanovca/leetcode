@@ -22,10 +22,10 @@
 
 ### Binary Tree
 
-- average of levels
-- invert binary tree
-- binary tree to linked list
-- kth smallest element
+- invert binary tree (DFS, recursion)
+- binary tree to linked list (preorder traversal)
+- kth smallest element (inorder traversal)
+- binary tree level order traversal (BFS, queue)
 
 - do DFS with recursion
 - do DFS with a queue
