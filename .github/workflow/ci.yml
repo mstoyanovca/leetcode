@@ -1,8 +1,8 @@
-name: leetcode CI
-on: [ push,   pull_request ]
+name: Login CI
+on: [ push, pull_request ]
 
 jobs:
-  junit-tests:
+  spring-boot-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
