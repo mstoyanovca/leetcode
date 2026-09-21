@@ -2,19 +2,23 @@ package leet_code_75.array_string;
 
 public class MergeStringsAlternately {
     public String mergeAlternately(String word1, String word2) {
-        final int length1 = word1.length();
-        final int length2 = word2.length();
-        // both strings might not be with the same length:
-        int minLength = Math.min(length1, length2);
-        String longerString = length1 > length2 ? word1 : word2;
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
+        int p1 = 0;
+        int p2 = 0;
 
-        for (int i = 0; i < minLength; i++) {
-            stringBuilder.append(word1.charAt(i));
-            stringBuilder.append(word2.charAt(i));
+        while (p1 < word1.length() && p2 < word2.length()) {
+            builder.append(word1.charAt(p1));
+            p1++;
+            builder.append(word2.charAt(p2));
+            p2++;
         }
-        stringBuilder.append(longerString.substring(minLength));
 
-        return stringBuilder.toString();
+        if (p1 == word1.length() && p2 < word2.length()) {
+            builder.append(word2.substring(p2));
+        } else if (p1 < word1.length() && p2 == word2.length()) {
+            builder.append(word1.substring(p1));
+        }
+
+        return builder.toString();
     }
 }
