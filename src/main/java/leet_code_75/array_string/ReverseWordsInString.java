@@ -8,7 +8,6 @@ public class ReverseWordsInString {
         // I assume:
         // time complexity O(n)
         // space complexity O(1)
-        return String.join(" ", Arrays.stream(s.trim().split(" ")).map(String::trim).filter(s1 -> !s1.isBlank())
-                .filter(Predicate.not(String::isBlank)).toList().reversed());
+        return String.join(" ", Arrays.stream(s.split(" ")).filter(Predicate.not(String::isBlank)).map(String::trim).toList().reversed());
     }
 }
