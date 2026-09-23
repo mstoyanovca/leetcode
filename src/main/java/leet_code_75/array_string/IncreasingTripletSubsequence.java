@@ -1,19 +1,19 @@
 package leet_code_75.array_string;
 
 public class IncreasingTripletSubsequence {
-    public boolean increasingTriplet(int[] numbers) {
-        int min = Integer.MAX_VALUE;
-        int medium = Integer.MAX_VALUE;
+    public boolean increasingTriplet(int[] nums) {
+        int first = Integer.MAX_VALUE;
+        int second = Integer.MAX_VALUE;
 
-        for (int number : numbers) {
-            if (number > medium) {
+        for (int num : nums) {
+            if (num > second) {
                 return true;
             }
-            if (number < min) {
-                min = number;
+            if (num < first) {
+                first = num;
             }
-            if (number > min) {
-                medium = number;
+            if (num > first) {
+                second = num;
             }
         }
 
