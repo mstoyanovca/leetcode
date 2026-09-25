@@ -2,24 +2,20 @@ package leet_code_75.two_pointers;
 
 public class ContainerWithMostWater {
     public int maxArea(int[] height) {
-        int leftPointer = 0;
-        int rightPointer = height.length - 1;
         int maxArea = 0;
+        int left = 0;
+        int right = height.length - 1;
 
-        while (leftPointer < height.length && rightPointer > 0 && rightPointer > leftPointer) {
-            int currentArea = calculateCurrentArea(height, leftPointer, rightPointer);
-            if (maxArea < currentArea) maxArea = currentArea;
-            if (height[leftPointer] < height[rightPointer]) {
-                leftPointer++;
+        while (left < right) {
+            int area = Math.min(height[left], height[right]) * (right - left);
+            maxArea = Math.max(area, maxArea);
+            if (height[left] < height[right]) {
+                left++;
             } else {
-                rightPointer--;
+                right--;
             }
         }
 
         return maxArea;
-    }
-
-    private int calculateCurrentArea(int[] height, int leftPointer, int rightPointer) {
-        return Math.min(height[leftPointer], height[rightPointer]) * (rightPointer - leftPointer);
     }
 }
