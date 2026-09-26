@@ -1,26 +1,41 @@
 package leet_code_75.sliding_window;
 
+import java.util.Set;
+
 public class MaxNumberOfVowelsInSubstring {
+    private final Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
 
     public int maxVowels(String s, int k) {
-        int max = 0;
-        for (int i = 0; i < k; i++) {
-            if (isVowel(s.charAt(i))) max++;
+        int left = 0;
+        int right = k - 1;
+        int current = 0;
+        int result;
+
+        for (int i = left; i <= right; i++) {
+            if (isVowel(s.charAt(i))) {
+                current++;
+            }
+        }
+        result = current;
+
+        while (right < s.length() - 1) {
+            if (isVowel(s.charAt(left))) {
+                current--;
+            }
+            left++;
+
+            if (isVowel(s.charAt(right + 1))) {
+                current++;
+            }
+            right++;
+
+            result = Math.max(result, current);
         }
 
-        int count = max;
-        for (int i = 1; i < s.length() - k + 1; i++) {
-            if (isVowel(s.charAt(i - 1))) count--;
-            if (isVowel(s.charAt(i + k - 1))) count++;
-            if (count > max) max = count;
-        }
-
-
-        return max;
+        return result;
     }
 
     private boolean isVowel(char c) {
-        final String vowels = "aeiou";
-        return vowels.indexOf(c) >= 0;
+        return vowels.contains(c);
     }
 }
