@@ -12,17 +12,19 @@ public class MaxConsecutiveOnes {
                 result = Math.max(result, right - left + 1);
                 right++;
             } else {
-                if (zeroes < k) {
+                if (zeroes < 1) {
                     zeroes++;
                     result = Math.max(result, right - left + 1);
                     right++;
                 } else {
-                    if (nums[left] == 0) zeroes--;
+                    if (nums[left] == 0) {
+                        zeroes--;
+                    }
                     left++;
                 }
             }
         }
 
-        return result;
+        return result - 1; // you must delete one element
     }
 }
