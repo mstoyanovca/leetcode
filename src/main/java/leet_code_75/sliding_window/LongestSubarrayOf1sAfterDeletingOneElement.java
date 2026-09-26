@@ -1,52 +1,30 @@
 package leet_code_75.sliding_window;
 
 public class LongestSubarrayOf1sAfterDeletingOneElement {
-    public int longestSubarray(int[] numbers) {
+    public int longestSubarray(int[] nums) {
+        int left = 0;
+        int right = 0;
         int zeroes = 0;
-        boolean allOnes = true;
-        int length = 0;
-        int maxLength = 0;
+        int result = 0;
 
-        // create the window:
-        for (int number : numbers) {
-            if (number == 1) {
-                // expand to the right by adding 1s:
-                length++;
-                maxLength = Math.max(length, maxLength);
+        while (right < nums.length) {
+            if (nums[right] == 1) {
+                result = Math.max(result, right - left + 1);
+                right++;
             } else {
-                // expand to the right by flipping a 0:
-                if (zeroes == 0) {
-                    zeroes = 1;
-                    allOnes = false;
-                    maxLength = Math.max(length, maxLength);
+                if (zeroes < 1) {
+                    zeroes++;
+                    result = Math.max(result, right - left + 1);
+                    right++;
                 } else {
-                    break;
-                }
-            }
-        }
-
-        // slide the window:
-        for (int i = length + zeroes; i < numbers.length; i++) {
-            if (numbers[i] == 1) {
-                // expand to the right by adding 1s:
-                length++;
-                maxLength = Math.max(length, maxLength);
-            } else {
-                if (zeroes == 0) {
-                    // expand to the right by flipping a 0:
-                    zeroes = 1;
-                    allOnes = false;
-                    length++;
-                    maxLength = Math.max(length, maxLength);
-                } else {
-                    // hit a zero on the right, free a zero on the left:
-                    while (length + zeroes < numbers.length && numbers[i - length - zeroes] == 1) {
-                        length--;
+                    if (nums[left] == 0) {
+                        zeroes--;
                     }
+                    left++;
                 }
             }
         }
 
-        return allOnes ? maxLength - 1 : maxLength;
+        return result - 1; // you must delete one element
     }
 }
