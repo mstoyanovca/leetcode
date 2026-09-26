@@ -1,48 +1,28 @@
 package leet_code_75.sliding_window;
 
 public class MaxConsecutiveOnes {
-    public int longestOnes(int[] numbers, int k) {
-        int windowLength = 0;
-        int maxWindowLength = 0;
+    public int longestOnes(int[] nums, int k) {
+        int left = 0;
+        int right = 0;
         int zeroes = 0;
+        int result = 0;
 
-        // create a window:
-        for (int number : numbers) {
-            if (number == 1) {
-                // expand to the right by adding 1s:
-                windowLength++;
-                maxWindowLength = Math.max(windowLength, maxWindowLength);
+        while (right < nums.length) {
+            if (nums[right] == 1) {
+                result = Math.max(result, right - left + 1);
+                right++;
             } else {
-                // expand to the right by flipping 0s:
                 if (zeroes < k) {
                     zeroes++;
-                    windowLength++;
-                    maxWindowLength = Math.max(windowLength, maxWindowLength);
+                    result = Math.max(result, right - left + 1);
+                    right++;
                 } else {
-                    break;
+                    if (nums[left] == 0) zeroes--;
+                    left++;
                 }
             }
         }
 
-        // slide the window:
-        for (int i = windowLength; i < numbers.length; i++) {
-            if (numbers[i] == 1) {
-                // expand to the right by adding 1s:
-                windowLength++;
-                maxWindowLength = Math.max(windowLength, maxWindowLength);
-            } else {
-                if (zeroes < k) {
-                    // expand to the right by flipping 0s:
-                    zeroes++;
-                    windowLength++;
-                    maxWindowLength = Math.max(windowLength, maxWindowLength);
-                } else {
-                    // hit a zero on the right, free a zero on the left:
-                    while (windowLength > 0 && numbers[i - windowLength] == 1) windowLength--;
-                }
-            }
-        }
-
-        return maxWindowLength;
+        return result;
     }
 }
