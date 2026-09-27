@@ -8,34 +8,21 @@ public class AsteroidCollision {
         Deque<Integer> deque = new ArrayDeque<>();
 
         for (int a : asteroids) {
-            if (deque.isEmpty()) {
-                deque.add(a);
-            } else if (!collide(deque.peekLast(), a)) {
+            if (deque.isEmpty() || deque.getLast() < 0 || a > 0) {
                 deque.add(a);
             } else {
-                while (!deque.isEmpty() &&
-                        collide(deque.peekLast(), a) &&
-                        Math.abs(deque.peekLast()) < Math.abs(a)) {
+                while (!deque.isEmpty() && deque.getLast() > 0 && deque.getLast() < -a) {
                     deque.removeLast();
                 }
-                if (!deque.isEmpty() &&
-                        collide(deque.peekLast(), a) &&
-                        Math.abs(deque.peekLast()) == Math.abs(a)) {
+
+                if (!deque.isEmpty() && deque.getLast() > 0 && deque.getLast() == -a) {
                     deque.removeLast();
-                } else if (!deque.isEmpty() &&
-                        collide(deque.peekLast(), a) &&
-                        Math.abs(deque.peekLast()) > Math.abs(a)) {
-                    // do not add to deque
-                } else {
+                } else if (deque.isEmpty() || deque.getLast() < 0) {
                     deque.add(a);
                 }
             }
         }
 
         return deque.stream().mapToInt(Integer::intValue).toArray();
-    }
-
-    private boolean collide(int previous, int next) {
-        return previous > 0 && next < 0;
     }
 }

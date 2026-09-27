@@ -16,6 +16,6 @@ public class RemovingStarsFromString {
             }
         }
 
-        return deque.stream().map(Object::toString).collect(Collectors.joining(""));
+        return deque.stream().map(String::valueOf).collect(Collectors.joining(""));
     }
 }
