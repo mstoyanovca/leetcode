@@ -1,6 +1,5 @@
 package leet_code_75.linked_list;
 
-// problem 29:
 public class DeleteMiddleNodeOfLinkedList {
     ListNode deleteMiddle(ListNode head) {
         if (head.next == null) return null;
@@ -16,10 +15,10 @@ public class DeleteMiddleNodeOfLinkedList {
         }
 
         if (fastPointer.next != null) {
-            // even number elements, slow is previous:
+            // odd number of elements:
             slowPointer.next = slowPointer.next.next;
         } else {
-            // odd number elements:
+            // even number of elements, slow is previous:
             previous.next = slowPointer.next;
         }
 
