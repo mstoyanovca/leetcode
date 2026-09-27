@@ -1,6 +1,8 @@
 package leet_code_75.hashmap_set;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class DetermineIfTwoStringsAreClose {
     public boolean closeStrings(String word1, String word2) {
@@ -18,10 +20,8 @@ public class DetermineIfTwoStringsAreClose {
 
         if (!charToOccurrences1.keySet().equals(charToOccurrences2.keySet())) return false;
 
-        List<Integer> values1 = new ArrayList<>(charToOccurrences1.values());
-        Collections.sort(values1);
-        List<Integer> values2 = new ArrayList<>(charToOccurrences2.values());
-        Collections.sort(values2);
+        List<Integer> values1 = charToOccurrences1.values().stream().sorted().toList();
+        List<Integer> values2 = charToOccurrences2.values().stream().sorted().toList();
         return values1.equals(values2);
     }
 }
