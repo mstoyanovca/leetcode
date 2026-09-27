@@ -1,14 +1,13 @@
 package leet_code_75.queue;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 
-// problem 28:
 public class Dota2Senate {
     static final String RADIANT = "Radiant";
     static final String DIRE = "Dire";
-    private final Queue<Integer> radiant = new LinkedList<>();
-    private final Queue<Integer> dire = new LinkedList<>();
+    private final Queue<Integer> radiant = new ArrayDeque<>();
+    private final Queue<Integer> dire = new ArrayDeque<>();
 
     public String predictPartyVictory(String senate) {
         int n = senate.length();
