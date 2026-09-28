@@ -1,6 +1,5 @@
 package leet_code_75.linked_list;
 
-// problem 30:
 public class OddEvenLinkedList {
     ListNode oddEvenList(ListNode head) {
         if (head == null || head.next == null) return head;

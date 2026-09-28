@@ -1,11 +1,11 @@
 package leet_code_75.linked_list;
 
-//problem 31:
 public class MaximumTwinSumOfLinkedList {
     int pairSum(ListNode head) {
         // length is always even:
         int maxIndex = 0;
         ListNode current = head;
+        int maxTwinSum = 0;
 
         // find the max index:
         while (current.next != null) {
@@ -21,8 +21,9 @@ public class MaximumTwinSumOfLinkedList {
         ListNode head2 = current.next;
         current.next = null;
 
-        // reverse the second list:
         if (head.next == null || head2.next == null) return head.val + head2.val;
+
+        // reverse the second list:
         ListNode previous = head2;
         current = head2.next;
         head2.next = null;
@@ -37,7 +38,6 @@ public class MaximumTwinSumOfLinkedList {
         head2 = current;
 
         // find maxSum:
-        int maxTwinSum = 0;
         ListNode current1 = head;
         ListNode current2 = head2;
         for (int i = 0; i <= maxIndex / 2; i++) {
