@@ -3,7 +3,6 @@ package leet_code_75.graphs_bfs;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// problem 46:
 public class NearestExitFromMaze {
     public int nearestExit(char[][] maze, int[] entrance) {
         int steps = 0;

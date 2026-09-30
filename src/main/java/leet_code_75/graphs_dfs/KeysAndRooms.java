@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toCollection;
 
-// problem 43:
 public class KeysAndRooms {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         List<Boolean> openedRooms = IntStream.range(0, rooms.size()).mapToObj(i -> i == 0).collect(toCollection(ArrayList::new));

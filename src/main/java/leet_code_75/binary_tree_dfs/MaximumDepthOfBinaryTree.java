@@ -1,6 +1,5 @@
 package leet_code_75.binary_tree_dfs;
 
-// problem 33:
 public class MaximumDepthOfBinaryTree {
     // DFS: depth first search:
     int maxDepth(TreeNode root) {

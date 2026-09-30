@@ -1,6 +1,5 @@
 package leet_code_75.bit_manipulation;
 
-// problem 69:
 // Minimum Flips to Make a OR b Equal to c
 public class MinimumFlips {
     public int minFlips(int a, int b, int c) {

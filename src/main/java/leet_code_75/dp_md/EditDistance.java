@@ -3,7 +3,6 @@ package leet_code_75.dp_md;
 import java.util.Arrays;
 import java.util.Collections;
 
-// problem 66:
 public class EditDistance {
     public int minDistance(String word1, String word2) {
         // m = rows, n = columns;

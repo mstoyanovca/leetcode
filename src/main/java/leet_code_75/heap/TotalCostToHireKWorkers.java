@@ -2,7 +2,6 @@ package leet_code_75.heap;
 
 import java.util.PriorityQueue;
 
-// problem 52:
 public class TotalCostToHireKWorkers {
     public long totalCost(int[] costs, int k, int candidates) {
         // hire k workers, from # of either the first, or the last candidates, the smaller index breaks the tie;

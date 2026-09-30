@@ -1,6 +1,5 @@
 package leet_code_75.dp_1d;
 
-// problem 61:
 public class HouseRobber {
     public int rob(int[] nums) {
         int n = nums.length;

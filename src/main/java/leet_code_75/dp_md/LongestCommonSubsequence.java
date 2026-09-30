@@ -1,6 +1,5 @@
 package leet_code_75.dp_md;
 
-// problem 64:
 public class LongestCommonSubsequence {
     public int longestCommonSubsequence(String text1, String text2) {
         // m = rows, n = columns;

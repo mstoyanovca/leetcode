@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-// problem 40:
 public class MaximumLevelSum {
     int maxLevelSum(TreeNode root) {
         if (root == null) return 0;

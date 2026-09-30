@@ -1,6 +1,5 @@
 package leet_code_75.bit_manipulation;
 
-// problem 67:
 public class CountingBits {
     public int[] countBits(int n) {
         int[] ans = new int[n + 1];

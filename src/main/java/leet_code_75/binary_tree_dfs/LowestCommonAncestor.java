@@ -1,6 +1,5 @@
 package leet_code_75.binary_tree_dfs;
 
-// problem 38
 public class LowestCommonAncestor {
     TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || p.equals(root) || q.equals(root)) return root;

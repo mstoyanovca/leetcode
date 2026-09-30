@@ -3,7 +3,6 @@ package leet_code_75.binary_search_tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// problem 41;
 public class SearchBST {
     TreeNode searchBST(TreeNode root, int val) {
         if (root == null || root.val == val) return root;

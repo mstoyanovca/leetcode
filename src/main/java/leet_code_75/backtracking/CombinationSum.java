@@ -3,7 +3,6 @@ package leet_code_75.backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-// problem 58:
 public class CombinationSum {
     // 2 <= k <= 9
     public List<List<Integer>> combinationSum3(int k, int n) {

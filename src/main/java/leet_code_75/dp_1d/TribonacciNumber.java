@@ -1,6 +1,5 @@
 package leet_code_75.dp_1d;
 
-// problem 59:
 public class TribonacciNumber {
     // 0 <= n <= 37
     public int tribonacci(int n) {

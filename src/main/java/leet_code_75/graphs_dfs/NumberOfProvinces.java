@@ -1,6 +1,5 @@
 package leet_code_75.graphs_dfs;
 
-// problem 44:
 public class NumberOfProvinces {
     public int findCircleNum(int[][] isConnected) {
         // isConnected is a square symmetric array:

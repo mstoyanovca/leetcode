@@ -1,6 +1,5 @@
 package leet_code_75.binary_tree_dfs;
 
-// problem 37;
 // leetcode website doesn't recognize enumerations, that's why the constants;
 public class LongestZigZagPath {
     private static final String LEFT = "LEFT";

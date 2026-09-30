@@ -1,6 +1,5 @@
 package leet_code_75.binary_search;
 
-// problem 56:
 public class KokoEatingBananas {
     public int minEatingSpeed(int[] piles, int h) {
         // two pointers:

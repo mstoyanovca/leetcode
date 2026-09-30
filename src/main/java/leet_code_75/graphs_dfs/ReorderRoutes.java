@@ -3,7 +3,6 @@ package leet_code_75.graphs_dfs;
 import java.util.ArrayList;
 import java.util.List;
 
-// problem 45:
 public class ReorderRoutes {
     public int minReorder(int n, int[][] connections) {
         // connections.length is the number of connections between cities;

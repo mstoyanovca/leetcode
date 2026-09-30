@@ -2,7 +2,6 @@ package leet_code_75.binary_search;
 
 import java.util.Arrays;
 
-// problem 54:
 public class SpellsAndPotions {
     public int[] successfulPairs(int[] spells, int[] potions, long success) {
         final int n = spells.length;

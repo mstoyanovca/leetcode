@@ -3,7 +3,6 @@ package leet_code_75.binary_tree_dfs;
 import java.util.ArrayList;
 import java.util.List;
 
-// problem 34:
 public class LeafSimilarTrees {
     boolean leafSimilar(TreeNode root1, TreeNode root2) {
         return dfs(root1).equals(dfs(root2));

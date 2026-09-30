@@ -3,7 +3,6 @@ package leet_code_75.graphs_bfs;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// problem 47:
 public class RottingOranges {
     public int orangesRotting(int[][] grid) {
         Queue<int[]> rottenOranges = createQueue(grid);

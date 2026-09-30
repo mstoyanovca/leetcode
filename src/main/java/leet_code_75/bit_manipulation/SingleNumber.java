@@ -1,6 +1,5 @@
 package leet_code_75.bit_manipulation;
 
-// problem 68:
 public class SingleNumber {
     public int singleNumber(int[] nums) {
         int result = 0;

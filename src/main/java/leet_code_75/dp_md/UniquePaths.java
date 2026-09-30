@@ -1,6 +1,5 @@
 package leet_code_75.dp_md;
 
-// problem 63:
 public class UniquePaths {
     public int uniquePaths(int m, int n) {
         // m - rows, n - columns;

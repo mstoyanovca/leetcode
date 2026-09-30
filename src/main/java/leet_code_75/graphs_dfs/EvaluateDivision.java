@@ -2,7 +2,6 @@ package leet_code_75.graphs_dfs;
 
 import java.util.*;
 
-// problem 46:
 public class EvaluateDivision {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String, Map<String, Double>> graph = createGraph(equations, values);

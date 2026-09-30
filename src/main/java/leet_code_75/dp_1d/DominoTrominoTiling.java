@@ -1,6 +1,5 @@
 package leet_code_75.dp_1d;
 
-// problem 62:
 public class DominoTrominoTiling {
     public int numTilings(int n) {
         if (n <= 2) return n;

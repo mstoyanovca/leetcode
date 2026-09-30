@@ -3,7 +3,6 @@ package leet_code_75.heap;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-// problem 51:
 public class MaximumSubsequenceScore {
     public long maxScore(int[] numbers1, int[] numbers2, int k) {
         long result = 0;

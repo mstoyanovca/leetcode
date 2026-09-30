@@ -18,7 +18,7 @@ import java.util.Queue;
  * BFS is more suitable for searching vertices closer to the given source;
  */
 public class BinaryTreeRightSideView {
-    // problem 39, Queue/FIFO:
+    // Queue/FIFO:
     List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;

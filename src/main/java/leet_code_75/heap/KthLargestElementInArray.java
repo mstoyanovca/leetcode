@@ -3,7 +3,6 @@ package leet_code_75.heap;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-// problem 48:
 /* PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder()); */
 public class KthLargestElementInArray {

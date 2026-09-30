@@ -3,7 +3,6 @@ package leet_code_75.intervals;
 import java.util.Arrays;
 import java.util.Comparator;
 
-// problem 73:
 // MinimumNumberOfArrowsToBurstBalloons
 public class MinimumNumberOfArrows {
     public int findMinArrowShots(int[][] points) {

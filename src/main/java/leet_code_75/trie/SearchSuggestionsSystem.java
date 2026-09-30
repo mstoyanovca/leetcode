@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// problem 71:
 public class SearchSuggestionsSystem {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Arrays.sort(products);

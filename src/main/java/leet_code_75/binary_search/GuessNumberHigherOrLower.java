@@ -1,6 +1,5 @@
 package leet_code_75.binary_search;
 
-// problem 53:
 public class GuessNumberHigherOrLower {
     public int guessNumber(int n) {
         if (n == 1) return 1;

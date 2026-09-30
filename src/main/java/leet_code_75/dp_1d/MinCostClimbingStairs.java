@@ -1,6 +1,5 @@
 package leet_code_75.dp_1d;
 
-// problem 60:
 public class MinCostClimbingStairs {
     // cost.length >= 2
     public int minCostClimbingStairs(int[] cost) {
