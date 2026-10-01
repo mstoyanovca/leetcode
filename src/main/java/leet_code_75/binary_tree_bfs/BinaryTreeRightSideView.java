@@ -7,22 +7,23 @@ import java.util.Queue;
 
 /**
  * DFS stands for Depth First Search;
- * DFS builds the tree subtree by subtree;
- * DFS uses stack data structure;
- * It works on the concept of LIFO;
- * DFS is more suitable when there are solutions away from source.
+ * it builds the tree subtree by subtree;
+ * it uses stack data structure;
+ * it works on the concept of LIFO;
+ * it is more suitable when there are solutions away from source;
  * BFS stands for Breadth First Search;
- * BFS builds the tree level by level;
- * BFS uses Queue data structure for finding the shortest path;
- * It works on the concept of FIFO;
- * BFS is more suitable for searching vertices closer to the given source;
+ * it builds the tree level by level;
+ * it uses Queue data structure for finding the shortest path;
+ * it works on the concept of FIFO;
+ * it is more suitable for searching vertices closer to the given source;
  */
 public class BinaryTreeRightSideView {
+    private final Queue<TreeNode> queue = new ArrayDeque<>();
+    private final List<Integer> result = new ArrayList<>();
+
     // Queue/FIFO:
     List<Integer> rightSideView(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
         if (root == null) return result;
-        Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
