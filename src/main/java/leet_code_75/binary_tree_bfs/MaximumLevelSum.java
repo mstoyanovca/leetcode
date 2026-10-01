@@ -1,34 +1,43 @@
 package leet_code_75.binary_tree_bfs;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class MaximumLevelSum {
     int maxLevelSum(TreeNode root) {
         if (root == null) return 0;
-        Queue<TreeNode> nodesPerLevel = new LinkedList<>();
-        nodesPerLevel.add(root);
-        int maxLevelSum = root.val;
-        List<Integer> sumsPerLevel = new ArrayList<>();
 
-        while (!nodesPerLevel.isEmpty()) {
-            int currentLevelSum = nodesPerLevel.stream().mapToInt(n -> n.val).sum();
-            maxLevelSum = Math.max(maxLevelSum, currentLevelSum);
-            sumsPerLevel.add(currentLevelSum);
+        final List<Integer> levelSums = new ArrayList<>();
+        final Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        int maxLevelSum = Integer.MIN_VALUE;
 
-            int size = nodesPerLevel.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = nodesPerLevel.remove();
-                if (node.left != null) nodesPerLevel.add(node.left);
-                if (node.right != null) nodesPerLevel.add(node.right);
+        while (!queue.isEmpty()) {
+            int level = queue.size();
+            int currentLevelSum = 0;
+
+            for (int i = 0; i < level; i++) {
+                TreeNode currentNode = queue.remove();
+                currentLevelSum += currentNode.val;
+
+                if (currentNode.left != null) {
+                    queue.add(currentNode.left);
+                }
+                if (currentNode.right != null) {
+                    queue.add(currentNode.right);
+                }
             }
+
+            levelSums.add(currentLevelSum);
+            maxLevelSum = Math.max(maxLevelSum, currentLevelSum);
         }
 
-        for (int i = 0; i < sumsPerLevel.size(); i++) {
-            if (sumsPerLevel.get(i) == maxLevelSum) return i + 1;
+        for (int i = 0; i < levelSums.size(); i++) {
+            if (levelSums.get(i) == maxLevelSum) return i + 1;
         }
+
         return 0;
     }
 }

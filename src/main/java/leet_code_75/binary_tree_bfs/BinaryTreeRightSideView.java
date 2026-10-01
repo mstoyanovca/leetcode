@@ -18,10 +18,9 @@ import java.util.Queue;
  * it is more suitable for searching vertices closer to the given source;
  */
 public class BinaryTreeRightSideView {
-    private final Queue<TreeNode> queue = new ArrayDeque<>();
     private final List<Integer> result = new ArrayList<>();
+    private final Queue<TreeNode> queue = new ArrayDeque<>();
 
-    // Queue/FIFO:
     List<Integer> rightSideView(TreeNode root) {
         if (root == null) return result;
         queue.add(root);
