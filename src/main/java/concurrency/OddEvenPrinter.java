@@ -1,16 +1,16 @@
-package dsa_summary;
+package concurrency;
 
 // synchronized(this) - Intrinsic lock
 // ReentrantLock
 // ReentrantReadWriteLock
 // StampedLock
 public class OddEvenPrinter {
-    private final int limit = 10;
-    private int counter;
+    private static final int N = 10;
+    private static int counter;
 
     public void printOdd() {
         synchronized (this) {
-            while (counter < limit) {
+            while (counter < N) {
                 while (counter % 2 == 0) {
                     try {
                         wait();
@@ -29,8 +29,8 @@ public class OddEvenPrinter {
 
     public void printEven() {
         synchronized (this) {
-            while (counter < limit) {
-                while (counter % 2 != 0) {
+            while (counter < N) {
+                while (counter % 2 == 1) {
                     try {
                         wait();
                     } catch (InterruptedException e) {
