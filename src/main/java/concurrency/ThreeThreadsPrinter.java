@@ -15,7 +15,7 @@ public class ThreeThreadsPrinter {
 
         @Override
         public void run() {
-            while (counter <= N) {
+            while (counter < N) {
                 synchronized (lock) {
                     if (counter % THREADS == remainder) {
                         System.out.print(Thread.currentThread().getName() + " : " + counter + "\n");
