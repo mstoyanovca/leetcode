@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PathSumTest {
-    private final PathSum pathSum = new PathSum();
+public class PathSumIIITest {
+    private final PathSumIII pathSum = new PathSumIII();
 
     @Test
     void example1() {

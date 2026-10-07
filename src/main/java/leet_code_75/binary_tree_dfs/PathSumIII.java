@@ -1,6 +1,6 @@
 package leet_code_75.binary_tree_dfs;
 
-public class PathSum {
+public class PathSumIII {
     int pathSum(TreeNode root, int targetSum) {
         if (root == null) return 0;
         return dfs(root, 0, targetSum) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);

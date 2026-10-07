@@ -5,17 +5,25 @@ import java.util.List;
 
 public class LeafSimilarTrees {
     boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        return dfs(root1).equals(dfs(root2));
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+
+        dfs(root1, list1);
+        dfs(root2, list2);
+
+        return list1.equals(list2);
     }
 
-    private List<Integer> dfs(TreeNode root) {
-        List<Integer> leafs = new ArrayList<>();
-        if (root == null) return leafs;
+    private void dfs(TreeNode node, List<Integer> list) {
+        if (node == null) {
+            return;
+        }
+        if (node.left == null && node.right == null) {
+            list.add(node.val);
+            return;
+        }
 
-        leafs.addAll(dfs(root.left));
-        leafs.addAll(dfs(root.right));
-
-        if (root.left == null && root.right == null) leafs.add(root.val);
-        return leafs;
+        dfs(node.left, list);
+        dfs(node.right, list);
     }
 }
