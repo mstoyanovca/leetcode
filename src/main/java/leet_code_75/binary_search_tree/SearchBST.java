@@ -1,24 +1,15 @@
 package leet_code_75.binary_search_tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class SearchBST {
     TreeNode searchBST(TreeNode root, int val) {
-        if (root == null || root.val == val) return root;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
+        if (root == null) return null;
 
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.remove();
-                if (node.val == val) return node;
-                if (node.left != null) queue.add(node.left);
-                if (node.right != null) queue.add(node.right);
-            }
+        if (root.val == val) {
+            return root;
+        } else if (root.val > val) {
+            return searchBST(root.left, val);
+        } else {
+            return searchBST(root.right, val);
         }
-
-        return null;
     }
 }
