@@ -1,8 +1,5 @@
 package leet_code_75.binary_search_tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class DeleteNode {
     TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) return null;

@@ -63,7 +63,11 @@ public class Customer {
             };
             customerIdToCurrentBalance.put(customer.getId(), updatedBalance);
         }
-
         System.out.println(customerIdToCurrentBalance);
+
+        Customer c0 = new Customer(1L, "John Smith", 25.26, CustomerType.NEW);
+        Customer c1 = c0;
+        System.out.println("hashCode0 = " + c0.hashCode());
+        System.out.println("hashCode1 = " + c1.hashCode());
     }
 }
