@@ -1,4 +1,4 @@
-package concurrency;
+package core_java.concurrency;
 
 // synchronized(this) - Intrinsic lock
 // ReentrantLock

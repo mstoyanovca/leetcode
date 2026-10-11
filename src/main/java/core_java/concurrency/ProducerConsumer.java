@@ -1,4 +1,4 @@
-package concurrency;
+package core_java.concurrency;
 
 import java.util.UUID;
 import java.util.concurrent.Semaphore;

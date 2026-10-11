@@ -1,4 +1,4 @@
-package concurrency;
+package core_java.concurrency;
 
 public class ThreeThreadsPrinter {
     private static int counter = 0;
