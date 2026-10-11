@@ -1,4 +1,4 @@
-package core_java.bird;
+package core_java.polymorphism;
 
 public class Seagull extends AquaticBird implements Bird {
     public Seagull(String name) {

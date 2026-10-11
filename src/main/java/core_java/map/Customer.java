@@ -1,4 +1,4 @@
-package core_java.map_exercise;
+package core_java.map;
 
 import java.util.HashMap;
 import java.util.List;
