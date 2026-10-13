@@ -3,6 +3,7 @@ package core_java.map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Customer {
     private long id;
@@ -47,6 +48,27 @@ public class Customer {
 
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer customer)) return false;
+        return getId() == customer.getId() && Double.compare(getPurchase(), customer.getPurchase()) == 0 && Objects.equals(getName(), customer.getName()) && getCustomerType() == customer.getCustomerType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getPurchase(), getCustomerType());
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", purchase=" + purchase +
+                ", customerType=" + customerType +
+                '}';
     }
 
     static void main(String[] args) {
