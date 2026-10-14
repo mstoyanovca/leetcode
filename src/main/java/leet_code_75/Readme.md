@@ -30,3 +30,8 @@
 - it uses Queue data structure;
 - it works on the concept of FIFO;
 - it is more suitable for searching vertices closer to the given source;
+
+### Priority Queue
+
+- PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
+- PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder ());

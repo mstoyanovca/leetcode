@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 public class KthLargestElementInArray {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        for (int i : nums) maxHeap.add(i);
+        for (int num : nums) maxHeap.add(num);
         for (int i = 1; i < k; i++) {
             maxHeap.remove();
         }
