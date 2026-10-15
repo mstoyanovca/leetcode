@@ -4,22 +4,22 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class MaximumSubsequenceScore {
-    public long maxScore(int[] numbers1, int[] numbers2, int k) {
-        long result = 0;
-        long sum = 0;
+    public long maxScore(int[] nums1, int[] nums2, int k) {
         // numbers1.length = numbers2.length
-        int[][] tuples = new int[numbers1.length][2];
-        for (int i = 0; i < numbers1.length; ++i) tuples[i] = new int[]{numbers1[i], numbers2[i]};
-        // sort by the second element descending:
-        Arrays.sort(tuples, (a, b) -> Integer.compare(b[1], a[1]));
+        int n = nums1.length;
+        int[][] tuples = new int[n][2];
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        long sum = 0;
+        long result = 0;
 
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
+        for (int i = 0; i < n; ++i) tuples[i] = new int[]{nums1[i], nums2[i]};
+        Arrays.sort(tuples, (a, b) -> b[1] - a[1]);
 
         for (int[] tuple : tuples) {
-            maxHeap.add(tuple[0]);
+            minHeap.add(tuple[0]);
             sum += tuple[0];
-            if (maxHeap.size() > k) sum -= maxHeap.remove();
-            if (maxHeap.size() == k) result = Math.max(result, (sum * tuple[1]));
+            if (minHeap.size() > k) sum -= minHeap.remove();
+            if (minHeap.size() == k) result = Math.max(result, (sum * tuple[1]));
         }
 
         return result;

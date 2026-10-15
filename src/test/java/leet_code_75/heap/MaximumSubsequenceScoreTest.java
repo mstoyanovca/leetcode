@@ -22,4 +22,12 @@ public class MaximumSubsequenceScoreTest {
 
         assertEquals(30, maximumScore.maxScore(nums1, nums2, 1));
     }
+
+    @Test
+    void example3() {
+        int[] nums1 = {2, 1, 14, 12};
+        int[] nums2 = {11, 7, 13, 6};
+
+        assertEquals(168, maximumScore.maxScore(nums1, nums2, 3));
+    }
 }
