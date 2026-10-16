@@ -9,17 +9,18 @@ public class SpellsAndPotions {
         int[] pairs = new int[n];
 
         Arrays.sort(potions);
+
         for (int i = 0; i < n; i++) {
             int left = 0;
             int right = m - 1;
 
-            // two pointers technique:
             while (left <= right) {
-                int current = left + (right - left) / 2;
-                if ((long) spells[i] * potions[current] >= success) {
-                    right = --current;
+                int middle = left + (right - left) / 2;
+
+                if ((long) spells[i] * potions[middle] >= success) {
+                    right = middle - 1;
                 } else {
-                    left = ++current;
+                    left = middle + 1;
                 }
             }
 
