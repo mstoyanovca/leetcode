@@ -2,27 +2,27 @@ package leet_code_75.binary_search;
 
 public class GuessNumberHigherOrLower {
     public int guessNumber(int n) {
-        if (n == 1) return 1;
-        return binarySearch(n / 2, 1, n);
-    }
+        int left = 0;
+        int right = n - 1;
 
-    // recursive:
-    private int binarySearch(int guess, int lowerLimit, int upperLimit) {
-        return switch (guess(guess)) {
-            case -1 ->
-                // your guess is higher than the number I picked, it rounds down:
-                    binarySearch(guess / 2, lowerLimit, guess);
-            case 1 ->
-                // your guess is lower than the number I picked, add 1 to round up:
-                    binarySearch(guess + (upperLimit - guess + 1) / 2, guess, upperLimit);
-            default ->
-                // your guess is equal to the number I picked:
-                    guess;
-        };
+        while (left <= right) {
+            int middle = left + (right - left) / 2;
+
+            // middle is an index:
+            if (guess(middle + 1) == -1) {
+                right = middle - 1;
+            } else if (guess(middle + 1) == 1) {
+                left = middle + 1;
+            } else {
+                return middle + 1;
+            }
+        }
+
+        return -1;
     }
 
     private int guess(int num) {
-        int pick = 2;
+        int pick = 1;
         return Integer.compare(pick, num);
     }
 }
