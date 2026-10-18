@@ -1,9 +1,11 @@
 package core_java.concurrency;
 
-// synchronized(this) - Intrinsic lock
-// ReentrantLock
-// ReentrantReadWriteLock
-// StampedLock
+/*
+ * synchronized(this) - Intrinsic lock
+ * ReentrantLock
+ * ReentrantReadWriteLock
+ * StampedLock
+ */
 public class OddEvenPrinter {
     private static final int N = 10;
     private static int counter;
