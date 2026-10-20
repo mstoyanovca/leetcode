@@ -2,16 +2,15 @@ package leet_code_75.binary_search;
 
 public class KokoEatingBananas {
     public int minEatingSpeed(int[] piles, int h) {
-        // two pointers:
         int left = 1;
         int right = findMax(piles);
 
         while (left <= right) {
-            int current = left + (right - left + 1) / 2;
-            if (eatsAllWithinTime(piles, current, h)) {
-                right = current - 1;
+            int middle = left + (right - left + 1) / 2;
+            if (eatsAllWithinTime(piles, middle, h)) {
+                right = middle - 1;
             } else {
-                left = current + 1;
+                left = middle + 1;
             }
         }
 
