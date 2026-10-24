@@ -6,13 +6,13 @@ public class RemoveDuplicatesFromSortedArray1 {
 
         // time complexity O(n)
         // space complexity O(1)
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > nums[k]) {
+        for (int num : nums) {
+            if (k < 1 || num > nums[k - 1]) {
+                nums[k] = num;
                 k++;
-                nums[k] = nums[i];
             }
         }
 
-        return k + 1;
+        return k;
     }
 }
