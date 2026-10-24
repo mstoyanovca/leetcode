@@ -2,10 +2,8 @@ package top_interview_150.array_string;
 
 public class RemoveElement {
     public int removeElement(int[] nums, int val) {
-        int n = nums.length;
-        if (n == 0) return 0;
         int left = 0;
-        int right = Math.max(0, n - 1);
+        int right = nums.length - 1;
         int result = 0;
 
         // time complexity O(n)
@@ -13,9 +11,7 @@ public class RemoveElement {
         while (right >= left) {
             if (nums[right] == val) {
                 right--;
-                continue;
-            }
-            if (nums[left] == val) {
+            } else if (nums[left] == val) {
                 nums[left] = nums[right];
                 left++;
                 right--;
