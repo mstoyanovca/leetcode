@@ -7,24 +7,24 @@ public class MajorityElement {
         int n = nums.length;
         int majority = n / 2 + 1;
         int left = 0;
-        int right = 0;
-        int result = 0;
+        int counter = 0;
 
         Arrays.sort(nums);
 
         // time complexity O(n * log(n))
         // space complexity O(1)
-        while (right < n) {
-            while (right < n && nums[right] == nums[left]) right++;
-
-            if (right - left >= majority) {
-                result = nums[left];
-                break;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == nums[left]) {
+                counter++;
             } else {
-                left = right;
+                left = i;
+                counter = 1;
+            }
+            if (counter >= majority) {
+                return nums[i];
             }
         }
 
-        return result;
+        return -1;
     }
 }
