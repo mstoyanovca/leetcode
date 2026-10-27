@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class ProducerConsumer {
-    private static String temp;
+    private static String buffer;
     private static final Semaphore supplierSemaphore = new Semaphore(1);
     private static final Semaphore producerSemaphore = new Semaphore(0);
 
@@ -16,8 +16,8 @@ public class ProducerConsumer {
                 try {
                     supplierSemaphore.acquire();
                     Supplier<String> producer = () -> UUID.randomUUID().toString();
-                    temp = producer.get();
-                    System.out.println("UUID from producer: " + temp);
+                    buffer = producer.get();
+                    System.out.println("UUID from producer: " + buffer);
                     producerSemaphore.release();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -30,7 +30,7 @@ public class ProducerConsumer {
                 try {
                     producerSemaphore.acquire();
                     Consumer<String> consumer = str -> System.out.println("UUID from consumer: " + str);
-                    consumer.accept(temp);
+                    consumer.accept(buffer);
                     supplierSemaphore.release();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();

@@ -3,7 +3,6 @@ package top_interview_150.array_string;
 public class RotateArray {
     public void rotate(int[] nums, int k) {
         int n = nums.length;
-        if (n == 1 || n == k) return;
         // if k > n, rotating every n times brings the same state, normalize:
         k %= n;
 
@@ -19,6 +18,7 @@ public class RotateArray {
             int acc = nums[left];
             nums[left] = nums[right];
             nums[right] = acc;
+
             left++;
             right--;
         }
