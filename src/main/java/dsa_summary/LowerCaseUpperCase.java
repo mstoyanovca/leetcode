@@ -28,6 +28,6 @@ public class LowerCaseUpperCase {
         System.out.println("aaAbcCB = " + count("aaAbcCB"));  // should be 2
         System.out.println("xyzXYZabcABC = " + count("xyzXYZabcABC"));  // should be 6
         System.out.println("abcdCE = " + count("abcdCE"));  // should be 0
-        System.out.println("abcdBCD = " + count("abcdBCD"));  // should be 3
+        System.out.println("abcdBCDE = " + count("abcdBCDE"));  // should be 3
     }
 }
