@@ -25,4 +25,9 @@ public class LowerCaseUpperCaseTest {
     public void example4Test() {
         assertEquals(3, count("abcdBCDE"));
     }
+
+    @Test
+    public void example5Test() {
+        assertEquals(1, count("AABcCDe"));
+    }
 }
