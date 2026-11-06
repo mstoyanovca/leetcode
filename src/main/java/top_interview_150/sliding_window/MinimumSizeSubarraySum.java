@@ -5,22 +5,25 @@ public class MinimumSizeSubarraySum {
         int n = nums.length;
         int left = 0;
         int right = 0;
-        int sum = nums[0];
-        int result = n + 1;
+        int currentSum = nums[0];
+        int minLength = n + 1;
 
         // time complexity O(n)
         // space complexity O(1)
-        while (left < n && right < n) {
-            if (sum >= target) {
-                result = Math.min(result, right - left + 1);
-                if (left < n - 1) sum -= nums[left];
-                left++;
-            } else {
-                if (right < n - 1) sum += nums[right + 1];
+        while (true) {
+            if (currentSum < target) {
                 right++;
+                if (right == n) break;
+                currentSum += nums[right];
+            } else {
+                minLength = Math.min(minLength, right - left + 1);
+                currentSum -= nums[left];
+                left++;
+                if (left == n) break;
+                if (left > right) right = left;
             }
         }
 
-        return result == n + 1 ? 0 : result;
+        return minLength == n + 1 ? 0 : minLength;
     }
 }
