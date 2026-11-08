@@ -6,7 +6,7 @@ package core_java.concurrency;
  * ReentrantReadWriteLock
  * StampedLock
  */
-public class OddEvenPrinter {
+public class OddEvenIntrinsicLock {
     private static final int N = 10;
     private static int counter;
 
@@ -22,7 +22,7 @@ public class OddEvenPrinter {
                     }
                 }
 
-                System.out.print(Thread.currentThread().getName() + " : " + counter + "\n");
+                System.out.println(Thread.currentThread().getName() + " : " + counter);
                 counter++;
                 notify();
             }
@@ -41,7 +41,7 @@ public class OddEvenPrinter {
                     }
                 }
 
-                System.out.print(Thread.currentThread().getName() + " : " + counter + "\n");
+                System.out.println(Thread.currentThread().getName() + " : " + counter);
                 counter++;
                 notify();
             }
@@ -49,7 +49,7 @@ public class OddEvenPrinter {
     }
 
     static void main(String[] args) {
-        OddEvenPrinter printer = new OddEvenPrinter();
+        OddEvenIntrinsicLock printer = new OddEvenIntrinsicLock();
 
         Thread oddPrinterThread = new Thread(printer::printOdd);
         Thread evenPrinterThread = new Thread(printer::printEven);
