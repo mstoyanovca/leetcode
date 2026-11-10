@@ -5,17 +5,17 @@ import java.util.Map;
 
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
+        int n = s.length();
         int left = 0;
-        int remainingChars = t.length();
-        int[] minIndexes = new int[2];
-        minIndexes[1] = Integer.MAX_VALUE;
-
         Map<Character, Integer> tMap = new HashMap<>();
+        int remainingChars = t.length();
+        String minSubstring = "";
+
         for (char c : t.toCharArray()) tMap.put(c, tMap.getOrDefault(c, 0) + 1);
 
         // time complexity O(n)
         // space complexity O(m)
-        for (int right = 0; right < s.length(); right++) {
+        for (int right = 0; right < n; right++) {
             char rightChar = s.charAt(right);
             if (tMap.containsKey(rightChar)) {
                 if (tMap.get(rightChar) > 0) remainingChars--;
@@ -23,10 +23,8 @@ public class MinimumWindowSubstring {
             }
 
             while (remainingChars == 0) {
-                if (right - left < minIndexes[1] - minIndexes[0]) {
-                    minIndexes[0] = left;
-                    minIndexes[1] = right;
-                }
+                if (minSubstring.isEmpty() || right - left + 1 < minSubstring.length()) minSubstring = s.substring(left, right + 1);
+
                 char leftChar = s.charAt(left);
                 if (tMap.containsKey(leftChar)) {
                     tMap.put(leftChar, tMap.get(leftChar) + 1);
@@ -36,7 +34,6 @@ public class MinimumWindowSubstring {
             }
         }
 
-        // the second argument in substring is exclusive:
-        return minIndexes[1] < Integer.MAX_VALUE ? s.substring(minIndexes[0], minIndexes[1] + 1) : "";
+        return minSubstring;
     }
 }
