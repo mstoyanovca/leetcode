@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RansomNote {
-    // time complexity O(m + n)
-    // space complexity O(1) ?!
+    // time complexity O(n + m)
+    // space complexity O(m)
     public boolean canConstruct(String ransomNote, String magazine) {
         Map<Character, Integer> map = new HashMap<>();
         for (char c : magazine.toCharArray()) map.put(c, map.getOrDefault(c, 0) + 1);

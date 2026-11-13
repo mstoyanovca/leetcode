@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HappyNumber {
+    // time complexity O(log(n))
+    // space complexity O(1)
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<>();
 
