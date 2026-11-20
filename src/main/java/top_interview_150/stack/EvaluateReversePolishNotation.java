@@ -13,11 +13,11 @@ public class EvaluateReversePolishNotation {
 
         for (String token : tokens) {
             if (!operators.contains(token)) {
-                // token is an integer:
                 deque.add(token);
             } else {
                 int secondOperand = Integer.parseInt(deque.removeLast());
                 int firstOperand = Integer.parseInt(deque.removeLast());
+
                 int result = switch (token) {
                     case "+" -> firstOperand + secondOperand;
                     case "-" -> firstOperand - secondOperand;
@@ -25,6 +25,7 @@ public class EvaluateReversePolishNotation {
                     case "/" -> firstOperand / secondOperand;
                     default -> 0;
                 };
+
                 deque.add(String.valueOf(result));
             }
         }

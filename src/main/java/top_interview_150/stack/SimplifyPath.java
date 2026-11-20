@@ -10,13 +10,13 @@ public class SimplifyPath {
         // I assume:
         // space complexity O(n)
         // time complexity O(n)
-        for (String s : path.split("/")) {
-            if (s.isEmpty() || s.equals(".")) {
-                continue;
-            } else if (s.equals("..")) {
-                if (!deque.isEmpty()) deque.removeLast();
-            } else {
-                deque.add(s);
+        for (String dir : path.split("/")) {
+            if (!dir.isEmpty() && !dir.equals(".")) {
+                if (dir.equals("..")) {
+                    if (!deque.isEmpty()) deque.removeLast();
+                } else {
+                    deque.add(dir);
+                }
             }
         }
 
