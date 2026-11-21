@@ -1,6 +1,8 @@
 package top_interview_150.linked_list;
 
 public class MergeTwoSortedLists {
+    // time complexity O(n + m)
+    // space complexity O(1)
     ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode current = new ListNode();
         ListNode head = current;
@@ -13,6 +15,7 @@ public class MergeTwoSortedLists {
                 current.next = list2;
                 list2 = list2.next;
             }
+
             current = current.next;
         }
 
