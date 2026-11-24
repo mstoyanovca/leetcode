@@ -7,37 +7,30 @@ public class CopyListWithRandomPointer {
     Node copyRandomList(Node head) {
         if (head == null) return null;
 
-        // time complexity O(n)
-        // space complexity O(1)
-        Node currentNode = head;
-        while (currentNode != null) {
-            // interweaving algorithm: A -> A' -> B -> B' -> C -> C' -> D -> D'
-            Node newNode = new Node(currentNode.val);
-            newNode.next = currentNode.next;
-            currentNode.next = newNode;
+        Node current = head;
+        while (current != null) {
+            // interweaving the new nodes with the existing ones:
+            Node copy = new Node(current.val);
+            copy.next = current.next;
+            current.next = copy;
 
-            currentNode = newNode.next;
+            current = current.next.next;
         }
 
-        currentNode = head;
-        // set up the random pointers:
-        while (currentNode != null) {
-            Node currentNewNode = currentNode.next;
-            if (currentNode.random != null) currentNewNode.random = currentNode.random.next;
-
-            currentNode = currentNewNode.next;
+        current = head;
+        while (current != null) {
+            current.next.random = current.random != null ? current.random.next : null;
+            current = current.next.next;
         }
 
-        Node oldNode = head;
-        Node newNode = head.next;
+        current = head;
         Node result = head.next;
-        // split the old and new linked lists:
-        while (oldNode != null && newNode != null) {
-            oldNode.next = oldNode.next.next;
-            newNode.next = newNode.next != null ? newNode.next.next : null;
+        while (current != null) {
+            Node copy = current.next;
+            current.next = current.next.next;
+            copy.next = current.next != null ? current.next.next : null;
 
-            oldNode = oldNode.next;
-            newNode = newNode.next;
+            current = current.next;
         }
 
         return result;
@@ -49,17 +42,17 @@ public class CopyListWithRandomPointer {
         // I assume:
         // time complexity O(n)
         // space complexity O(n)
-        Node temp = head;
-        while (temp != null) {
-            oldNodeToNewNode.put(temp, new Node(temp.val));
-            temp = temp.next;
+        Node current = head;
+        while (current != null) {
+            oldNodeToNewNode.put(current, new Node(current.val));
+            current = current.next;
         }
 
-        temp = head;
-        while (temp != null) {
-            oldNodeToNewNode.get(temp).next = oldNodeToNewNode.get(temp.next);
-            oldNodeToNewNode.get(temp).random = oldNodeToNewNode.get(temp.random);
-            temp = temp.next;
+        current = head;
+        while (current != null) {
+            oldNodeToNewNode.get(current).next = oldNodeToNewNode.get(current.next);
+            oldNodeToNewNode.get(current).random = oldNodeToNewNode.get(current.random);
+            current = current.next;
         }
 
         return oldNodeToNewNode.get(head);
